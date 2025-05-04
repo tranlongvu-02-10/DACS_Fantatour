@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clients\HomeController;
 use App\Http\Controllers\clients\AboutController;
-
+use App\Http\Controllers\clients\ToursController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +23,4 @@ use App\Http\Controllers\clients\AboutController;
 
 Route::get(uri:'/', action: [HomeController::class, 'index'])->name(name: 'home');
 Route::get(uri:'/about', action: [AboutController::class, 'index'])->name(name: 'about');
+Route::get(uri:'/tours', action: [ToursController::class, 'index'])->name(name: 'tours');
