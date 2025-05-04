@@ -69,14 +69,14 @@
 
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    <li class="dropdown current"><a href="#">Home</a>
+                                    <li class="dropdown current"><a href="{{ route('home') }}">Home</a>
                                         <ul>
                                             <li><a href="index.html">Travel Agency</a></li>
                                             <li><a href="index2.html">City Tou</a></li>
                                             <li><a href="index3.html">Tour Package</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="{{ route('about') }}">About</a></li>
                                     <li class="dropdown"><a href="#">Tours</a>
                                         <ul>
                                             <li><a href="tour-list.html">Tour List</a></li>
