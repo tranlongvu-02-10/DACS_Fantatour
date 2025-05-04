@@ -371,27 +371,27 @@
    
     
     <!-- Jquery -->
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/jquery-3.6.0.min.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/bootstrap.min.js')}}"></script>
     <!-- Appear Js -->
-    <script src="assets/js/appear.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/appear.min.js')}}"></script>
     <!-- Slick -->
-    <script src="assets/js/slick.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/slick.min.js')}}"></script>
     <!-- Magnific Popup -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/jquery.magnific-popup.min.js')}}"></script>
     <!-- Nice Select -->
-    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/jquery.nice-select.min.js')}}"></script>
     <!-- Image Loader -->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/imagesloaded.pkgd.min.js')}}"></script>
     <!-- Jquery UI -->
-    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/jquery-ui.min.js')}}"></script>
     <!-- Isotope -->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="{{asset('clients/errors/assets/js/isotope.pkgd.min.js')}}"></script>
     <!--  AOS Animation -->
-    <script src="assets/js/aos.js"></script>
+    <script src="{{asset('clients/errors/assets/js/aos.js')}}"></script>
     <!-- Custom script -->
-    <script src="assets/js/script.js"></script>
+    <script src="{{asset('clients/errors/assets/js/script.js')}}"></script>
 
 </body>
 
