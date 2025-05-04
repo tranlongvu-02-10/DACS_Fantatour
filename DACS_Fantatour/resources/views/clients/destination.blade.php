@@ -1,5 +1,5 @@
 @include('clients.blocks.header')
-@include('clients.blocks.banner')
+@include('clients.blocks.banner_search')
 
 <!-- Popular Destinations Area start -->
 <section class="popular-destinations-area pt-100 pb-90 rel z-1">
