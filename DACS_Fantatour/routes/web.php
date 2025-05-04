@@ -6,6 +6,8 @@ use App\Http\Controllers\clients\AboutController;
 use App\Http\Controllers\clients\ToursController;
 use App\Http\Controllers\clients\TravelguidesController;
 use App\Http\Controllers\clients\DestinationController;
+use App\Http\Controllers\clients\ContactController;
+use App\Http\Controllers\clients\TourdetaildetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,5 @@ Route::get(uri:'/about', action: [AboutController::class, 'index'])->name(name: 
 Route::get(uri:'/tours', action: [ToursController::class, 'index'])->name(name: 'tours');
 Route::get(uri:'/travel-guides', action: [TravelguidesController::class, 'index'])->name(name: 'travel-guides');
 Route::get(uri:'/destination', action: [DestinationController::class, 'index'])->name(name: 'destination');
+Route::get(uri:'/contact', action: [ContactController::class, 'index'])->name(name: 'contact');
+Route::get(uri:'/tours-detail', action: [TourdetaildetailController::class, 'index'])->name(name: 'tours-detail');
