@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class Handler extends ExceptionHandler
 {
@@ -50,20 +51,18 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
-        if($this->isHttpException($exception))
-        {
-            if($exception->getStatusCode()==404)
-            {
-                if($request->is('admin/*'))
-                {
-                    return response()->view('admin.errors.404',[],404);
-                }
-                else
-                {
-                    return response()->view('clients.errors.404',[],404);
+        if ($this->isHttpException($exception)) {
+            if ($exception->getStatusCode() == 404) {
+                // Kiểm tra URL có chứa /admin hay không để quyết định hiển thị trang lỗi cho admin
+                if ($request->is('admin/*')) {
+                    return response()->view('admin.errors.404', [], 404);
+                } else {
+                    $title = '404';
+                    return response()->view('clients.errors.404', ['title' => $title], 404);
                 }
             }
         }
-        return parent::render($request,$exception);
+
+        return parent::render($request, $exception);
     }
 }
