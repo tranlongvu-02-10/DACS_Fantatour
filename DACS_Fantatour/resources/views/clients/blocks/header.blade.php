@@ -71,26 +71,26 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class=" current"><a href="#">Home</a></li>
+                                        <li class=" current"><a href="{{ route('home') }}">Home</a></li>
                                         <li><a href="{{ route('about') }}">About</a></li>
                                         <li class="dropdown"><a href="#">Tours</a>
                                             <ul>
-                                                <li><a href="tour-sidebar.html">Tour Sidebar</a></li>
-                                                <li><a href="tour-guide.html">Tour Guide</a></li>
+                                                <li><a href="{{ route('tours') }}">Tour Sidebar</a></li>
+                                                <li><a href="{{ route('travel-guides') }}">Tour Guide</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Destinations</a></li>
+                                        <li><a href="{{ route('destination') }}">Destinations</a></li>
                                         <li class="dropdown"><a href="#">Pages</a>
                                             <ul>
-                                                <li><a href="faqs.html">faqs</a></li>
+                                                <li><a href="#">faqs</a></li>
                                                 <li class="dropdown"><a href="#">Gallery</a></li>
-                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#">blog</a>
                                             <ul>
-                                                <li><a href="blog.html">blog List</a></li>
-                                                <li><a href="blog-details.html">blog details</a></li>
+                                                <li><a href="#">blog List</a></li>
+                                                <li><a href="#">blog details</a></li>
                                             </ul>
                                         </li>
                                     </ul>

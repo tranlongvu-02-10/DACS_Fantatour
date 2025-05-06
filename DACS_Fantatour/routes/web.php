@@ -25,7 +25,7 @@ use App\Http\Controllers\clients\TourdetaildetailController;
 //});
 
 
-Route::get(uri:'/', action: [HomeController::class, 'index'])->name(name: 'home');
+Route::get(uri:'/home', action: [HomeController::class, 'index'])->name(name: 'home');
 Route::get(uri:'/about', action: [AboutController::class, 'index'])->name(name: 'about');
 Route::get(uri:'/tours', action: [ToursController::class, 'index'])->name(name: 'tours');
 Route::get(uri:'/travel-guides', action: [TravelguidesController::class, 'index'])->name(name: 'travel-guides');
