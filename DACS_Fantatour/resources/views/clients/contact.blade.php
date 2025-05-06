@@ -78,7 +78,7 @@
         <div class="row align-items-center">
             <div class="col-lg-7">
                 <div class="comment-form bgc-lighter z-1 rel mb-30 rmb-55">
-                    <form id="contactForm" class="contactForm" name="contactForm" action="https://webtendtheme.net/html/2024/ravelo/assets/php/form-process.php" method="post" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <form id="contactForm" class="contactForm" name="contactForm" action="" method="post" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title">
                             <h2>Get In Touch</h2>
                         </div>

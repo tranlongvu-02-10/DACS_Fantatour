@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
      <!-- Title -->
-     <title>Ravelo - Travel & Tour Booking HTML Template</title>
+     <title>Fantatour-Booking</title>
      <!-- Favicon Icon -->
      <link rel="shortcut icon" href="{{asset('clients/assets/images/logos/favicon.png')}}" type="image/x-icon">
      <!-- Google Fonts -->
@@ -38,7 +38,7 @@
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
+       {{-- <div class="preloader"><div class="custom-loader"></div></div> --}} 
 
         <!-- main header -->
         <header class="main-header header-one">
@@ -71,16 +71,16 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class=" current"><a href="{{ route('home') }}">Home</a></li>
-                                        <li><a href="{{ route('about') }}">About</a></li>
-                                        <li class="dropdown"><a href="#">Tours</a>
+                                        <li class=" current"><a href="{{ route('home') }}">Trang chủ</a></li>
+                                        <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                        <li class="dropdown"><a href="#">Chuyến du lịch</a>
                                             <ul>
-                                                <li><a href="{{ route('tours') }}">Tour Sidebar</a></li>
-                                                <li><a href="{{ route('travel-guides') }}">Tour Guide</a></li>
+                                                <li><a href="{{ route('tours') }}">Chuyến đi</a></li>
+                                                <li><a href="{{ route('travel-guides') }}">Hướng dẫn viên</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('destination') }}">Destinations</a></li>
-                                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                        <li><a href="{{ route('destination') }}">Điểm đến</a></li>
+                                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                                         <li><a href="{{ route('blogs') }}">blog</a></li>
                                     </ul>
                                 </div>
@@ -92,7 +92,7 @@
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
                             <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Book Now">Book Now</span>
+                                <span data-hover="Book Now">Đặt ngay</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                             <!-- menu sidbar -->
