@@ -83,7 +83,6 @@
                                         <li class="dropdown"><a href="#">Pages</a>
                                             <ul>
                                                 <li><a href="#">faqs</a></li>
-                                                <li class="dropdown"><a href="#">Gallery</a></li>
                                                 <li><a href="{{ route('contact') }}">Contact Us</a></li>
                                             </ul>
                                         </li>
