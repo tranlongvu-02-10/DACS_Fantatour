@@ -48,7 +48,7 @@
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="assets/images/logos/logo-two.png" alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="{{ route('home') }}"><img src="{{asset('clients/assets/images/logos/logo-two.png')}}" alt="Logo" title="Logo"></a></div>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
@@ -56,8 +56,8 @@
                             <nav class="main-menu navbar-expand-lg">
                                 <div class="navbar-header">
                                    <div class="mobile-logo">
-                                       <a href="index.html">
-                                            <img src="assets/images/logos/logo-two.png" alt="Logo" title="Logo">
+                                       <a href="{{ route('home') }}">
+                                            <img src="{{asset('clients/assets/images/logos/logo-two.png')}}" alt="Logo" title="Logo">
                                        </a>
                                    </div>
                                    
@@ -80,18 +80,8 @@
                                             </ul>
                                         </li>
                                         <li><a href="{{ route('destination') }}">Destinations</a></li>
-                                        <li class="dropdown"><a href="#">Pages</a>
-                                            <ul>
-                                                <li><a href="#">faqs</a></li>
-                                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">blog</a>
-                                            <ul>
-                                                <li><a href="#">blog List</a></li>
-                                                <li><a href="#">blog details</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                        <li><a href="{{ route('blogs') }}">blog</a></li>
                                     </ul>
                                 </div>
 
