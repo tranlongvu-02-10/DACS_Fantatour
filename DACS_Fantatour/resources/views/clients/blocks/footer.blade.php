@@ -115,6 +115,8 @@
 <script src="{{asset('clients/assets/js/aos.js')}}"></script>
 <!-- Custom script -->
 <script src="{{asset('clients/assets/js/script.js')}}"></script>
+<!-- Custom script -->
+<script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
 
 </body>
 </html>

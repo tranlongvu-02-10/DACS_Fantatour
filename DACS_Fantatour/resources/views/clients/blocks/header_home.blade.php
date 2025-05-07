@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Ravelo - Travel & Tour Booking HTML Template</title>
+    <title>Fantatour-Booking</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="{{asset('clients/assets/images/logos/favicon.png')}}" type="image/x-icon">
     <!-- Google Fonts -->
