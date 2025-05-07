@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from webtendtheme.net/html/2024/ravelo/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:28:37 GMT -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -32,6 +31,9 @@
      <link rel="stylesheet" href="{{asset('clients/assets/css/slick.min.css')}}">
      <!-- Main Style -->
      <link rel="stylesheet" href="{{asset('clients/assets/css/style.css')}}">
+
+
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
 </head>
 <body>
@@ -89,18 +91,26 @@
                             <!-- Main Menu End-->
                         </div>
                         
+                        <!-- Nav Search -->
+                        <div class="nav-search">
+                            <button class="far fa-search"></button>
+                            <form action="#" class="hide">
+                                <input type="text" placeholder="Search" class="searchbox" required="">
+                                <button type="submit" class="searchbutton far fa-search"></button>
+                            </form>
+                        </div>
+                    
+                        
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Book Now">Đặt ngay</span>
+                            <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
+                                <span data-hover="Đặt ngay">Đặt ngay</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                             <!-- menu sidbar -->
                             <div class="menu-sidebar">
                                 <button class="bg-transparent">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
+                                    <i class='bx bxs-user bx-tada' style="font-size: 35px"></i>
                                 </button>
                             </div>
                         </div>
