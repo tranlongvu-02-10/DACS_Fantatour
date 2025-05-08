@@ -9,6 +9,7 @@ class TourdetaildetailController extends Controller
 {
     public function index()
     {
+        
         return view('clients.tours-detail');
     }
 }

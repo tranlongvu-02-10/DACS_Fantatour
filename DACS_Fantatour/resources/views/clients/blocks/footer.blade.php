@@ -117,6 +117,7 @@
 <script src="{{asset('clients/assets/js/script.js')}}"></script>
 <!-- Custom script -->
 <script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
+<script src="{{asset('clients/assets/js/jquery.datetimepicker.full.mins')}}"></script>
 
 </body>
 </html>

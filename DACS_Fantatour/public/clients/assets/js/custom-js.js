@@ -8,4 +8,18 @@ $(document).ready(function () {
         $(".signup").hide();
         $(".sign-in").show();
     });
+
+        // Home page
+    $("#start_date, #end_date").datetimepicker({
+        format: "Y/m/d H:i",        // Hiển thị ngày + giờ
+        timepicker: false,           //  Bật chọn giờ
+
+    });
+
+    $("#userDropdown").click(function () {
+    $("#dropdownMenu").toggle(); // Toggle dropdown menu when user clicks
+    });
+    
 });
+
+

@@ -17,19 +17,26 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-xxl-3 col-xl-4 col-md-6">
-                        <div class="destination-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    @foreach ($tours as $tour)
+                    <div class="col-xxl-3 col-xl-4 col-md-6 ">
+                        <div class="destination-item block_tour" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <div class="ratting"><i class="fas fa-star"></i> 4.8</div>
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                <img src="{{asset('clients/assets/images/destinations/visiting-place1.jpg')}}" alt="Destination">
+                                <img src="{{asset('clients/assets/images/gallery-tours/'.$tour->imagess[0].'')}}" alt="Destination">
+                            </div>
+                            <div class="content">
+                                <span class="location"><i class="fal fa-map-marker-alt"></i>{{ $tour->destination }}</span>
+                                <h5><a href="destination-details.html">{{ $tour->title }}</a></h5>
+                                <span class="time">{{ $tour->description }}</span>
                             </div>
                             <div class="destination-footer">
-                                <span class="price"><span>$58.00</span>/per person</span>
-                                <a href="#" class="read-more">Book Now <i class="fal fa-angle-right"></i></a>
-                            </div>
+                                <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người</span>
+                                <a href="#" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>
+                            </div>                            
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </section>
