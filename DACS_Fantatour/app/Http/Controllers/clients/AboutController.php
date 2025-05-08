@@ -13,8 +13,9 @@ class AboutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('clients.about');
+    {   
+        $title ='GIới thiệu';
+        return view('clients.about',compact('title'));
     }
 
     /**

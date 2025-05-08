@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="{{asset('clients/assets/css/slick.min.css')}}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{asset('clients/assets/css/style.css')}}">
+    {{-- date time picker  --}}
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/jquery.datetimepicker.min.css') }}" />
+    {{-- custom css by longvu --}}
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/custom-css.css') }}" />
     
 </head>
     <div class="page-wrapper">

@@ -1,0 +1,55 @@
+.datetimepicker-custom {
+    padding: 0;
+}
+
+.datetimepicker-custom:focus {
+    border: none;
+}
+.main-header.header-one .main-menu .navbar-collapse .navigation .active {
+    background: var(--primary-color);
+}
+
+
+.dropdown-menu {
+    list-style-type: none;
+    padding: 8px 0;
+    margin: 0;
+    position: absolute;
+    top: 50px;              /* Hiển thị dưới button */
+    right: 0;
+    background-color: #ffffff;
+    display: none;          /* Mặc định ẩn menu */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 160px;
+}
+
+
+/*Dropdown menu */
+.menu-sidebar, .drop-down {
+    position: relative;
+}
+.icon-user {
+    font-size: 35px;   /* hoặc 32px tùy bạn */
+    color: #000;       /* nếu cần chỉnh màu */
+}
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
+}
+

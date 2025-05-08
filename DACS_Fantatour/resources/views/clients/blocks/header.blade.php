@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
      <!-- Title -->
-     <title>Fantatour-Booking</title>
+     <title>Fantatour-{{ $title }}</title>
      <!-- Favicon Icon -->
      <link rel="shortcut icon" href="{{asset('clients/assets/images/logos/favicon.png')}}" type="image/x-icon">
      <!-- Google Fonts -->
@@ -40,6 +40,10 @@
         <link rel="stylesheet" href="{{asset('clients/assets/css/css-login/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
     <!-- Main css -->
         <link rel="stylesheet" href="{{asset('clients/assets/css/css-login/style.css')}}">
+    {{-- custom css by longvu --}}
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/custom-css.css') }}" />
+    {{-- date time picker  --}}
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/jquery.datetimepicker.min.css') }}" />
     
 </head>
 <body>
@@ -79,17 +83,23 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class=" current"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                        <li><a href="{{ route('about') }}">Giới thiệu</a></li>
-                                        <li class="dropdown"><a href="#">Chuyến du lịch</a>
+                                        <li class="{{ Request::url() == route('home') ? 'active' : '' }}"><a
+                                                href="{{ route('home') }}">Trang chủ</a></li>
+                                        <li class="{{ Request::url() == route('about') ? 'active' : '' }}"><a
+                                                href="{{ route('about') }}">Giới thiệu</a></li>
+                                        <li
+                                            class="dropdown {{ Request::is('tours') || Request::is('travel-guides') || Request::is('tour-detail/*') ? 'active' : '' }}">
+                                            <a href="#">Tours</a>
                                             <ul>
-                                                <li><a href="{{ route('tours') }}">Chuyến đi</a></li>
+                                                <li><a href="{{ route('tours') }}">Tours</a></li>
                                                 <li><a href="{{ route('travel-guides') }}">Hướng dẫn viên</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('destination') }}">Điểm đến</a></li>
-                                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
-                                        <li><a href="{{ route('blogs') }}">blog</a></li>
+
+                                        <li class="{{ Request::url() == route('destination') ? 'active' : '' }}"><a
+                                                href="{{ route('destination') }}">Điểm đến</a></li>
+                                        <li class="{{ Request::url() == route('contact') ? 'active' : '' }}"><a
+                                                href="{{ route('contact') }}">Liên Hệ</a></li>
                                     </ul>
                                 </div>
 
@@ -115,8 +125,14 @@
                             </a>
                             <!-- menu sidbar -->
                             <div class="menu-sidebar">
-                                <button class="bg-transparent">
-                                    <i class='bx bxs-user bx-tada' style="font-size: 35px"></i>
+                                    <li class="drop-down">
+                                        <button class="dropdown-toggle bg-transparent" id="userDropdown">  
+                                                <i class='bx bxs-user bx-tada icon-user'></i>
+                                                <ul class="dropdown-menu" id="dropdownMenu">
+                                                    <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                                    <li><a href="#">Thông tin cá nhân</a></li>
+                                                </ul>
+                                    </li>
                                 </button>
                             </div>
                         </div>
