@@ -53,3 +53,11 @@
     color: #007bff;
 }
 
+/*css tour in home*/
+.block_tour{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
