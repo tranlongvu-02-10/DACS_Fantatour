@@ -10,7 +10,7 @@ use App\Http\Controllers\clients\DestinationController;
 use App\Http\Controllers\clients\ContactController;
 use App\Http\Controllers\clients\TourdetaildetailController;
 use App\Http\Controllers\clients\BlogDetailController;
-
+use App\Http\Controllers\clients\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +37,4 @@ Route::get(uri:'/contact', action: [ContactController::class, 'index'])->name(na
 Route::get(uri:'/tours-detail', action: [TourdetaildetailController::class, 'index'])->name(name: 'tours-detail');
 Route::get(uri:'/blogs', action: [BlogController::class, 'index'])->name(name: 'blogs');
 Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
+Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');

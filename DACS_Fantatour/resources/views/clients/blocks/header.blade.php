@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from webtendtheme.net/html/2024/ravelo/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:28:37 GMT -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
      <!-- Title -->
-     <title>Ravelo - Travel & Tour Booking HTML Template</title>
+     <title>Fantatour-Booking</title>
      <!-- Favicon Icon -->
      <link rel="shortcut icon" href="{{asset('clients/assets/images/logos/favicon.png')}}" type="image/x-icon">
      <!-- Google Fonts -->
@@ -32,13 +31,22 @@
      <link rel="stylesheet" href="{{asset('clients/assets/css/slick.min.css')}}">
      <!-- Main Style -->
      <link rel="stylesheet" href="{{asset('clients/assets/css/style.css')}}">
+
+     {{-- boxicons --}}
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+     {{-- login --}}
+     <!-- Font Icon -->
+        <link rel="stylesheet" href="{{asset('clients/assets/css/css-login/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+    <!-- Main css -->
+        <link rel="stylesheet" href="{{asset('clients/assets/css/css-login/style.css')}}">
     
 </head>
 <body>
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
+       {{-- <div class="preloader"><div class="custom-loader"></div></div> --}} 
 
         <!-- main header -->
         <header class="main-header header-one">
@@ -71,16 +79,16 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class=" current"><a href="{{ route('home') }}">Home</a></li>
-                                        <li><a href="{{ route('about') }}">About</a></li>
-                                        <li class="dropdown"><a href="#">Tours</a>
+                                        <li class=" current"><a href="{{ route('home') }}">Trang chủ</a></li>
+                                        <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                        <li class="dropdown"><a href="#">Chuyến du lịch</a>
                                             <ul>
-                                                <li><a href="{{ route('tours') }}">Tour Sidebar</a></li>
-                                                <li><a href="{{ route('travel-guides') }}">Tour Guide</a></li>
+                                                <li><a href="{{ route('tours') }}">Chuyến đi</a></li>
+                                                <li><a href="{{ route('travel-guides') }}">Hướng dẫn viên</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('destination') }}">Destinations</a></li>
-                                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                        <li><a href="{{ route('destination') }}">Điểm đến</a></li>
+                                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                                         <li><a href="{{ route('blogs') }}">blog</a></li>
                                     </ul>
                                 </div>
@@ -89,18 +97,26 @@
                             <!-- Main Menu End-->
                         </div>
                         
+                        <!-- Nav Search -->
+                        <div class="nav-search">
+                            <button class="far fa-search"></button>
+                            <form action="#" class="hide">
+                                <input type="text" placeholder="Search" class="searchbox" required="">
+                                <button type="submit" class="searchbutton far fa-search"></button>
+                            </form>
+                        </div>
+                    
+                        
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Book Now">Book Now</span>
+                            <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
+                                <span data-hover="Đặt ngay">Đặt ngay</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                             <!-- menu sidbar -->
                             <div class="menu-sidebar">
                                 <button class="bg-transparent">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
+                                    <i class='bx bxs-user bx-tada' style="font-size: 35px"></i>
                                 </button>
                             </div>
                         </div>
