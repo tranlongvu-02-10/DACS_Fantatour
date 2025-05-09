@@ -32,7 +32,7 @@
                             </div>
                             <div class="destination-footer">
                                 <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người</span>
-                                <a href="#" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>
+                                <a href="{{ route('tour-detail',['id' => $tour ->$tourId]) }}" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>
                             </div>                            
                         </div>
                     </div>

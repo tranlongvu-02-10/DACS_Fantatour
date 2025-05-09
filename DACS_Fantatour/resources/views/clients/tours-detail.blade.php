@@ -1,5 +1,23 @@
 @include('clients.blocks.header')
-@include('clients.blocks.banner')
+
+<section class="page-banner-two rel z-1">
+    <div class="container-fluid">
+        <hr class="mt-0">
+        <div class="container">
+            <div class="banner-inner pt-15 pb-25">
+                <h2 class="page-title mb-10 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
+                    data-aos-offset="50">{{ $tourDetail->destination }}</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
+                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Tour Gallery start -->
 <div class="tour-gallery">
@@ -7,32 +25,24 @@
         <div class="row gap-10 justify-content-center rel">
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details1.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[0].'')}}" alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details4.jpg" alt="Destination">
+                    <img src="a{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[1].'')}}" alt="Destination">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-item gallery-between">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[2].'')}}" alt="Destination">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details2.jpg" alt="Destination">
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details3.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[3].'')}}" alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details5.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[4].'')}}" alt="Destination">
                 </div>
-            </div>
-            <div class="col-lg-12">
-               <div class="gallery-more-btn">
-                    <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                        <span data-hover="See All Photos">See All Photos</span>
-                        <i class="fal fa-arrow-right"></i>
-                    </a>
-               </div>
             </div>
         </div>
     </div>
@@ -46,9 +56,9 @@
         <div class="row justify-content-between">
             <div class="col-xl-6 col-lg-7">
                 <div class="tour-header-content mb-15" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                    <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i> Bali, Indonesia</span>
+                    <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i>{{ $tourDetail->destination }}</span>
                     <div class="section-title pb-5">
-                        <h2>Relinking Beach in Nusa panada island, Bali, Indonesia</h2>
+                        <h2>{{ $tourDetail->title }}</h2>
                     </div>
                     <div class="ratting">
                         <i class="fas fa-star"></i>
@@ -210,69 +220,6 @@
                     </div>
                 </div>
 
-                <h3>Frequently Asked Questions</h3>
-                <div class="accordion-one mt-25 mb-60" id="faq-accordion">
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                               01_How do I book a tour or travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                02_What is included in the travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                03_What is your cancellation and refund policy?
-                            </button>
-                        </h5>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                04_Can I customize my tour or travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-                                05_What documents do I need to travel?
-                            </button>
-                        </h5>
-                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <h3>Maps</h3>
                 <div class="tour-map mt-30 mb-50">

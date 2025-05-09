@@ -61,3 +61,7 @@
     height: 100%;
 }
 
+.tour-gallery .gallery-between, .tour-gallery .gallery-item img{
+    height: 100%;
+    border-radius: 8px;
+}
