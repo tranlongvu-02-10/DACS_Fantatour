@@ -28,11 +28,11 @@
                             <div class="content">
                                 <span class="location"><i class="fal fa-map-marker-alt"></i>{{ $tour->destination }}</span>
                                 <h5><a href="destination-details.html">{{ $tour->title }}</a></h5>
-                                <span class="time">{{ $tour->description }}</span>
+                                <span class="time">{{ $tour->time }}</span>
                             </div>
                             <div class="destination-footer">
                                 <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người</span>
-                                <a href="{{ route('tour-detail',['id' => $tour ->$tourId]) }}" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>
+                                <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>
                             </div>                            
                         </div>
                     </div>
