@@ -11,6 +11,21 @@ class Tours extends Model
     use HasFactory;
     protected $table = 'tbl_Tourss';
 
+    //Lấy tất cả tour
+    public function getAllTours()
+    {
+        $allTours = DB::table($this->table)->get();
+        foreach ($allTours as $tour) {
+            // Lấy danh sách hình ảnh thuộc về tour
+            $tour->imagess = DB::table('tbl_imagess')
+                ->where('tourId', $tour->tourId)
+                ->pluck('imageURL');
+   
+        }
+        return $allTours;
+    }
+    
+    //Lấy chi tiết tour
     public function getTourDetail($id)
     {
         $getTourDetail = DB::table($this->table)

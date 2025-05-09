@@ -396,18 +396,20 @@
                     <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <h5 class="widget-title">Tour Booking</h5>
                         <form action="#">
-                            <div class="date mb-25">
+                          <div class="date mb-25">
                                 <b>Ngày bắt đầu</b>
-                                <input type="date" value="{{ $tourDetail->startDate }}" disabled>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->startDate)) }}"
+                                    name="startdate" disabled>
                             </div>
                             <hr>
                             <div class="date mb-25">
                                 <b>Ngày kết thúc</b>
-                                <input type="date" value="{{ $tourDetail->endDate }}" disabled>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->endDate)) }}"
+                                    name="enddate" disabled>
                             </div>
                             <hr>
                             <div class="time py-5">
-                                <b>Time :</b>
+                                <b>Thời gian :</b>
                                 <p>{{ $tourDetail->time }}</p>
                             </div>
                             <hr class="mb-25">
