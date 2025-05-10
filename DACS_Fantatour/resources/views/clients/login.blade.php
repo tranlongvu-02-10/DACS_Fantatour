@@ -48,8 +48,9 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Đăng ký</h2>
-                        <div class="loader"></div>
-                        <form action="#" method="POST" class="register-form" id="register-form" style="margin-top: 15px">
+                        <span id="error" class="alert alert-danger" style="display: none"></span>
+                        <span id="message" class="alert alert-success " style="display: none"></span>
+                        <form action="{{ route('register') }}" method="POST" class="register-form" id="register-form" style="margin-top: 15px">
                             <div class="form-group">
                                 <label for="username_register"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username_register" id="username_register" placeholder="Tên tài khoản" required/>
@@ -58,7 +59,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="email_register"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email_register" id="email_register" placeholder="Email" required/>
+                                <input type="email" name="email" id="email_register" placeholder="Email" required/>
                             </div>
                             <div class="invalid-feedback" style="margin-top:-15px" id="validate_email_regis"></div>
                             <div class="form-group">
