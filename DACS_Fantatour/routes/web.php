@@ -38,3 +38,5 @@ Route::get(uri:'/tours-detail/{id?}', action: [TourdetaildetailController::class
 Route::get(uri:'/blogs', action: [BlogController::class, 'index'])->name(name: 'blogs');
 Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
 Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');
+Route::post(uri:'/login', action: [LoginController::class, 'register'])->name(name: 'register');
+Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');

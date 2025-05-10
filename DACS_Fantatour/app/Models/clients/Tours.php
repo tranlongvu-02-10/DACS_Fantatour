@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Tours extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_Tourss';
+    protected $table = 'tbl_tourss';
 
     //Lấy tất cả tour
     public function getAllTours()
