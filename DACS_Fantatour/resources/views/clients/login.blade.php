@@ -13,7 +13,10 @@
                     </div>
                     <div class="signin-form">
                         <h2 class="form-title">Đăng nhập</h2>
-                        <span id="error_login" class="alert alert-danger" style="padding: 10px 3px">hihi</span>
+                        <span id="error_login" class="alert alert-danger" style="padding: 10px 3px; display: {{ session('error') ? 'block' : 'none' }};">
+                            {{ session('error') }}
+                        </span>
+
                         <form action="{{ route('user-login') }}" method="POST" class="login-form" id="login-form" style="margin-top: 15px">
                             <div class="form-group">
                                 <label for="username_login"><i class="zmdi zmdi-account material-icons-name"></i></label>

@@ -24,6 +24,7 @@ $(document).ready(function () {
      
     $("#error").hide();
     $("#message").hide();
+    $('#error_login').hide();
         // Handle form submission for signin
     $("#login-form").on("submit", function (e) {
         e.preventDefault();
@@ -61,6 +62,7 @@ $(document).ready(function () {
         }
 
         if (isValid) {
+            $('#error_login').hide();
             var formData = {
                 'username': username,
                 'password': password,
@@ -76,8 +78,7 @@ $(document).ready(function () {
                     if (response.success) {
                         window.location.href ="/";
                     } else {
-                        $('#message').hide();
-                        $('#error').text(response.message).show();
+                        $('#error_login').text(response.message).show();
                     }
                 },
                 error: function(xhr, textStatus, errorThrown){
