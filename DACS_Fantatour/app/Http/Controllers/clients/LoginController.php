@@ -67,11 +67,36 @@ class LoginController extends Controller
         $user = $this->login->getUserByToken($token);
         if ($user) {
             $this->login->activateUserAccount($token);
-
             return redirect('/login')->with('message', 'Tài khoản của bạn đã được kích hoạt!');
         } else {
             return redirect('/login')->with('error', 'Mã kích hoạt không hợp lệ!');
         }
     }
+    //Xử lý người dùng đăng nhập
+    public function login(Request $request)
+    {
+        $username = $request->username_login;
+        $password = $request->password_login;
+
+        $data_login = [
+            'username' => $username,
+            'password' => md5($password)
+        ];
+
+        $user = $this->login->login($data_login);
+
+        if ($user != null) {
+            $request->session()->put('username', $username);
+            return redirect()->route('home');
+        } 
+        else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Thông tin tài khoản không chính xác!',
+            ]);
+        }
+    }
 
 }
+
+

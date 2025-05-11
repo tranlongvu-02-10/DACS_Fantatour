@@ -20,9 +20,11 @@ $(document).ready(function () {
     $("#dropdownMenu").toggle(); // Toggle dropdown menu when user clicks
     });
 
+
+     
     $("#error").hide();
     $("#message").hide();
-        // Xử lý việc gửi biểu mẫu để đăng nhập
+        // Handle form submission for signin
     $("#login-form").on("submit", function (e) {
         e.preventDefault();
         var username = $("#username_login").val().trim();
@@ -41,7 +43,8 @@ $(document).ready(function () {
                 .show()
                 .text("Mật khẩu phải có ít nhất 6 ký tự.");
         }
-     // Kiểm tra tên đăng nhập và mật khẩu không chứa ký tự đặc biệt (SQL injection)
+
+        // Kiểm tra tên đăng nhập và mật khẩu không chứa ký tự đặc biệt (SQL injection)
         
         if (sqlInjectionPattern.test(username)) {
             isValid = false;
@@ -59,27 +62,29 @@ $(document).ready(function () {
 
         if (isValid) {
             var formData = {
-                username: username,
-                password: password,
-                _token: $('input[name="_token"]').val(),
+                'username': username,
+                'password': password,
+                '_token': $('input[name="_token"]').val(),
             };
             console.log(formData, $(this).attr("action"));
 
             $.ajax({
-                type: "POST",
-                url: $(this).attr("action"),
+                type: 'POST',
+                url: $(this).attr('action'),
                 data: formData,
-                success: function (response) {
+              success: function(response) {
                     if (response.success) {
-                        window.location.href = "/";
+                        window.location.href ="/";
                     } else {
-                        toastr.error(response.message);
+                        $('#message').hide();
+                        $('#error').text(response.message).show();
                     }
                 },
-                error: function (xhr, textStatus, errorThrown) {
-                    toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
-                },
+                error: function(xhr, textStatus, errorThrown){
+                    alert('Có lỗi xảy ra!');
+                }
             });
+
         }
     });
 

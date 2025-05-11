@@ -27,8 +27,8 @@ use App\Http\Controllers\clients\LoginController;
 //   return view(view: 'home');
 //});
 
-Route::get(uri:'/', action: [HomeController::class, 'index'])->name(name: 'home');
-Route::get(uri:'/home', action: [HomeController::class, 'index'])->name(name: 'home');
+Route::get(uri: '/', action: [HomeController::class, 'index']);
+Route::get(uri: '/home', action: [HomeController::class, 'index'])->name(name: 'home');
 Route::get(uri:'/about', action: [AboutController::class, 'index'])->name(name: 'about');
 Route::get(uri:'/tours', action: [ToursController::class, 'index'])->name(name: 'tours');
 Route::get(uri:'/travel-guides', action: [TravelguidesController::class, 'index'])->name(name: 'travel-guides');
@@ -38,5 +38,6 @@ Route::get(uri:'/tours-detail/{id?}', action: [TourdetaildetailController::class
 Route::get(uri:'/blogs', action: [BlogController::class, 'index'])->name(name: 'blogs');
 Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
 Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');
-Route::post(uri:'/login', action: [LoginController::class, 'register'])->name(name: 'register');
+Route::post(uri:'/register', action: [LoginController::class, 'register'])->name(name: 'register');
+Route::post(uri:'/login', action: [LoginController::class, 'login'])->name(name: 'user-login');
 Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');
