@@ -3,7 +3,7 @@
 <div class="login-template">
     <div class="main">
         <!-- Sign in  Form -->
-        <section class="sign-in show">
+         <section class="sign-in show">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
@@ -11,10 +11,13 @@
                                 alt="sing up image"></figure>
                         <a href="javascript:void(0)" class="signup-image-link" id="sign-up">Tạo tài khoản</a>
                     </div>
-
                     <div class="signin-form">
                         <h2 class="form-title">Đăng nhập</h2>
-                        <form action="#" method="POST" class="login-form" id="login-form" style="margin-top: 15px">
+                        <span id="error_login" class="alert alert-danger" style="padding: 10px 3px; display: {{ session('error') ? 'block' : 'none' }};">
+                            {{ session('error') }}
+                        </span>
+
+                        <form action="{{ route('user-login') }}" method="POST" class="login-form" id="login-form" style="margin-top: 15px">
                             <div class="form-group">
                                 <label for="username_login"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username_login" id="username_login" placeholder="Tên đăng nhập" required/>
@@ -35,7 +38,7 @@
                             <span class="social-label">Hoặc đăng nhập bằng</span>
                             <ul class="socials">
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                <li><a href="{{ route('login-google') }}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,8 +51,9 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Đăng ký</h2>
-                        <div class="loader"></div>
-                        <form action="#" method="POST" class="register-form" id="register-form" style="margin-top: 15px">
+                        <span id="error" class="alert alert-danger" style="display: none"></span>
+                        <span id="message" class="alert alert-success " style="display: none"></span>
+                        <form action="{{ route('register') }}" method="POST" class="register-form" id="register-form" style="margin-top: 15px">
                             <div class="form-group">
                                 <label for="username_register"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username_register" id="username_register" placeholder="Tên tài khoản" required/>
@@ -58,7 +62,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="email_register"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email_register" id="email_register" placeholder="Email" required/>
+                                <input type="email" name="email" id="email_register" placeholder="Email" required/>
                             </div>
                             <div class="invalid-feedback" style="margin-top:-15px" id="validate_email_regis"></div>
                             <div class="form-group">

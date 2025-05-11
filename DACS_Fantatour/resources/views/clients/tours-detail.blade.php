@@ -1,5 +1,23 @@
 @include('clients.blocks.header')
-@include('clients.blocks.banner')
+
+<section class="page-banner-two rel z-1">
+    <div class="container-fluid">
+        <hr class="mt-0">
+        <div class="container">
+            <div class="banner-inner pt-15 pb-25">
+                <h2 class="page-title mb-10 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
+                    data-aos-offset="50">{{ $tourDetail->destination }}</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
+                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Tour Gallery start -->
 <div class="tour-gallery">
@@ -7,32 +25,24 @@
         <div class="row gap-10 justify-content-center rel">
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details1.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[0].'')}}" alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details4.jpg" alt="Destination">
+                    <img src="a{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[1].'')}}" alt="Destination">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-item gallery-between">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[2].'')}}" alt="Destination">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details2.jpg" alt="Destination">
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details3.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[3].'')}}" alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images/destinations/destination-details5.jpg" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[4].'')}}" alt="Destination">
                 </div>
-            </div>
-            <div class="col-lg-12">
-               <div class="gallery-more-btn">
-                    <a href="contact.html" class="theme-btn style-two bgc-secondary">
-                        <span data-hover="See All Photos">See All Photos</span>
-                        <i class="fal fa-arrow-right"></i>
-                    </a>
-               </div>
             </div>
         </div>
     </div>
@@ -46,9 +56,9 @@
         <div class="row justify-content-between">
             <div class="col-xl-6 col-lg-7">
                 <div class="tour-header-content mb-15" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                    <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i> Bali, Indonesia</span>
+                    <span class="location d-inline-block mb-10"><i class="fal fa-map-marker-alt"></i>{{ $tourDetail->destination }}</span>
                     <div class="section-title pb-5">
-                        <h2>Relinking Beach in Nusa panada island, Bali, Indonesia</h2>
+                        <h2>{{ $tourDetail->title }}</h2>
                     </div>
                     <div class="ratting">
                         <i class="fas fa-star"></i>
@@ -78,200 +88,59 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="tour-details-content">
-                    <h3>Explore Tours</h3>
-                    <p>Bali, Indonesia, is a tropical paradise renowned for its breathtaking beaches, vibrant culture, and lush landscapes. Located at the westernmost end of the Lesser Sunda Islands, Bali boasts a warm, tropical climate that makes it a year-round destination. Visitors are drawn to its picturesque beaches like Kuta, Seminyak, and Nusa Dua, ideal for surfing, sunbathing, and diving. The island's rich cultural heritage is evident in its numerous temples, including the iconic Tanah Lot and Uluwatu Temple, as well as in Ubud, the cultural heart of Bali, known for its traditional dance performances and art markets. Nature enthusiasts can explore the terraced rice paddies in Tegallalang, hike up Mount Batur, or visit the stunning waterfalls of Tegenungan and Gitgit. </p>
+                    <h3>Khám phá các tour du lịch</h3>
+                    <p>{!! $tourDetail->description !!}</p>
                     <div class="row pb-55">
                         <div class="col-md-6">
                             <div class="tour-include-exclude mt-30">
-                                <h5>Included and Excluded</h5>
+                                <h5>Bao gồm</h5>
                                 <ul class="list-style-one check mt-25">
-                                    <li><i class="far fa-check"></i> Pick and Drop Services</li>
-                                    <li><i class="far fa-check"></i> 1 Meal Per Day</li>
-                                    <li><i class="far fa-check"></i> Cruise Dinner & Music Event</li>
-                                    <li><i class="far fa-check"></i> Visit 7 Best Places in the City</li>
-                                    <li><i class="far fa-check"></i> Bottled Water on Buses</li>
-                                    <li><i class="far fa-check"></i> Transportation Luxury Tour Bus</li>
+                                    <li><i class="far fa-check"></i> Dịch vụ đón và trả khách</li>
+                                    <li><i class="far fa-check"></i> 1 Bữa Ăn Mỗi Ngày</li>
+                                    <li><i class="far fa-check"></i> Bữa tối trên du thuyền và sự kiện âm nhạc</li>
+                                    <li><i class="far fa-check"></i> Ghé thăm 7 địa điểm tuyệt vời nhất trong thành phố</li>
+                                    <li><i class="far fa-check"></i> Nước đóng chai trên xe buýt</li>
+                                    <li><i class="far fa-check"></i> Vận chuyển Xe buýt du lịch hạng sang</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="tour-include-exclude mt-30">
-                                <h5>Excluded</h5>
+                                <h5>Không bao gồm</h5>
                                 <ul class="list-style-one mt-25">
-                                    <li><i class="far fa-times"></i> Gratuities</li>
-                                    <li><i class="far fa-times"></i> Hotel pickup and drop-off</li>
-                                    <li><i class="far fa-times"></i> Lunch, Food & Drinks</li>
-                                    <li><i class="far fa-times"></i> Optional upgrade to a glass</li>
-                                    <li><i class="far fa-times"></i> Additional Services</li>
-                                    <li><i class="far fa-times"></i> Insurance</li>
+                                    <li><i class="far fa-times"></i> Đón và trả khách tại khách sạn</li>
+                                    <li><i class="far fa-times"></i> Bữa trưa, Thức ăn & Đồ uống</li>
+                                    <li><i class="far fa-times"></i> Tùy chọn nâng cấp lên kính</li>
+                                    <li><i class="far fa-times"></i> Dịch vụ bổ sung</li>
+                                    <li><i class="far fa-times"></i> Bảo hiểm</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <h3>Activities</h3>
-                <div class="tour-activities mt-30 mb-45">
-                    <div class="tour-activity-item">
-                        <i class="flaticon-hiking"></i>
-                        <b>Hiking</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-fishing"></i>
-                        <b>Fishing</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-man"></i>
-                        <b>Kayak shooting</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-kayak-1"></i>
-                        <b>Kayak</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-bonfire"></i>
-                        <b>Campfire</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-flashlight"></i>
-                        <b>Night Exploring</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-cycling"></i>
-                        <b>Biking</b>
-                    </div>
-                    <div class="tour-activity-item">
-                        <i class="flaticon-meditation"></i>
-                        <b>Yoga</b>
-                    </div>
-                </div>
 
-                <h3>Itinerary</h3>
+                <h3>Lịch trình</h3>
                 <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne">
-                               Day 1 - Arrive at campground
-                            </button>
-                        </h5>
-                        <div id="collapseTwoOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                    @php
+                        $day = 1;
+                    @endphp
+                    @foreach ($tourDetail->timelinee as $timelinee)
+                        <div class="accordion-item">
+                            <h5 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo{{ $timelinee->timeLineId }}">
+                                    Ngày {{ $day++ }} - {{ $timelinee->title }}
+                                </button>
+                            </h5>
+                            <div id="collapseTwo{{ $timelinee->timeLineId }}" class="accordion-collapse collapse"
+                                data-bs-parent="#faq-accordion-two">
+                                <div class="accordion-body">
+                                    <p>{!! $timelinee->description !!}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwoTwo">
-                                Day 2 - Wake up early and embark on a day hike
-                            </button>
-                        </h5>
-                        <div id="collapseTwoTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion-two">
-                            <div class="accordion-body">
-                                <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoThree">
-                                Day 3 - Join a guided ranger-led nature walk
-                            </button>
-                        </h5>
-                        <div id="collapseTwoThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFour">
-                                Day 4 - Take a break from hiking
-                            </button>
-                        </h5>
-                        <div id="collapseTwoFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFive">
-                                Day 5 - Pack a lunch and embark on a longer hike
-                            </button>
-                        </h5>
-                        <div id="collapseTwoFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Frequently Asked Questions</h3>
-                <div class="accordion-one mt-25 mb-60" id="faq-accordion">
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                               01_How do I book a tour or travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                02_What is included in the travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                03_What is your cancellation and refund policy?
-                            </button>
-                        </h5>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                04_Can I customize my tour or travel package?
-                            </button>
-                        </h5>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h5 class="accordion-header">
-                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-                                05_What documents do I need to travel?
-                            </button>
-                        </h5>
-                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                            <div class="accordion-body">
-                                <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <h3>Maps</h3>
@@ -527,91 +396,52 @@
                     <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <h5 class="widget-title">Tour Booking</h5>
                         <form action="#">
+                          <div class="date mb-25">
+                                <b>Ngày bắt đầu</b>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->startDate)) }}"
+                                    name="startdate" disabled>
+                            </div>
+                            <hr>
                             <div class="date mb-25">
-                                <b>From Date</b>
-                                <input type="date">
+                                <b>Ngày kết thúc</b>
+                                <input type="text" value="{{ date('d-m-Y', strtotime($tourDetail->endDate)) }}"
+                                    name="enddate" disabled>
                             </div>
                             <hr>
                             <div class="time py-5">
-                                <b>Time :</b>
-                                <ul class="radio-filter">
-                                    <li>
-                                        <input class="form-check-input" checked type="radio" name="time" id="time1">
-                                        <label for="time1">12:00</label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" type="radio" name="time" id="time2">
-                                        <label for="time2">08:00</label>
-                                    </li>
-                                </ul>
+                                <b>Thời gian :</b>
+                                <p>{{ $tourDetail->time }}</p>
                             </div>
                             <hr class="mb-25">
-                            <h6>Tickets:</h6>
+                            <h6>Vé:</h6>
                             <ul class="tickets clearfix">
                                 <li>
-                                    Adult (18- years) <span class="price">$28.50</span>
-                                    <select name="18-" id="18-">
-                                        <option value="value1">01</option>
-                                        <option value="value1">02</option>
-                                        <option value="value1" selected>03</option>
-                                    </select>
+                                    Người lớn  <span class="price">{{ number_format($tourDetail->priceAdult, 0, ',', '.') }} VND</span>
                                 </li>
                                 <li>
-                                    Adult (18+ years) <span class="price">$50.40</span>
-                                    <select name="18+" id="18+">
-                                        <option value="value1">01</option>
-                                        <option value="value1">02</option>
-                                        <option value="value1">03</option>
-                                    </select>
+                                    Trẻ em <span class="price">{{ number_format($tourDetail->priceChild, 0, ',', '.') }} VND</span>
                                 </li>
                             </ul>
                             <hr class="mb-25">
-                            <h6>Add Extra:</h6>
-                            <ul class="radio-filter pt-5">
-                                <li>
-                                    <input class="form-check-input" checked type="radio" name="AddExtra" id="add-extra1">
-                                    <label for="add-extra1">Add service per booking <span>$50</span></label>
-                                </li>
-                                <li>
-                                    <input class="form-check-input" type="radio" name="AddExtra" id="add-extra2">
-                                    <label for="add-extra2">Add service per personal <span>$24</span></label>
-                                </li>
-                            </ul>
                             <hr>
-                            <h6>Total: <span class="price">$74</span></h6>
+                            <h6>Tổng tiền: <span class="price">$74</span></h6>
                             <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
                                 <span data-hover="Book Now">Book Now</span>
                                 <i class="fal fa-arrow-right"></i>
                             </button>
                             <div class="text-center">
-                                <a href="contact.html">Need some help?</a>
+                                <a href="{{ route('contact') }}">Bạn cần trợ giúp không?</a>
                             </div>
                         </form>
                     </div>
                     
                     <div class="widget widget-contact" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <h5 class="widget-title">Need Help?</h5>
+                        <h5 class="widget-title">Cần trợ giúp?</h5>
                         <ul class="list-style-one">
-                            <li><i class="far fa-envelope"></i> <a href="emilto:helpxample@gmail.com">helpxample@gmail.com</a></li>
+                            <li><i class="far fa-envelope"></i> <a href="emilto:tranlongvu02102004@gmail.com">tranlongvu02102004@gmail.com</a></li>
                             <li><i class="far fa-phone-volume"></i> <a href="callto:+000(123)45688">+000 (123) 456 88</a></li>
                         </ul>
                     </div>
-                    
-                    <div class="widget widget-cta" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="content text-white">
-                            <span class="h6">Explore The World</span>
-                            <h3>Best Tourist Place</h3>
-                            <a href="tour-grid.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Explore Now">Explore Now</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/widgets/cta-widget.png" alt="CTA">
-                        </div>
-                        <div class="cta-shape"><img src="assets/images/widgets/cta-shape3.png" alt="Shape"></div>
-                    </div>
-                    
                 </div>
             </div>
         </div>
@@ -620,35 +450,5 @@
 <!-- Tour Details Area end -->
 
 
-<!-- Newsletter Area start -->
-<section class="newsletter-three bgc-primary py-100 rel z-1" style="background-image: url(assets/images/newsletter/newsletter-bg-lines.png);">
-    <div class="container container-1500">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="newsletter-content-part text-white rmb-55" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="section-title counter-text-wrap mb-45">
-                        <h2>Subscribe Our Newsletter to Get more offer & Tips</h2>
-                        <p>One site <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> most popular experience you’ll remember</p>
-                    </div>
-                    <form class="newsletter-form mb-15" action="#">
-                        <input id="news-email" type="email" placeholder="Email Address" required>
-                        <button type="submit" class="theme-btn bgc-secondary style-two">
-                            <span data-hover="Subscribe">Subscribe</span>
-                            <i class="fal fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    <p>No credit card requirement. No commitments</p>
-                </div>
-                <div class="newsletter-bg-image" data-aos="zoom-in-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                    <img src="assets/images/newsletter/newsletter-bg-image.png" alt="Newsletter">
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="newsletter-image-part bgs-cover" style="background-image: url(assets/images/newsletter/newsletter-two-right.jpg);" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50"></div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Newsletter Area end -->
-
+@include('clients.blocks.new_letter')
 @include('clients.blocks.footer')

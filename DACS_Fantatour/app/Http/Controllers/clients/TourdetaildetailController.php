@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\clients;
 
 use App\Http\Controllers\Controller;
+use App\Models\clients\Tours;
 use Illuminate\Http\Request;
 
 class TourdetaildetailController extends Controller
 {
-    public function index()
+    private $tours;
+
+    public function __construct()
     {
-        
-        return view('clients.tours-detail');
+        $this->tours = new Tours();   
+    }
+    public function index($id= 0)
+    {
+        $title ='Chi tiết tours';
+        $tourDetail = $this->tours->getTourDetail($id);
+        //dd($tourDetail->timelinee);
+        return view('clients.tours-detail',compact('title','tourDetail'));
     }
 }
