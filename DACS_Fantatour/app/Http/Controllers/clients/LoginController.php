@@ -40,7 +40,7 @@ class LoginController extends Controller
         $dataInsert = [
             'username' => $username_regis,
             'email' => $email,
-            'password' => md5($password_regis),
+            'password' => bcrypt($password_regis),
             'activation_token' => $activation_token
         ];
 
@@ -80,7 +80,7 @@ class LoginController extends Controller
 
         $data_login = [
             'username' => $username,
-            'password' => md5($password)
+            'password' => bcrypt($password)
         ];
 
         $user = $this->login->login($data_login);

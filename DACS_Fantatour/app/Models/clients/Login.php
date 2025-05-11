@@ -55,4 +55,13 @@ class Login extends Model
         return $getUser;
     }
 
+     //Login with google
+    public function checkUserExistGoogle($google_id)
+    {
+        $check = DB::table($this->table)
+            ->where('google_id', $google_id)->first();
+
+        return $check;
+    }
+
 }

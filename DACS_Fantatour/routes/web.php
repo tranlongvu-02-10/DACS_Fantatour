@@ -11,6 +11,7 @@ use App\Http\Controllers\clients\ContactController;
 use App\Http\Controllers\clients\TourdetaildetailController;
 use App\Http\Controllers\clients\BlogDetailController;
 use App\Http\Controllers\clients\LoginController;
+use App\Http\Controllers\clients\LoginGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,15 @@ Route::get(uri:'/contact', action: [ContactController::class, 'index'])->name(na
 Route::get(uri:'/tours-detail/{id?}', action: [TourdetaildetailController::class, 'index'])->name(name: 'tours-detail');
 Route::get(uri:'/blogs', action: [BlogController::class, 'index'])->name(name: 'blogs');
 Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
+
+
+//xử lý đăng nhập
 Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');
 Route::post(uri:'/register', action: [LoginController::class, 'register'])->name(name: 'register');
 Route::post(uri:'/login', action: [LoginController::class, 'login'])->name(name: 'user-login');
 Route::get(uri:'/logout', action: [LoginController::class, 'logout'])->name(name: 'logout');
 Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');
+
+//Đăng nhập bằng gg
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login-google');
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
