@@ -97,6 +97,14 @@ class LoginController extends Controller
         }
     }
 
+    //xử lý người dùng đăng xuất
+    public function logout(Request $request)
+    {
+        $request->session()->forget('username');
+        return redirect()->route('home');
+    }
+
+
 }
 
 

@@ -40,4 +40,5 @@ Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->
 Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');
 Route::post(uri:'/register', action: [LoginController::class, 'register'])->name(name: 'register');
 Route::post(uri:'/login', action: [LoginController::class, 'login'])->name(name: 'user-login');
+Route::get(uri:'/logout', action: [LoginController::class, 'logout'])->name(name: 'logout');
 Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');
