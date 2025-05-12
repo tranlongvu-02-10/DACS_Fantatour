@@ -23,7 +23,14 @@ class ToursController extends Controller
     {
         $title = 'tour';
         $tours = $this->tours->getAllTours();
-        return view('clients.tours', compact('title','tours'));
+        $domain = $this->tours->getDomain();
+          //dd($tours);
+        $domainsCount = [
+            'mien_bac' => optional($domain->firstWhere('domain', 'b'))->count,
+            'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
+            'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
+        ];
+        return view('clients.tours', compact('title','tours','domainsCount'));
     }
 
     /**

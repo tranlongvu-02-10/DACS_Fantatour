@@ -23,8 +23,16 @@
                                 <h6 class="widget-title">Điểm đến</h6>
                                 <ul class="radio-filter">
                                     <li>
-                                        <input class="form-check-input" type="radio" checked name="ByActivities" id="activity1">
-                                        <label for="activity1">Sea Beach <span>18</span></label>
+                                        <input class="form-check-input" type="radio" name="mien_bac" id="id_mien_bac" value="b">
+                                        <label for="id_mien_bac">Miền Bắc <span>{{$domainsCount['mien_bac']}}</span></label>
+                                    </li>
+                                    <li>
+                                        <input class="form-check-input" type="radio" name="mien_trung" id="id_mien_trung" value="t">
+                                        <label for="id_mien_trung">Miền Trung <span>{{$domainsCount['mien_trung']}}</span></label>
+                                    </li>
+                                    <li>
+                                        <input class="form-check-input" type="radio" name="mien_nam" id="id_mien_nam" value="n">
+                                        <label for="id_mien_nam">Miền nam<span>{{$domainsCount['mien_nam']}}</span></label>
                                     </li>
                                 </ul>
                             </div>

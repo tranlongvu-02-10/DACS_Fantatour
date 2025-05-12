@@ -48,6 +48,16 @@ class Tours extends Model
 
         return $getTourDetail;
     }
+
+    //lấy khu vực bắc-trung-nam
+    public function getDomain()
+    {
+        return DB::table($this->table)
+            ->select('domain', DB::raw('COUNT(*) as count'))
+            ->whereIn('domain', ['b', 't', 'n'])
+            ->groupBy('domain')
+            ->get();
+    }
         
 }
 
