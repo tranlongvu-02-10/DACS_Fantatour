@@ -52,3 +52,7 @@ Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'act
 //Đăng nhập bằng gg
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login-google');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+
+//Xử lý Lấy tour, lọc tour
+Route::get('/tours', [ToursController::class, 'index'])->name('tours');
+Route::get('/filter-tours', [ToursController::class, 'filterTours'])->name('filter-tours');
