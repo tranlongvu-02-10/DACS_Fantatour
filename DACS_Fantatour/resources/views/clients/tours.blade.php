@@ -23,16 +23,20 @@
                                 <h6 class="widget-title">Điểm đến</h6>
                                 <ul class="radio-filter">
                                     <li>
-                                        <input class="form-check-input" type="radio" name="mien_bac" id="id_mien_bac" value="b">
-                                        <label for="id_mien_bac">Miền Bắc <span>{{$domainsCount['mien_bac']}}</span></label>
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_bac"
+                                            value="b">
+                                        <label for="id_mien_bac">Miền Bắc <span>{{ $domainsCount['mien_bac'] }}</span></label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="mien_trung" id="id_mien_trung" value="t">
-                                        <label for="id_mien_trung">Miền Trung <span>{{$domainsCount['mien_trung']}}</span></label>
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_trung"
+                                            value="t">
+                                        <label for="id_mien_trung">Miền Trung
+                                            <span>{{ $domainsCount['mien_trung'] }}</span></label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="mien_nam" id="id_mien_nam" value="n">
-                                        <label for="id_mien_nam">Miền nam<span>{{$domainsCount['mien_nam']}}</span></label>
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_nam"
+                                            value="n">
+                                        <label for="id_mien_nam">Miền Nam <span>{{ $domainsCount['mien_nam'] }}</span></label>
                                     </li>
                                 </ul>
                             </div>
@@ -41,8 +45,9 @@
                                 <h6 class="widget-title">Đánh giá</h6>
                                 <ul class="radio-filter">
                                     <li>
-                                        <input class="form-check-input" type="radio" checked name="ByReviews" id="review1">
-                                        <label for="review1">
+                                        <input class="form-check-input" type="radio" name="filter_star" id="5star"
+                                            value="5">
+                                        <label for="5star">
                                             <span class="ratting">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -53,8 +58,9 @@
                                         </label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="ByReviews" id="review2">
-                                        <label for="review2">
+                                        <input class="form-check-input" type="radio" name="filter_star" id="4star"
+                                            value="4">
+                                        <label for="4star">
                                             <span class="ratting">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -65,8 +71,9 @@
                                         </label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="ByReviews" id="review3">
-                                        <label for="review3">
+                                        <input class="form-check-input" type="radio" name="filter_star" id="3star"
+                                            value="3">
+                                        <label for="3star">
                                             <span class="ratting">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -77,8 +84,9 @@
                                         </label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="ByReviews" id="review4">
-                                        <label for="review4">
+                                        <input class="form-check-input" type="radio" name="filter_star" id="2star"
+                                            value="2">
+                                        <label for="2star">
                                             <span class="ratting">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -89,8 +97,9 @@
                                         </label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="ByReviews" id="review5">
-                                        <label for="review5">
+                                        <input class="form-check-input" type="radio" name="filter_star" id="1star"
+                                            value="1">
+                                        <label for="1star">
                                             <span class="ratting">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star white"></i>
@@ -108,8 +117,19 @@
                                 <h6 class="widget-title">Thời gian</h6>
                                 <ul class="radio-filter">
                                     <li>
-                                        <input class="form-check-input" type="radio" checked name="Duration" id="duration1">
-                                        <label for="duration1">0 - 2 hours</label>
+                                        <input class="form-check-input" type="radio" name="duration" id="3ngay2dem"
+                                            value="3n2d">
+                                        <label for="3ngay2dem">3 ngày 2 đêm</label>
+                                    </li>
+                                    <li>
+                                        <input class="form-check-input" type="radio" name="duration" id="4ngay3dem"
+                                            value="4n3d">
+                                        <label for="4ngay3dem">4 ngày 3 đêm</label>
+                                    </li>
+                                    <li>
+                                        <input class="form-check-input" type="radio" name="duration" id="5ngay4dem"
+                                            value="5n4d">
+                                        <label for="5ngay4dem">5 ngày 4 đêm</label>
                                     </li>
                                 </ul>
                             </div>
@@ -370,5 +390,7 @@
 
 </body>
 
-<!-- Mirrored from webtendtheme.net/html/2024/ravelo/tour-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:28:07 GMT -->
 </html>
+<script>
+    var filterToursUrl = "{{ route('filter-tours') }}";
+</script>
