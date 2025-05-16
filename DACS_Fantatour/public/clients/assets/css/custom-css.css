@@ -65,3 +65,15 @@
     height: 100%;
     border-radius: 8px;
 }
+
+/*css lọc tours*/
+.div_filter_clear {
+    display: flex;
+    justify-content: end;
+}
+.clear_filter {
+    color: #fff;
+    background-color: var(--bs-green);
+    border-radius: 8px;
+    padding: 2px 20px;
+}

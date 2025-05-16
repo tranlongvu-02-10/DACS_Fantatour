@@ -54,7 +54,7 @@
     <div class="page-wrapper">
 
         <!-- Preloader -->
-       {{-- <div class="preloader"><div class="custom-loader"></div></div> --}} 
+       <div class="preloader"><div class="custom-loader"></div></div> 
 
         <!-- main header -->
         <header class="main-header header-one">

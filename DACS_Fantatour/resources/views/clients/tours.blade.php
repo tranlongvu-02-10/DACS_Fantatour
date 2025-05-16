@@ -8,6 +8,11 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-10 rmb-75">
                         <div class="shop-sidebar">
+                            <div class="div_filter_clear">
+                                <button class="clear_filter" name="btn_clear">
+                                    <a href="{{ route('tours') }}">Clear</a>
+                                </button>
+                            </div>
                             <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="widget-title">Lọc theo giá</h6>
                                 <div class="price-filter-wrap">
@@ -203,7 +208,7 @@
                         </div>
                         
                         <div class="tour-grid-wrap">
-                            <div class="row">
+                            <div class="row" id="tours-container">
                                 @foreach ($tours as $tour)
                                     <div class="col-xl-4 col-md-6">
                                     <div class="destination-item tour-grid style-three bgc-lighter" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
@@ -344,7 +349,7 @@
                     <div class="row">
                        <div class="col-lg-5">
                             <div class="copyright-text text-center text-lg-start">
-                                <p>@Copy 2024 <a href="index.html">Ravelo</a>, All rights reserved</p>
+                                <p>@Copy 2024 <a href="index.html">Fantatour</a>, All rights reserved</p>
                             </div>
                        </div>
                        <div class="col-lg-7 text-center text-lg-end">
@@ -361,10 +366,6 @@
         </footer>
         <!-- footer area end -->
 
-    </div>
-    <!--End pagewrapper-->
-   
-    
     <!-- Jquery -->
     <script src="{{asset('clients/assets/js/jquery-3.6.0.min.js')}}"></script>
     <!-- Bootstrap -->
@@ -387,10 +388,11 @@
     <script src="{{asset('clients/assets/js/aos.js')}}"></script>
     <!-- Custom script -->
     <script src="{{asset('clients/assets/js/script.js')}}"></script>
+    
 
 </body>
 
-</html>
-<script>
-    var filterToursUrl = "{{ route('filter-tours') }}";
-</script>
+</html> 
+    <script>
+        var filterToursUrl = "{{ route('filter-tours')}}";
+    </script>

@@ -71,39 +71,8 @@ class ToursController extends Controller
             $conditions[] = ['time', '=', $time[$duration]];
         }
 
-        // Handle orderby filter
-        if ($req->filled('sorting')) {
-            $sortingOption = trim($req->sorting); // Remove any whitespace
-
-            // Handle sorting options
-            if ($sortingOption == 'new') {
-                $sorting = ['tourId', 'DESC']; // Sort by creation date, newest first
-            } elseif ($sortingOption == 'old') {
-                $sorting = ['tourId', 'ASC']; // Sort by creation date, oldest first
-            } elseif ($sortingOption == "hight-to-low") {
-                $sorting = ['priceAdult', 'DESC']; // Sort by price in descending order
-            } elseif ($sortingOption == "low-to-high") {
-                $sorting = ['priceAdult', 'ASC']; // Sort by price in ascending order
-            }
-        }
-
-        // dd($conditions);
-        $tours = $this->tours->filterTours($conditions, $sorting);
-
-        // If not paginated, simulate pagination
-        if (!$tours instanceof \Illuminate\Pagination\LengthAwarePaginator) {
-            // Create a fake paginator (pagination for non-paginated collection)
-            $tours = new \Illuminate\Pagination\LengthAwarePaginator(
-                $tours, // Collection
-                count($tours), // Total items
-                9, // Per page
-                1, // Current page
-                ['path' => url()->current()] // Path for pagination
-            );
-        }
-
-        return view('clients.partials.filter-tours', compact('tours'));
-
+        //dd($conditions);
+        $tours = $this->tours->filterTours($conditions);
+        return view('clients.partials.filter-tours',compact('filterTours'));
     }
-
 }
