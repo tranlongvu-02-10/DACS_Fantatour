@@ -1,4 +1,4 @@
-@foreach ($filterTours as $tour)
+@foreach ($tours as $tour)
     <div class="col-xl-4 col-md-6">
     <div class="destination-item tour-grid style-three bgc-lighter" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
         <div class="image">

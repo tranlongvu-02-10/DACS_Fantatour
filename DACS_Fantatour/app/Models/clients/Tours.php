@@ -50,8 +50,8 @@ class Tours extends Model
         return $getTourDetail;
     }
 
-    //lấy khu vực bắc-trung-nam
-    public function getDomain()
+    //Lấy khu vực đến Bắc - Trung - Nam
+    function getDomain()
     {
         return DB::table($this->table)
             ->select('domain', DB::raw('COUNT(*) as count'))
@@ -60,34 +60,74 @@ class Tours extends Model
             ->get();
     }
 
-    //lọc tour
+
+    //Filter tours
     public function filterTours($filters = [], $sorting = null, $perPage = null)
     {
         DB::enableQueryLog();
-        $getTours = DB::table(table: $this->table);
 
-        // Áp dụng bộ lọc nếu có
+        // Khởi tạo truy vấn với bảng tours
+        $getTours = DB::table($this->table)
+            ->leftJoin('tbl_reviewss', 'tbl_tourss.tourId', '=', 'tbl_reviewss.tourId') // Join với bảng reviews
+            ->select(
+                'tbl_tourss.tourId',
+                'tbl_tourss.title',
+                'tbl_tourss.description',
+                'tbl_tourss.priceAdult',
+                'tbl_tourss.priceChild',
+                'tbl_tourss.time',
+                'tbl_tourss.destination',
+                'tbl_tourss.quantity',
+                DB::raw('AVG(tbl_reviewss.rating) as averageRating')
+            )
+            ->groupBy(
+                'tbl_tourss.tourId',
+                'tbl_tourss.title',
+                'tbl_tourss.description',
+                'tbl_tourss.priceAdult',
+                'tbl_tourss.priceChild',
+                'tbl_tourss.time',
+                'tbl_tourss.destination',
+                'tbl_tourss.quantity'
+            );
+        $getTours = $getTours->where('availability', 1);
+
         if (!empty($filters)) {
             foreach ($filters as $filter) {
-                if (count($filter) === 3) {
-                    $getTours = $getTours->where($filter[0],$filter[1],$filter[2]);
+                if ($filter[0] !== 'averageRating') {
+                    $getTours = $getTours->where($filter[0], $filter[1], $filter[2]);
                 }
             }
         }
 
-        // Thực hiện truy vấn để ghi log
-        $tours = $getTours->get(); // Thực thi truy vấn để ghi log
-
-        $queryLog = DB::getQueryLog(); // In ra câu lệnh SQL đã ghi lại
-        foreach ($tours  as $tour) {
-            // Lấy danh sách hình ảnh thuộc về tour
-            $tour->imagess = DB::table('tbl_imagess')
-                ->where('tourId', $tour->tourId)
-                ->pluck('imageURL');
-   
+        // Áp dụng điều kiện về averageRating trong phần HAVING
+        if (!empty($filters)) {
+            foreach ($filters as $filter) {
+                if ($filter[0] === 'averageRating') {
+                    $getTours = $getTours->having('averageRating', $filter[1], $filter[2]); // Sử dụng HAVING để lọc averageRating
+                }
+            }
         }
-        //dd($queryLog); 
 
+        if (!empty($sorting) && isset($sorting[0]) && isset($sorting[1])) {
+            $getTours = $getTours->orderBy($sorting[0], $sorting[1]);
+        }
+
+        // Thực hiện truy vấn để ghi log
+        $tours = $getTours->get();
+
+        // In ra câu lệnh SQL đã ghi lại (nếu cần thiết)
+        $queryLog = DB::getQueryLog();
+
+        // Lấy danh sách hình ảnh cho mỗi tour
+        foreach ($tours as $tour) {
+            $tour->images = DB::table('tbl_imagess')
+                ->where('tourId', $tour->tourId)
+                ->pluck('imageUrl');
+            $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
+        }
+
+        // dd($queryLog); // In ra log truy vấn nếu cần thiết
         return $tours;
     }
 

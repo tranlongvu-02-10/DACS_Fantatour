@@ -13,7 +13,8 @@
                                     <a href="{{ route('tours') }}">Clear</a>
                                 </button>
                             </div>
-                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <h6 class="widget-title">Lọc theo giá</h6>
                                 <div class="price-filter-wrap">
                                     <div class="price-slider-range"></div>
@@ -23,8 +24,9 @@
                                     </div>
                                 </div>
                             </div>
+
                             
-                            <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500"data-aos-offset="50">
                                 <h6 class="widget-title">Điểm đến</h6>
                                 <ul class="radio-filter">
                                     <li>
