@@ -14,11 +14,6 @@ class ToursController extends Controller
     {
         $this->tours = new Tours();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $title = 'tour';
@@ -39,7 +34,6 @@ class ToursController extends Controller
         return view('clients.tours', compact('title','tours','domainsCount'));
     }
 
-     //Xử lý filter tours
     //Xử lý filter tours
     public function filterTours(Request $req)
     {
@@ -47,7 +41,7 @@ class ToursController extends Controller
         $conditions = [];
         $sorting = [];
 
-        // Handle price filter
+        // Xử lý bộ lọc giá
         if ($req->filled('minPrice') && $req->filled('maxPrice')) {
             $minPrice = $req->minPrice;
             $maxPrice = $req->maxPrice;
@@ -55,19 +49,19 @@ class ToursController extends Controller
             $conditions[] = ['priceAdult', '<=', $maxPrice];
         }
 
-        // Handle domain filter
+        // xử lý lọc miền
         if ($req->filled('domain')) {
             $domain = $req->domain;
             $conditions[] = ['domain', '=', $domain];
         }
 
-        // Handle star rating filter
+        // Xử lý bộ lọc đánh giá sao
         if ($req->filled('star')) {
             $star = (int) $req->star;
             $conditions[] = ['averageRating', '=', $star];
         }
 
-        // Handle duration filter
+        // Xử lý bộ lọc thời gian
         if ($req->filled('time')) {
             $duration = $req->time;
             $time = [

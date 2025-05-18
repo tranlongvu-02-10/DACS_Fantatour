@@ -10,6 +10,7 @@ use App\Http\Controllers\clients\DestinationController;
 use App\Http\Controllers\clients\ContactController;
 use App\Http\Controllers\clients\TourdetaildetailController;
 use App\Http\Controllers\clients\BlogDetailController;
+use App\Http\Controllers\clients\InformationController;
 use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\clients\LoginGoogleController;
 use App\Http\Controllers\clients\SearchController;
@@ -56,3 +57,6 @@ Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleC
 //Xử lý Lấy tour, lọc tour
 Route::get('/tours', [ToursController::class, 'index'])->name('tours');
 Route::get('/filter-tours', [ToursController::class, 'filterTours'])->name('filter-tours');
+
+//xử lý thông tin người dùng
+Route::get('/user-profile', [InformationController::class, 'index'])->name('user-profile');

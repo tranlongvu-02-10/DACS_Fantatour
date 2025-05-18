@@ -24,7 +24,7 @@ class LoginGoogleController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            $user = Socialite::driver('google')->stateless->user();
+            $user = Socialite::driver('google')->stateless()->user();
             //Kiểm tra xem thử có id người dùng với email này chưa
             $finduser = $this->user->checkUserExistGoogle($user->id); 
             // dd($finduser);
