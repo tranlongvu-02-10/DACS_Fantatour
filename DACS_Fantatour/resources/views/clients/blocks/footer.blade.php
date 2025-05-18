@@ -111,17 +111,17 @@
 <script src="{{asset('clients/assets/js/jquery.nice-select.min.js')}}"></script>
 <!-- Image Loader -->
 <script src="{{asset('clients/assets/js/imagesloaded.pkgd.min.js')}}"></script>
-<!-- Skillbar -->
-<script src="{{asset('clients/assets/js/skill.bars.jquery.min.js')}}"></script>
+<!-- Jquery UI -->
+<script src="{{asset('clients/assets/js/jquery-ui.min.js')}}"></script>
 <!-- Isotope -->
 <script src="{{asset('clients/assets/js/isotope.pkgd.min.js')}}"></script>
-<!--  AOS Animation -->
+<!-- AOS Animation -->
 <script src="{{asset('clients/assets/js/aos.js')}}"></script>
-<!-- Custom script -->
+<!-- Custom Scripts -->
 <script src="{{asset('clients/assets/js/script.js')}}"></script>
-<!-- Custom script -->
 <script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
-<script src="{{asset('clients/assets/js/jquery.datetimepicker.full.mins')}}"></script>
+<!-- Datetime Picker -->
+<script src="{{asset('clients/assets/js/jquery.datetimepicker.full.min.js')}}"></script>
 
 </body>
 </html>

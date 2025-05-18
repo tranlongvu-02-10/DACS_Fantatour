@@ -123,7 +123,7 @@ class Tours extends Model
         foreach ($tours as $tour) {
             $tour->images = DB::table('tbl_imagess')
                 ->where('tourId', $tour->tourId)
-                ->pluck('imageUrl');
+                ->pluck('imageURL');
             $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
         }
 

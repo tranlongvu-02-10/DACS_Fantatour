@@ -40,6 +40,7 @@ class ToursController extends Controller
     }
 
      //Xử lý filter tours
+    //Xử lý filter tours
     public function filterTours(Request $req)
     {
 
@@ -77,34 +78,33 @@ class ToursController extends Controller
             $conditions[] = ['time', '=', $time[$duration]];
         }
 
-        // Handle orderby filter
+        // Xử lý bộ lọc orderby
         if ($req->filled('sorting')) {
-            $sortingOption = trim($req->sorting); // Remove any whitespace
+            $sortingOption = trim($req->sorting); // Xóa bất kỳ khoảng trắng nào
 
-            // Handle sorting options
+            // Xử lý các tùy chọn sắp xếp
             if ($sortingOption == 'new') {
-                $sorting = ['tourId', 'DESC']; // Sort by creation date, newest first
+                $sorting = ['tourId', 'DESC']; // Sắp xếp theo ngày tạo, cái mới nhất trước
             } elseif ($sortingOption == 'old') {
-                $sorting = ['tourId', 'ASC']; // Sort by creation date, oldest first
+                $sorting = ['tourId', 'ASC']; // Sắp xếp theo ngày tạo, từ cũ nhất trước
             } elseif ($sortingOption == "hight-to-low") {
-                $sorting = ['priceAdult', 'DESC']; // Sort by price in descending order
+                $sorting = ['priceAdult', 'DESC']; // Sắp xếp theo giá giảm dần
             } elseif ($sortingOption == "low-to-high") {
-                $sorting = ['priceAdult', 'ASC']; // Sort by price in ascending order
+                $sorting = ['priceAdult', 'ASC']; // Sắp xếp theo giá theo thứ tự tăng dần
             }
         }
 
         // dd($conditions);
         $tours = $this->tours->filterTours($conditions, $sorting);
 
-        // If not paginated, simulate pagination
+        // Nếu không được phân trang, giả lập phân trang
         if (!$tours instanceof \Illuminate\Pagination\LengthAwarePaginator) {
-            // Create a fake paginator (pagination for non-paginated collection)
             $tours = new \Illuminate\Pagination\LengthAwarePaginator(
-                $tours, // Collection
-                count($tours), // Total items
-                9, // Per page
-                1, // Current page
-                ['path' => url()->current()] // Path for pagination
+                $tours, 
+                count($tours),
+                9,
+                1,
+                ['path' => url()->current()]
             );
         }
 

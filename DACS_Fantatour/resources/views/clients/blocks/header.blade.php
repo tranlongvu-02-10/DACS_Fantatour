@@ -16,39 +16,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
 
-    <!-- Flaticon -->
+    <!-- Icon Fonts -->
     <link rel="stylesheet" href="{{ asset('clients/assets/css/flaticon.min.css') }}">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('clients/assets/css/fontawesome-5.14.0.min.css') }}">
-    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+    <!-- UI Frameworks -->
     <link rel="stylesheet" href="{{ asset('clients/assets/css/bootstrap.min.css') }}">
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/magnific-popup.min.css') }}">
-    <!-- Nice Select -->
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/nice-select.min.css') }}">
-    <!-- jQuery UI -->
     <link rel="stylesheet" href="{{ asset('clients/assets/css/jquery-ui.min.css') }}">
-    <!-- Animate -->
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/aos.css') }}">
-    <!-- Slick -->
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/nice-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/assets/css/slick.min.css') }}">
-    <!-- Main Style -->
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/jquery.datetimepicker.min.css') }}">
+
+    <!-- Main Styles -->
     <link rel="stylesheet" href="{{ asset('clients/assets/css/style.css') }}">
 
-    {{-- boxicons --}}
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    {{-- Login  --}}
-    <!-- Font Icon -->
-    <link rel="stylesheet"
-        href="{{ asset('clients/assets/css/css-login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
-    <!-- Main css -->
+    <!-- Login Page Styles -->
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/css-login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/assets/css/css-login/style.css') }}">
-    {{-- custom css by longvu --}}
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/custom-css.css') }}" />
-    {{-- date time picker  --}}
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/jquery.datetimepicker.min.css') }}" />
-    
+
+    <!-- Custom Overrides -->
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/custom-css.css') }}">
+
+        
 </head>
 <body>
     <div class="page-wrapper">

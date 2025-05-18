@@ -177,7 +177,7 @@ $(document).ready(function () {
    
 
     
-     // Kiểm tra nếu thanh trượt đã tồn tại
+       // Kiểm tra nếu thanh trượt đã tồn tại
     if ($(".price-slider-range").length) {
         $(".price-slider-range").on("slide", function (event, ui) {
             filterTours(ui.values[0], ui.values[1]);
@@ -186,9 +186,16 @@ $(document).ready(function () {
     $('input[name="domain"]').on("change", filterTours);
     $('input[name="filter_star"]').on("change", filterTours);
     $('input[name="duration"]').on("change", filterTours);
-    //lọc tour
-    function filterTours(){
-         if (minPrice === null || maxPrice === null) {
+
+    $("#sorting_tours").on("change", function () {
+        filterTours(null, null);
+    });
+
+    function filterTours(minPrice = null, maxPrice = null) {
+        $(".loader").show();
+        $("#tours-container").addClass("hidden-content");
+
+        if (minPrice === null || maxPrice === null) {
             minPrice = $(".price-slider-range").slider("values", 0);
             maxPrice = $(".price-slider-range").slider("values", 1);
         }
@@ -196,28 +203,56 @@ $(document).ready(function () {
         var domain = $('input[name="domain"]:checked').val();
         var star = $('input[name="filter_star"]:checked').val();
         var duration = $('input[name="duration"]:checked').val();
+        var sorting = $("#sorting_tours").val();
+
         formDataFilter = {
             minPrice: minPrice,
             maxPrice: maxPrice,
             domain: domain,
             star: star,
             time: duration,
+            sorting: sorting,
         };
         console.log(formDataFilter);
 
         $.ajax({
             url: filterToursUrl,
-            method: 'GET',
+            method: "GET",
             data: formDataFilter,
-            success: function(res) {
-                console.log(res);
-                // Xử lý kết quả ở đây
-                $('#tours-container').html(res);
-                console.log($('#tours-container').html(res));
-            }
+            success: function (res) {
+                $("#tours-container").html(res).removeClass("hidden-content");
+                $("#tours-container .destination-item").addClass("aos-animate");
+                $(".loader").hide();
+            },
         });
-
     }
+
+    $(document).on("click", ".pagination-tours a", function (e) {
+        e.preventDefault();
+        $(".loader").show();
+        $("#tours-container").addClass("hidden-content");
+
+        var url = $(this).attr("href");
+        console.log(url);
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                // Cập nhật toàn bộ nội dung (tours và phân trang)
+                $("#tours-container")
+                    .html(response.tours)
+                    .removeClass("hidden-content");
+                $("#tours-container .destination-item").addClass("aos-animate");
+                $("#tours-container .pagination-tours").addClass("aos-animate");
+                $(".loader").hide();
+            },
+            error: function (xhr, status, error) {
+                console.log("Có lỗi xảy ra trong quá trình tải dữ liệu!");
+            },
+        });
+    });
 
     // Hàm để clear các filter đã chọn
     $(".clear_filter a").on("click", function (e) {

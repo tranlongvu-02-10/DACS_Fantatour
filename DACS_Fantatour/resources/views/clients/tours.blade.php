@@ -26,23 +26,20 @@
                             </div>
 
                             
-                            <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500"data-aos-offset="50">
+                            <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="widget-title">Điểm đến</h6>
                                 <ul class="radio-filter">
                                     <li>
-                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_bac"
-                                            value="b">
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_bac" value="b">
                                         <label for="id_mien_bac">Miền Bắc <span>{{ $domainsCount['mien_bac'] }}</span></label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_trung"
-                                            value="t">
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_trung" value="t">
                                         <label for="id_mien_trung">Miền Trung
                                             <span>{{ $domainsCount['mien_trung'] }}</span></label>
                                     </li>
                                     <li>
-                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_nam"
-                                            value="n">
+                                        <input class="form-check-input" type="radio" name="domain" id="id_mien_nam" value="n">
                                         <label for="id_mien_nam">Miền Nam <span>{{ $domainsCount['mien_nam'] }}</span></label>
                                     </li>
                                 </ul>
@@ -200,7 +197,7 @@
                             <div class="sort-text mb-15 me-4">
                                 Sắp xếp theo
                             </div>
-                            <select>
+                            <select id="sorting_tours">
                                 <option value="default" selected="">Sắp xếp theo</option>
                                 <option value="new">Mới nhất</option>
                                 <option value="old">Cũ nhất</option>
@@ -210,60 +207,9 @@
                         </div>
                         
                         <div class="tour-grid-wrap">
+                            <div class="loader"></div>
                             <div class="row" id="tours-container">
-                                @foreach ($tours as $tour)
-                                    <div class="col-xl-4 col-md-6">
-                                    <div class="destination-item tour-grid style-three bgc-lighter" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="image">
-                                            <span class="badge bgc-pink">Featured</span>
-                                            <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                            <img src="{{asset('clients/assets/images/gallery-tours/'.$tour->imagess[0].'')}}" alt="Tour List">
-                                        </div>
-                                        <div class="content">
-                                            <div class="destination-header">
-                                                <span class="location"><i class="fal fa-map-marker-alt"></i>{{ $tour->destination }}</span>
-                                                <div class="ratting">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <h6><a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a></h6>
-                                            <ul class="blog-meta">
-                                                <li><i class="far fa-clock"></i>{{ $tour->time }}</li>
-                                                <li><i class="far fa-user"></i>{{ $tour->quantity }}</li>
-                                            </ul>
-                                            <div class="destination-footer">
-                                                <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span>/Người</span>
-                                                <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="theme-btn style-two style-three">
-                                                    <i class="fal fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                                <div class="col-lg-12">
-                                    <ul class="pagination justify-content-center pt-15 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                        <li class="page-item disabled">
-                                            <span class="page-link"><i class="far fa-chevron-left"></i></span>
-                                        </li>
-                                        <li class="page-item active">
-                                            <span class="page-link">
-                                                1
-                                                <span class="sr-only">(current)</span>
-                                            </span>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="far fa-chevron-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @include('clients.partials.filter-tours')
                             </div>
                         </div>
                         
@@ -369,32 +315,38 @@
         <!-- footer area end -->
 
     <!-- Jquery -->
-    <script src="{{asset('clients/assets/js/jquery-3.6.0.min.js')}}"></script>
-    <!-- Bootstrap -->
-    <script src="{{asset('clients/assets/js/bootstrap.min.js')}}"></script>
-    <!-- Appear Js -->
-    <script src="{{asset('clients/assets/js/appear.min.js')}}"></script>
-    <!-- Slick -->
-    <script src="{{asset('clients/assets/js/slick.min.js')}}"></script>
-    <!-- Magnific Popup -->
-    <script src="{{asset('clients/assets/js/jquery.magnific-popup.min.js')}}"></script>
-    <!-- Nice Select -->
-    <script src="{{asset('clients/assets/js/jquery.nice-select.min.js')}}"></script>
-    <!-- Image Loader -->
-    <script src="{{asset('clients/assets/js/imagesloaded.pkgd.min.js')}}"></script>
-    <!-- Jquery UI -->
-    <script src="{{asset('clients/assets/js/jquery-ui.min.js')}}"></script>
-    <!-- Isotope -->
-    <script src="{{asset('clients/assets/js/isotope.pkgd.min.js')}}"></script>
-    <!--  AOS Animation -->
-    <script src="{{asset('clients/assets/js/aos.js')}}"></script>
-    <!-- Custom script -->
-    <script src="{{asset('clients/assets/js/script.js')}}"></script>
+<script src="{{asset('clients/assets/js/jquery-3.6.0.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{asset('clients/assets/js/bootstrap.min.js')}}"></script>
+<!-- Appear Js -->
+<script src="{{asset('clients/assets/js/appear.min.js')}}"></script>
+<!-- Slick -->
+<script src="{{asset('clients/assets/js/slick.min.js')}}"></script>
+<!-- Magnific Popup -->
+<script src="{{asset('clients/assets/js/jquery.magnific-popup.min.js')}}"></script>
+<!-- Nice Select -->
+<script src="{{asset('clients/assets/js/jquery.nice-select.min.js')}}"></script>
+<!-- Image Loader -->
+<script src="{{asset('clients/assets/js/imagesloaded.pkgd.min.js')}}"></script>
+<!-- Jquery UI -->
+<script src="{{asset('clients/assets/js/jquery-ui.min.js')}}"></script>
+<!-- Isotope -->
+<script src="{{asset('clients/assets/js/isotope.pkgd.min.js')}}"></script>
+<!-- AOS Animation -->
+<script src="{{asset('clients/assets/js/aos.js')}}"></script>
+<!-- Custom Scripts -->
+<script src="{{asset('clients/assets/js/script.js')}}"></script>
+<script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
+<!-- Datetime Picker -->
+<script src="{{asset('clients/assets/js/jquery.datetimepicker.full.min.js')}}"></script>
+
+
+
     
 
 </body>
 
 </html> 
     <script>
-        var filterToursUrl = "{{ route('filter-tours')}}";
+        var filterToursUrl = "{{ route('filter-tours') }}";
     </script>
