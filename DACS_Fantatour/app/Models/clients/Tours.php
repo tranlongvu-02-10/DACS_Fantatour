@@ -68,7 +68,7 @@ class Tours extends Model
 
         // Khởi tạo truy vấn với bảng tours
         $getTours = DB::table($this->table)
-            ->leftJoin('tbl_reviewss', 'tbl_tourss.tourId', '=', 'tbl_reviewss.tourId') // Join với bảng reviews
+            ->leftJoin('tbl_reviewss', 'tbl_tourss.tourId', '=', 'tbl_reviewss.tourId') // Tham gia với bảng đánh giá
             ->select(
                 'tbl_tourss.tourId',
                 'tbl_tourss.title',

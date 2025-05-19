@@ -9,8 +9,9 @@
                     <div class="card-header">Ảnh đại diện</div>
                     <div class="card-body text-center">
 
-                        <img class="img-account-profile rounded-circle mb-2"
-                            src="http://bootdey.com/img/Content/avatar/avatar1.png" alt>
+                        <img id="avatarPreview" class="img-account-profile rounded-circle mb-2"
+                            src="{{ asset('clients/assets/images/user-profile/' .$user->avatar) }}"
+                            style="width:160px; height: 160px;" alt="Ảnh đại diện {{ $user->avatar }}">
 
                         <div class="small font-italic text-muted mb-4">JPG hoặc PNG không lớn hơn 5 MB</div>
 
@@ -42,13 +43,13 @@
                 <div class="card mb-4">
                     <div class="card-header">Thông tin tài khoản</div>
                     <div class="card-body">
-                        <form method="POST">
+                        <form action="{{ route('update-user-profile') }}" method="POST" name="updateUser" class="updateUser">
 
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputFullName">Họ và tên</label>
                                     <input class="form-control" id="inputFullName" type="text"
-                                        placeholder="Họ và tên" value=""required>
+                                        placeholder="Họ và tên" value="{{ $user->fullName }}"required>
                                 </div>
                             </div>
                             @csrf
@@ -56,14 +57,14 @@
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputLocation">Địa chỉ</label>
                                     <input class="form-control" id="inputLocation" type="text"
-                                        placeholder="Địa chỉ" value=""required>
+                                        placeholder="Địa chỉ" value="{{ $user->address }}"required>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
                                 <input class="form-control" id="inputEmailAddress" type="email"
-                                    placeholder="Email" value=""required>
+                                    placeholder="Email" value="{{ $user->email }}"required>
                             </div>
 
                             <div class="row gx-3 mb-3">
@@ -71,11 +72,11 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone">Phone number</label>
                                     <input class="form-control" id="inputPhone" type="number"
-                                        placeholder="Số điện thoại" value=""required>
+                                        placeholder="Số điện thoại" value="{{ $user->phoneNumber }}"required>
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary" type="submit">Lưu</button>
+                            <button class="btn btn-primary" type="submit" id="update_profile">Lưu</button>
                         </form>
                     </div>
                 </div>

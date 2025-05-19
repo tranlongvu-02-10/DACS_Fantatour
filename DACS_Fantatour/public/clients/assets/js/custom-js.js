@@ -9,7 +9,9 @@ $(document).ready(function () {
         $(".sign-in").show();
     });
 
-        // Home page
+        /****************************************
+                    trang chủ        
+        ***************************************/
     $("#start_date, #end_date").datetimepicker({
         format: "Y/m/d H:i",        // Hiển thị ngày + giờ
         timepicker: false,           //  Bật chọn giờ
@@ -21,11 +23,13 @@ $(document).ready(function () {
     });
 
 
-     
+    /****************************************
+                    Xử lý đăng nhập, đăng kí       
+        ***************************************/ 
     $("#error").hide();
     $("#message").hide();
     $('#error_login').hide();
-        // Handle form submission for signin
+        // xử lý đăng nhập
     $("#login-form").on("submit", function (e) {
         e.preventDefault();
         var username = $("#username_login").val().trim();
@@ -90,7 +94,7 @@ $(document).ready(function () {
     });
 
 
-    // Handle form submission for signup
+       // xử lý đăng kí
     $("#register-form").on("submit", function (e) {
         e.preventDefault();
         $(".loader").show();
@@ -175,7 +179,9 @@ $(document).ready(function () {
     });
 
    
-
+    /****************************************
+                    Lọc tour      
+        ***************************************/
     
        // Kiểm tra nếu thanh trượt đã tồn tại
     if ($(".price-slider-range").length) {
@@ -288,6 +294,49 @@ $(document).ready(function () {
             },
         });
     });
+
+
+       /****************************************
+                    thông tin cá nhân        
+        ***************************************/
+    $(".updateUser").on("submit", function (e){
+         e.preventDefault();
+        var fullName = $("#inputFullName").val();
+        var address = $("#inputLocation").val();
+        var email = $("#inputEmailAddress").val();
+        var phone = $("#inputPhone").val();
+
+        var dataUpdate = {
+            'fullName': fullName,
+            'address': address,
+            'email': email,
+            'phone': phone,
+            '_token': $('input[name="_token"]').val(),
+        };
+        console.log(dataUpdate);
+
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: dataUpdate,
+            success: function (response) {
+                console.log(response);
+
+                //if (response.success) {
+                   // toastr.success(response.message);
+               // } else {
+                //    toastr.error(response.message);
+               // }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            },
+        });
+
+    });
+    
+     
+
 
 
      
