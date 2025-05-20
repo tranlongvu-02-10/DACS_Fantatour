@@ -102,7 +102,7 @@ $(document).ready(function () {
         $("#register-form").addClass("hidden-content");
 
         // Lấy giá trị của các trường nhập liệu
-        var username = $("#username_register").val().trim();
+        var userName = $("#username_register").val().trim();
         var email = $("#email_register").val().trim();
         var password = $("#password_register").val().trim();
         var rePass = $("#re_pass").val().trim();
@@ -117,7 +117,7 @@ $(document).ready(function () {
         var isValid = true;
 
         // Kiểm tra tên đăng nhập không chứa ký tự SQL injection
-        if (sqlInjectionPattern.test(username)) {
+        if (sqlInjectionPattern.test(userName)) {
             isValid = false;
             $("#validate_username_regis")
                 .show()
@@ -152,12 +152,13 @@ $(document).ready(function () {
 
         if (isValid) {
             var formData = {
-                'username_regis': username,
-                'email': email,
-                'password_regis': password,
-                '_token': $('input[name="_token"]').val(),
+            username_register: userName,
+            email: email,
+            password_register: password,
+            _token: $('input[name="_token"]').val()
             };
-            console.log(formData);
+
+            console.log(formData, $(this).attr("action"));
 
             $.ajax({
                 type: "POST",
@@ -165,15 +166,17 @@ $(document).ready(function () {
                 data: formData,
                 success: function (response) {
                     if (response.success) {
-                        $('#message').text(response.message).show();
-                        $('#error').hide();
+                        toastr.success(response.message, { timeOut: 5000 });
                     } else {
-                        $('#message').hide();
-                        $('#error').text(response.message)
+                        toastr.error(response.message);
                     }
+                    $("#register-form")
+                        .removeClass("hidden-content")
+                        .trigger("reset");
+                    $(".loader").hide();
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                    toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
                 },
             });
         }
@@ -391,6 +394,56 @@ $(document).ready(function () {
                 },
             });
         }
+    });
+
+    //Cập nhật avatar
+    $("#avatar").on("change", function () {
+        const file = event.target.files[0];
+        if (file) {
+            // Hiển thị ảnh vừa chọn trước khi gửi lên server
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $("#avatarPreview").attr("src", e.target.result);
+                $(".img-account-profile").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(file);
+            var __token = $(this)
+                .closest(".card-body")
+                .find("input.__token")
+                .val();
+            var url_avatar = $(this)
+                .closest(".card-body")
+                .find("input.label_avatar")
+                .val();
+            // Tạo FormData để gửi file qua AJAX
+            const formData = new FormData();
+            formData.append("avatar", file);
+
+            console.log(url_avatar);
+
+            // // Gửi AJAX đến server
+            $.ajax({
+                url: url_avatar,
+                type: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": __token,
+                },
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                },
+            });
+        }
+
     });
 
     

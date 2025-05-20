@@ -99,6 +99,7 @@
 @endif
 <!-- Jquery -->
 <script src="{{asset('clients/assets/js/jquery-3.6.0.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{asset('clients/assets/js/bootstrap.min.js')}}"></script>
 <!-- Appear Js -->
