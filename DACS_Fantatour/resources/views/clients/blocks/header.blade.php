@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{ asset('clients/assets/css/style.css') }}">
 
     <!-- Login Page Styles -->
-    <link rel="stylesheet" href="{{ asset('clients/assets/css/css-login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/css-login/fonts/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/assets/css/css-login/style.css') }}">
 
     <!-- Custom Overrides -->

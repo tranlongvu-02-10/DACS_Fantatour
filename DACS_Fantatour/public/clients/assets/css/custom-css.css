@@ -80,7 +80,7 @@
 }
 
 /****************************************
-*              PAGE TOURS              *
+*              trang tour            *
 * ***************************************/
 .div_filter_clear {
     display: flex;
@@ -123,3 +123,11 @@
         transform: rotate(360deg);
     }
 }
+
+/***************************************
+             thông tin cá nhân        
+ ***************************************/
+#card_change_password {
+    display: none;
+}
+

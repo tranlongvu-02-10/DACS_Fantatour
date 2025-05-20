@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var sqlInjectionPattern = /[<>'"%;()&+]/;
 
     $("#sign-up").click(function () {
         $(".sign-in").hide();
@@ -335,13 +336,76 @@ $(document).ready(function () {
 
     });
     
+     $('#update_password_profile').on('click', function() {
+    $('#card_change_password').toggle()
+    });
+
+    $(".change_password_profile").on("submit", function (e) {
+        e.preventDefault();
+        var oldPass = $("#inputOldPass").val();
+        var newPass = $("#inputNewPass").val();
+        var isValid = true;
+
+        // Kiểm tra độ dài mật khẩu
+        if (oldPass.length < 6 || newPass.length < 6) {
+            isValid = false;
+            $("#validate_password")
+                .show()
+                .text("Mật khẩu phải có ít nhất 6 ký tự.");
+        }
+
+        if (sqlInjectionPattern.test(newPass)) {
+            isValid = false;
+            $("#validate_password")
+                .show()
+                .text("Mật khẩu không được chứa ký tự đặc biệt.");
+        }
+
+        if (isValid) {
+            $("#validate_password").hide().text("");
+            var updatePass = {
+                oldPass: oldPass,
+                newPass: newPass,
+                _token: $('input[name="_token"]').val(),
+            };
+
+            console.log(updatePass);
+
+            $.ajax({
+                type: "POST",
+                url: $(this).attr("action"),
+                data: updatePass,
+                success: function (response) {
+                    if (response.success) {
+                        $("#validate_password").hide().text("");
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    $("#validate_password")
+                        .show()
+                        .text(xhr.responseJSON.message);
+                    toastr.error(xhr.responseJSON.message);
+                },
+            });
+        }
+    });
+
+    
+  
+
+
+});
+    
      
 
 
 
      
    
-});
+
 
 
 

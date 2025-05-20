@@ -61,3 +61,4 @@ Route::get('/filter-tours', [ToursController::class, 'filterTours'])->name('filt
 //xử lý thông tin người dùng
 Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
 Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
+Route::post('/change-password-profile', [UserProfileController::class, 'changePassword'])->name('change-password');

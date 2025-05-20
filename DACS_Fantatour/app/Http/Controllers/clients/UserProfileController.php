@@ -58,4 +58,21 @@ class UserProfileController extends Controller
         }
         return response()->json(['success' => true, 'message' => 'Cập nhật thông tin thành công!']);
     }
+    public function changePassword(Request $req)
+    {
+        $userId = $this->getUserId();
+        $user = $this->user->getUser($userId);
+
+        if (md5($req->oldPass) === $user->password) {
+            $update = $this->user->updateUser($userId, ['password' => md5($req->newPass)]);
+            if (!$update) {
+                return response()->json(['error' => true, 'message' => 'Mật khẩu mới trùng với mật khẩu cũ!']);
+            } else {
+                return response()->json(['success' => true, 'message' => 'Đổi mật khẩu thành công!']);
+
+            }
+        } else {
+            return response()->json(['error' => true, 'message' => 'Mật khẩu cũ không chính xác.'], 500);
+        }
+    }
 }
