@@ -24,9 +24,9 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-        $username_regis = $request->username_register;
+        $username_regis = $request->username_regis;
         $email = $request->email;
-        $password_regis = $request->password_register;
+        $password_regis = $request->password_regis;
 
         $checkAccountExist = $this->login->checkUserExist($username_regis, $email);
         if ($checkAccountExist) {
@@ -75,8 +75,8 @@ class LoginController extends Controller
     //Xử lý người dùng đăng nhập
     public function login(Request $request)
     {
-        $username = $request->username_login;
-        $password = $request->password_login;
+        $username = $request->username;
+        $password = $request->password;
 
         $data_login = [
             'username' => $username,
@@ -87,7 +87,12 @@ class LoginController extends Controller
 
         if ($user != null) {
             $request->session()->put('username', $username);
-            return redirect()->route('home');
+            toastr()->success("Đăng nhập thành công!",'Thông báo');
+            return response()->json([
+                'success' => true,
+                'message' => 'Đăng nhập thành công!',
+                'redirectUrl' => route('home'), 
+            ]);
         } 
         else {
             return response()->json([
@@ -101,6 +106,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('username');
+        toastr()->success("Đăng xuất thành công!",'Thông báo');
         return redirect()->route('home');
     }
 

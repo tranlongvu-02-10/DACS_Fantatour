@@ -27,9 +27,6 @@ $(document).ready(function () {
     /****************************************
                     Xử lý đăng nhập, đăng kí       
         ***************************************/ 
-    $("#error").hide();
-    $("#message").hide();
-    $('#error_login').hide();
         // xử lý đăng nhập
     $("#login-form").on("submit", function (e) {
         e.preventDefault();
@@ -76,19 +73,19 @@ $(document).ready(function () {
             console.log(formData, $(this).attr("action"));
 
             $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
+                type: "POST",
+                url: $(this).attr("action"),
                 data: formData,
-              success: function(response) {
+                success: function (response) {
                     if (response.success) {
-                        window.location.href ="/";
+                        window.location.href = "/";
                     } else {
-                        $('#error_login').text(response.message).show();
+                        toastr.error(response.message);
                     }
                 },
-                error: function(xhr, textStatus, errorThrown){
-                    alert('Có lỗi xảy ra!');
-                }
+                error: function (xhr, textStatus, errorThrown) {
+                    toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                },
             });
 
         }
@@ -152,9 +149,9 @@ $(document).ready(function () {
 
         if (isValid) {
             var formData = {
-            username_register: userName,
+            username_regis: userName,
             email: email,
-            password_register: password,
+            password_regis: password,
             _token: $('input[name="_token"]').val()
             };
 
@@ -166,14 +163,10 @@ $(document).ready(function () {
                 data: formData,
                 success: function (response) {
                     if (response.success) {
-                        toastr.success(response.message, { timeOut: 5000 });
+                        toastr.success(response.message);
                     } else {
                         toastr.error(response.message);
                     }
-                    $("#register-form")
-                        .removeClass("hidden-content")
-                        .trigger("reset");
-                    $(".loader").hide();
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
@@ -181,6 +174,7 @@ $(document).ready(function () {
             });
         }
     });
+
 
    
     /****************************************
@@ -325,15 +319,14 @@ $(document).ready(function () {
             data: dataUpdate,
             success: function (response) {
                 console.log(response);
-
-                //if (response.success) {
-                   // toastr.success(response.message);
-               // } else {
-                //    toastr.error(response.message);
-               // }
+                if (response.success) {
+                    toastr.success(response.message);
+                } else {
+                    toastr.error(response.message);
+                }
             },
             error: function (xhr, textStatus, errorThrown) {
-                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+                toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
             },
         });
 

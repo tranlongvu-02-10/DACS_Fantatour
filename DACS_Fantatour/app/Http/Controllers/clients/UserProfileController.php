@@ -54,9 +54,13 @@ class UserProfileController extends Controller
 
         $update = $this->user->updateUser($userId, $dataUpdate);
         if (!$update) {
-            return response()->json(['error' => true, 'message' => 'Bạn chưa thay đổi thông tin nào, vui lòng kiểm tra lại!']);
+            return response()->json([
+            'error' => true, 
+            'message' => 'Bạn chưa thay đổi thông tin nào, vui lòng kiểm tra lại!']);
         }
-        return response()->json(['success' => true, 'message' => 'Cập nhật thông tin thành công!']);
+        return response()->json([
+            'success' => true, 
+            'message' => 'Cập nhật thông tin thành công!']);
     }
     public function changePassword(Request $req)
     {
@@ -69,7 +73,6 @@ class UserProfileController extends Controller
                 return response()->json(['error' => true, 'message' => 'Mật khẩu mới trùng với mật khẩu cũ!']);
             } else {
                 return response()->json(['success' => true, 'message' => 'Đổi mật khẩu thành công!']);
-
             }
         } else {
             return response()->json(['error' => true, 'message' => 'Mật khẩu cũ không chính xác.'], 500);
