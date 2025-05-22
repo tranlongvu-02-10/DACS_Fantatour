@@ -10,6 +10,7 @@ use App\Http\Controllers\clients\DestinationController;
 use App\Http\Controllers\clients\ContactController;
 use App\Http\Controllers\clients\TourdetaildetailController;
 use App\Http\Controllers\clients\BlogDetailController;
+use App\Http\Controllers\clients\BookingController;
 use App\Http\Controllers\clients\UserProfileController;
 use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\clients\LoginGoogleController;
@@ -63,3 +64,6 @@ Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user
 Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
 Route::post('/change-password-profile', [UserProfileController::class, 'changePassword'])->name('change-password');
 Route::post('/change-avatar-profile', [UserProfileController::class, 'changeAvatar'])->name('change-avatar');
+
+
+Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking');

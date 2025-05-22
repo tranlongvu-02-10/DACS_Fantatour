@@ -131,17 +131,17 @@
                             <div class="menu-sidebar">
                                     <li class="drop-down">
                                         <button class="dropdown-toggle bg-transparent" id="userDropdown" style="color: black">
-                                        @if (session()->has('avatar'))
-                                            @php
-                                                $avatar = session()->get('avatar', 'user_avatar.jpg');
-                                            @endphp
-                                            <img id="avatarPreview" class="img-account-profile rounded-circle mb-2"
-                                            src="{{ asset('clients/assets/images/user-profile/' . $avatar) }}"
-                                                style="width: 36px; height: 36px;">
-                                        @else
-                                            <i class='bx bxs-user bx-tada icon-user' style="font-size: 36px; color: black;"></i>
-                                        @endif
-                                    </button>  
+                                            @if (session()->has('avatar'))
+                                                @php
+                                                    $avatar = session()->get('avatar', 'user_avatar.jpg');
+                                                @endphp
+                                                <img id="avatarPreview" class="img-account-profile rounded-circle mb-2"
+                                                src="{{ asset('clients/assets/images/user-profile/' . $avatar) }}"
+                                                    style="width: 36px; height: 36px;">
+                                            @else
+                                                <i class='bx bxs-user bx-tada icon-user' style="font-size: 36px; color: black;"></i>
+                                            @endif
+                                        </button>  
                                                 <ul class="dropdown-menu" id="dropdownMenu">
                                                     @if (session()->has('username'))
                                                         <li>{{ session()->get('username') }}</li>
