@@ -28,7 +28,7 @@
                     <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[0].'')}}" alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="a{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[1].'')}}" alt="Destination">
+                    <img src="{{asset('clients/assets/images/gallery-tours/'.$tourDetail->imagess[1].'')}}" alt="Destination">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
