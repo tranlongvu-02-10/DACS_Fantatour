@@ -8,26 +8,32 @@
             <!-- Contact Information -->
             <div class="booking-info">
                 <h2 class="booking-header">Thông Tin Liên Lạc</h2>
-                <div class="booking__infor">
-                    <div class="form-group">
+                    <div class="booking__infor">
+                        <div class="form-group">
                         <label for="username">Họ và tên*</label>
-                        <input type="text" id="username" placeholder="Nhập Họ và tên" name="username" required>
+                        <input type="text" id="username" placeholder="Nhập Họ và tên" name="fullName" required>
+                        <span class="error-message" id="usernameError"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email*</label>
                         <input type="email" id="email" placeholder="sample@gmail.com" name="email" required>
+                        <span class="error-message" id="emailError"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="tel">Số điện thoại*</label>
-                        <input type="tel" id="tel" placeholder="Nhập số điện thoại liên hệ" name="tel" required>
+                        <input type="number" id="tel" placeholder="Nhập số điện thoại liên hệ" name="tel"
+                            required>
+                        <span class="error-message" id="telError"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="address">Địa chỉ*</label>
-                        <input type="text" id="address" placeholder="Nhập địa chỉ liên hệ" name="dia_chi" required>
+                        <input type="text" id="address" placeholder="Nhập địa chỉ liên hệ" name="address" required>
+                        <span class="error-message" id="addressError"></span>
                     </div>
+
                 </div>
 
 
@@ -35,11 +41,12 @@
                 <h2 class="booking-header">Hành Khách</h2>
 
                 <div class="booking__quantity">
-                    <div class="form-group quantity-selector">
+                <div class="form-group quantity-selector">
                         <label>Người lớn</label>
                         <div class="input__quanlity">
                             <button type="button" class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" id="numAdults" readonly>
+                            <input type="number" class="quantity-input" value="1" min="1" id="numAdults"
+                                name="numAdults" data-price-adults="100000" readonly>
                             <button type="button" class="quantity-btn">+</button>
                         </div>
                     </div>
@@ -48,7 +55,8 @@
                         <label>Trẻ em</label>
                         <div class="input__quanlity">
                             <button type="button" class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" id="numChildren" readonly>
+                            <input type="number" class="quantity-input" value="0" min="0" id="numChildren"
+                                name="numChildren" data-price-children="50000" readonly>
                             <button type="button" class="quantity-btn">+</button>
                         </div>
                     </div>
@@ -98,23 +106,38 @@
                     </div>
 
                     <div class="order-summary">
-                        <div class="summary-item">
+                          <div class="summary-item">
                             <span>Người lớn:</span>
-                            <span class="quantity__adults">1</span>
-                            <span class="total-price">0 VNĐ</span>
+                            <div>
+                                <span class="quantity__adults">1</span>
+                                <span>X</span>
+                                <span class="total-price">0 VNĐ</span>
+                            </div>
                         </div>
                         <div class="summary-item">
                             <span>Trẻ em:</span>
-                            <span class="quantity__children">0</span>
-                            <span class="total-price">0 VNĐ</span>
+                            <div>
+                                <span class="quantity__children">0</span>
+                                <span>X</span>
+                                <span class="total-price">0 VNĐ</span>
+                            </div>
+                        </div>
+                         <div class="summary-item">
+                            <span>Giảm giá:</span>
+                            <div>
+                                <span class="total-price">0 VNĐ</span>
+                            </div>
                         </div>
                         <div class="summary-item total-price">
                             <span>Tổng cộng:</span>
                             <span>0 VNĐ</span>
                         </div>
                     </div>
-
-                    <button type="submit" class="booking-btn">Xác Nhận và Thanh Toán</button>
+                    <div class="order-coupon">
+                        <input type="text" placeholder="Mã giảm giá" style="width: 65%;">
+                        <button style="width: 30%" class="booking-btn btn-coupon">Áp dụng</button>
+                    </div>
+                    <button type="submit" class="booking-btn btn-submit-booking">Xác Nhận và Thanh Toán</button>
                 </div>
             </div>
         </form>

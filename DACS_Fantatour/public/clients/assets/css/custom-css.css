@@ -330,6 +330,31 @@
         position: sticky;
         top: 50px;
     }
+    .order-coupon {
+        border-top: 1px solid #d6d6d6;
+        margin: 20px 0;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 2px;
+        border-bottom: 1px solid #d6d6d6;
+    }
+    .order-coupon input {
+        border-radius: 8px;
+        border: 1px solid #e2e4e5;
+    }
+    .btn-submit-booking.inactive {
+        background-color: #f3d5b1;
+        cursor: not-allowed;
+    }
+
+    /* CSS cho thông báo lỗi */
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        display: none;
+        margin-top: 5px;
+    }
 }
 
 /* Responsive Design */
@@ -343,3 +368,14 @@
         margin-top: 20px;
     }
 }
+#toast-container .toast-success {
+    background-image: none !important;
+    background-color: #51A351 !important; /* Màu xanh cho success */
+    color: #fff !important; /* Văn bản trắng trên nền xanh */
+}
+#toast-container .toast-error {
+    background-image: none !important;
+    background-color: #bd362f !important; /* Màu đỏ cho error */
+    color: #fff !important; /* Văn bản trắng trên nền đỏ */
+}
+
