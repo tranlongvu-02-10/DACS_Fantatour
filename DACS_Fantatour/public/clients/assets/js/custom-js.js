@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var sqlInjectionPattern = /[<>'"%;()&+]/;
 
+    
+
     $("#sign-up").click(function () {
         $(".sign-in").hide();
         $(".signup").show();
@@ -447,8 +449,6 @@ $(document).ready(function () {
 
 
 });
-    
-     
 
 
 

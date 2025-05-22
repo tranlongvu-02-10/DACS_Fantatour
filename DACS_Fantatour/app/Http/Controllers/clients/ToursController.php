@@ -16,7 +16,7 @@ class ToursController extends Controller
     }
     public function index(Request $request)
     {
-        $title = 'tour';
+        $title = 'Đặt chuyến đi';
         $tours = $this->tours->getAllTours();
         $domain = $this->tours->getDomain();
           //dd($tours);

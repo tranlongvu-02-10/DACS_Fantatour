@@ -12,7 +12,6 @@
                     <div class="col-lg-12">
                         <div class="section-title text-white text-center counter-text-wrap mb-70" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <h2>Trải nghiệm và khám phá du lịch cùng fantatour</h2>
-                            <p>Một trang web <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> trải nghiệm phổ biến nhất mà bạn sẽ nhớ</p>
                         </div>
                     </div>
                 </div>

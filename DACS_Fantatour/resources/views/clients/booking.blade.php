@@ -1,14 +1,14 @@
 @include('clients.blocks.header')
 @include('clients.blocks.banner')
 
-<section class="container" >
-        <h1 class="text-center checkout-header">Tổng Quan Về Chuyến Đi</h1>
+<section class="container" style="margin-top:50px; margin-bottom: 100px">
+    {{-- <h1 class="text-center booking-header">Tổng Quan Về Chuyến Đi</h1> --}}
 
-        <form action="javascript:void(0);" method="post" class="checkout-container">
+        <form action="javascript:void(0);" method="post" class="booking-container">
             <!-- Contact Information -->
-            <div class="checkout-info">
-                <h2 class="checkout-header">Thông Tin Liên Lạc</h2>
-                <div class="checkout__infor">
+            <div class="booking-info">
+                <h2 class="booking-header">Thông Tin Liên Lạc</h2>
+                <div class="booking__infor">
                     <div class="form-group">
                         <label for="username">Họ và tên*</label>
                         <input type="text" id="username" placeholder="Nhập Họ và tên" name="username" required>
@@ -32,14 +32,14 @@
 
 
                 <!-- Passenger Details -->
-                <h2 class="checkout-header">Hành Khách</h2>
+                <h2 class="booking-header">Hành Khách</h2>
 
-                <div class="checkout__quantity">
+                <div class="booking__quantity">
                     <div class="form-group quantity-selector">
                         <label>Người lớn</label>
                         <div class="input__quanlity">
                             <button type="button" class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <input type="number" class="quantity-input" value="1" min="1" id="numAdults" readonly>
                             <button type="button" class="quantity-btn">+</button>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <label>Trẻ em</label>
                         <div class="input__quanlity">
                             <button type="button" class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <input type="number" class="quantity-input" value="1" min="1" id="numChildren" readonly>
                             <button type="button" class="quantity-btn">+</button>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <!-- Payment Method -->
-                <h2 class="checkout-header">Phương Thức Thanh Toán</h2>
+                <h2 class="booking-header">Phương Thức Thanh Toán</h2>
                 
                 <label class="payment-option">
                     <input type="radio" name="payment" required>
@@ -88,23 +88,24 @@
             </div>
 
             <!-- Order Summary -->
-            <div class="checkout-summary">
+            <div class="booking-summary">
                 <div class="summary-section">
                     <div>
                         <p>Mã tour : </p>
                         <h4>Tên Tour</h4>
                         <p>Ngày khởi hành : </p>
-
                         <p>Ngày kết thúc : </p>
                     </div>
 
                     <div class="order-summary">
                         <div class="summary-item">
                             <span>Người lớn:</span>
+                            <span class="quantity__adults">1</span>
                             <span class="total-price">0 VNĐ</span>
                         </div>
                         <div class="summary-item">
                             <span>Trẻ em:</span>
+                            <span class="quantity__children">0</span>
                             <span class="total-price">0 VNĐ</span>
                         </div>
                         <div class="summary-item total-price">
@@ -113,7 +114,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="checkout-btn">Xác Nhận và Thanh Toán</button>
+                    <button type="submit" class="booking-btn">Xác Nhận và Thanh Toán</button>
                 </div>
             </div>
         </form>

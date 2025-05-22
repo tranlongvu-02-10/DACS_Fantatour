@@ -109,9 +109,28 @@ ul, li {
   padding: 0;
   margin: 0; }
 
-img {
-  max-width: 100%;
-  display: inline-block; }
+
+  /* Khung ngoài logo */
+.logo-outer {
+    display: flex;
+    align-items: center;
+    height: 64px;         
+    padding-left: 12px;  
+}
+
+/* Khung chứa ảnh logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Ảnh logo */
+.logo img {
+    height: 100%;      
+    width: auto;
+    max-height: 100%;
+}
+
 
 hr {
   opacity: 1;

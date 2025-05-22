@@ -1,3 +1,27 @@
+/****************************************
+*              banner home             *
+* ***************************************/
+.hero-title {
+    white-space: nowrap; /* Ngăn xuống dòng */
+    overflow: hidden;    /* Ẩn phần tràn nếu có */
+    text-overflow: ellipsis; /* (Tùy chọn) thêm "..." nếu chữ dài quá */
+    font-size: 6vw; /* Tùy chỉnh kích thước linh hoạt theo chiều rộng */
+    max-width: 100%; /* Đảm bảo chiếm đủ bề ngang */
+    text-align: center; /* Căn giữa nếu muốn */
+}
+.hero-subtitle {
+    color: #fff; /* trắng hoặc màu tương phản với nền */
+    text-align: center;
+    font-size: 4vw;
+    margin-top: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+
+/****************************************
+*       trang tour thêm thời gian        *
+* ***************************************/
 .datetimepicker-custom {
     padding: 0;
 }
@@ -9,7 +33,9 @@
     background: var(--primary-color);
 }
 
-
+/****************************************
+*              trang tour            *
+* ***************************************/
 .dropdown-menu {
     list-style-type: none;
     padding: 8px 0;
@@ -136,7 +162,7 @@
               trang Booking            
  ***************************************/
 /* Layout */
-.checkout-container {
+.booking-container {
     max-width: 1200px;
     margin: auto;
     padding-top: 20px;
@@ -144,8 +170,8 @@
     gap: 24px;
 }
 
-.checkout-container {
-    .checkout__infor {
+.booking-container {
+    .booking__infor {
         background-color: #F6F8FA;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -154,16 +180,16 @@
         padding: 30px;
     }
 
-    .checkout-info {
+    .booking-info {
         flex: 1;
     }
 
-    .checkout-summary {
+    .booking-summary {
         width: 400px;
     }
 
     /* Header */
-    .checkout-header {
+    .booking-header {
         margin-bottom: 30px;
         font-size: 24px;
         font-weight: 700;
@@ -171,12 +197,12 @@
 
     /* Form Styling */
 
-    .checkout__infor .form-group label {
+    .booking__infor .form-group label {
         font-weight: 600;
         font-size: 1rem;
     }
 
-    .checkout__infor .form-group input {
+    .booking__infor .form-group input {
         width: 100%;
         height: 56px;
         padding: 16px 17px;
@@ -186,7 +212,7 @@
     }
 
     /* Quantity Selector */
-    .checkout__quantity {
+    .booking__quantity {
         display: flex;
         gap: 24px;
     }
@@ -221,6 +247,7 @@
     }
 
     .quantity-input {
+        padding: 0;
         width: 30px;
         text-align: center;
         border: none;
@@ -258,7 +285,7 @@
         text-align: center;
     }
 
-    .privacy-checkbox {
+    .privacy-booking {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -279,13 +306,13 @@
         margin-bottom: 10px;
     }
 
-    .total-price {
+    .total-price, .quantity__adults, .quantity__children {
         font-weight: bold;
         font-size: 1.2rem;
     }
 
     /* Button */
-    .checkout-btn {
+    .booking-btn {
         width: 100%;
         padding: 15px;
         background-color: #ED1B35;
@@ -307,11 +334,11 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .checkout-container {
+    .booking-container {
         flex-direction: column;
     }
 
-    .checkout-summary {
+    .booking-summary {
         width: 100%;
         margin-top: 20px;
     }
