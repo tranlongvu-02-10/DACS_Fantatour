@@ -3,7 +3,7 @@
 <div class="login-template">
     <div class="main">
         <!-- Sign in  Form -->
-         <section class="sign-in show">
+        <section class="sign-in show">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
@@ -11,6 +11,7 @@
                                 alt="sing up image"></figure>
                         <a href="javascript:void(0)" class="signup-image-link" id="sign-up">Tạo tài khoản</a>
                     </div>
+
                     <div class="signin-form">
                         <h2 class="form-title">Đăng nhập</h2>
                         <form action="{{ route('user-login') }}" method="POST" class="login-form" id="login-form" style="margin-top: 15px">
@@ -47,6 +48,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Đăng ký</h2>
+                        <div class="loader"></div>
                         <form action="{{ route('register') }}" method="POST" class="register-form" id="register-form" style="margin-top: 15px">
                             <div class="form-group">
                                 <label for="username_register"><i class="zmdi zmdi-account material-icons-name"></i></label>

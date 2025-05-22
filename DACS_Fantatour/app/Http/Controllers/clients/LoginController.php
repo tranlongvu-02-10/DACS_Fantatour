@@ -5,16 +5,19 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\clients\Login;
+use App\Models\clients\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
     private $login;
+    private $user;
 
     public function __construct()
     {
         $this->login = new Login();
+        $this->user = new User();
     }
     public function index()
     {
@@ -82,11 +85,14 @@ class LoginController extends Controller
             'username' => $username,
             'password' => md5($password)
         ];
+        
+        $user_login = $this->login->login($data_login);
+        $userId = $this->user->getUserId($username);
+        $user = $this->user->getUser($userId);
 
-        $user = $this->login->login($data_login);
-
-        if ($user != null) {
+        if ($user_login != null) {
             $request->session()->put('username', $username);
+            $request->session()->put('avatar', $user->avatar);
             toastr()->success("Đăng nhập thành công!",'Thông báo');
             return response()->json([
                 'success' => true,
@@ -106,6 +112,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('username');
+        $request->session()->forget('avatar');
         toastr()->success("Đăng xuất thành công!",'Thông báo');
         return redirect()->route('home');
     }

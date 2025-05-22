@@ -163,10 +163,13 @@ $(document).ready(function () {
                 data: formData,
                 success: function (response) {
                     if (response.success) {
-                        toastr.success(response.message);
+                        toastr.success(response.message, {timeOut :5000});
+                        $("#register-form").removeClass("hidden-content").trigger("reset");
+                        $(".loader").hide();
                     } else {
                         toastr.error(response.message);
                     }
+                    
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
