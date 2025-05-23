@@ -447,7 +447,8 @@ $(document).ready(function () {
       /****************************************
      *             PAGE BOOKING             *
      * ***************************************/
-    let discount = 0; // Giảm giá, có thể cập nhật khi áp dụng mã giảm giá
+    let discount = 0;
+    let totalPrice= 0; // Giảm giá, có thể cập nhật khi áp dụng mã giảm giá
 
     function updateSummary() {
         // Lấy số lượng người lớn và trẻ em
@@ -581,10 +582,31 @@ $(document).ready(function () {
             $("#addressError").text("Địa chỉ không được để trống").show();
             isValid = false;
         }
-        if(isValid)
-        {
-            alert("from hợp lệ! tiến hành gửi dữ liệu");
+
+        const paymentMethod = $("input[name='payment']:checked").val();
+        if (!paymentMethod) {
+            toastr.error("Vui lòng chọn phương thức thanh toán.");
+            isValid = false;
         }
+
+        if (isValid) {
+            const numAdults = parseInt($("#numAdults").val()) || 0;
+            const numChildren = parseInt($("#numChildren").val()) || 0;
+
+            const formDataBooking = {
+                'fullName': username,
+                'email': email,
+                'tel': tel,
+                'address': address,
+                'numAdults': numAdults,
+                'numChildren': numChildren,
+                'totalPrice': totalPrice,
+                'paymentMethod': paymentMethod,
+                '_token': $('input[name="_token"]').val()
+            };
+            console.log(formDataBooking);
+        }
+
 
     });
     updateSummary();

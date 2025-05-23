@@ -5,6 +5,7 @@
     {{-- <h1 class="text-center booking-header">Tổng Quan Về Chuyến Đi</h1> --}}
 
         <form action="javascript:void(0);" method="post" class="booking-container">
+            @csrf
             <!-- Contact Information -->
             <div class="booking-info">
                 <h2 class="booking-header">Thông Tin Liên Lạc</h2>
@@ -76,19 +77,19 @@
                 <h2 class="booking-header">Phương Thức Thanh Toán</h2>
                 
                 <label class="payment-option">
-                    <input type="radio" name="payment" required>
+                    <input type="radio" name="payment" value="office-payment" required>
                     <img src="{{asset('clients/assets/images/Booking/cong-thanh-toan-paypal.jpg')}}" alt="PayPal">
                     Thanh toán tại văn phòng
                 </label>
 
                 <label class="payment-option">
-                    <input type="radio" name="payment" required>
+                    <input type="radio" name="payment" value="paypal-payment" required>
                     <img src="{{asset('clients/assets/images/Booking/cong-thanh-toan-paypal.jpg')}}" alt="PayPal">
                     Thanh toán bằng PayPal
                 </label>
 
                 <label class="payment-option">
-                    <input type="radio" name="payment" required>
+                    <input type="radio" name="payment" value="momo-payment" required>
                     <img src="{{asset('clients/assets/images/Booking/thanh-toan-momo.jpg')}}" alt="MoMo">
                     Thanh toán bằng Momo
                 </label>
@@ -99,10 +100,11 @@
             <div class="booking-summary">
                 <div class="summary-section">
                     <div>
-                        <p>Mã tour : </p>
-                        <h4>Tên Tour</h4>
-                        <p>Ngày khởi hành : </p>
-                        <p>Ngày kết thúc : </p>
+                        <p>Mã tour : {{ $tour->tourId }}</p>
+                        <input type="hidden" name="tourId" id="tourId" value="{{ $tour->tourId }}">
+                        <h5 class="widget-title">{{ $tour->title }}</h5>
+                        <p>Ngày khởi hành : {{ date('d-m-Y', strtotime($tour->startDate)) }} </p>
+                        <p>Ngày kết thúc : {{ date('d-m-Y', strtotime($tour->endDate)) }}</p>
                     </div>
 
                     <div class="order-summary">
