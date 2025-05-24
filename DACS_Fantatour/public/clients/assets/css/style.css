@@ -489,7 +489,7 @@ a.theme-btn {
       opacity: 1; }
   .theme-btn.bgc-secondary,
   a.theme-btn.bgc-secondary {
-    background: var(--secondary-color); }
+    background: black; }
   .theme-btn.style-three,
   a.theme-btn.style-three {
     border: 1px solid; }

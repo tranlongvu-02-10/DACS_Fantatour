@@ -8,26 +8,11 @@ use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
-    private $user;
-
     public function __construct()
     {
+        parent::__construct(); // Gọi constructor của Controller để khởi tạo $user
         $this->user = new User();
     }
-    protected function getUserId(): mixed
-    {
-        if (!session()->has(key: 'userId')) {
-            $username = session()->get(key: 'username');
-
-            if ($username) {
-                $userId = $this->user->getUserId(username: $username);
-                session()->put(key: 'userId', value: $userId); // Lưu userId vào session để dùng lại
-            }
-        }
-
-        return session()->get(key: 'userId');
-    }
-
     public function index(){
         $title = 'Thông tin cá nhân';
         $userId = $this->getUserId();

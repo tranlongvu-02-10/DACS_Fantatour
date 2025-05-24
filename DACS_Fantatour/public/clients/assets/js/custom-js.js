@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var sqlInjectionPattern = /[<>'"%;()&+]/;
+    
 
     
 
@@ -478,6 +479,9 @@ $(document).ready(function () {
         $(".summary-item.total-price span:last").text(
             totalPrice.toLocaleString() + " VNĐ"
         );
+
+         $(".totalPrice").val(totalPrice);
+        
     }
         // Sử kiện tăng/giảm số lượng người lớn và trẻ em
         $('.quantity-selector').on('click', '.quantity-btn', function () {
@@ -589,23 +593,43 @@ $(document).ready(function () {
             isValid = false;
         }
 
-        if (isValid) {
-            const numAdults = parseInt($("#numAdults").val()) || 0;
-            const numChildren = parseInt($("#numChildren").val()) || 0;
+         if (isValid) {
+            $('.booking-container').submit();
+        //     const numAdults = parseInt($("#numAdults").val()) || 0;
+        //     const numChildren = parseInt($("#numChildren").val()) || 0;
 
-            const formDataBooking = {
-                'fullName': username,
-                'email': email,
-                'tel': tel,
-                'address': address,
-                'numAdults': numAdults,
-                'numChildren': numChildren,
-                'totalPrice': totalPrice,
-                'paymentMethod': paymentMethod,
-                '_token': $('input[name="_token"]').val()
-            };
-            console.log(formDataBooking);
-        }
+        //     const formDataBooking = {
+        //         'fullName': username,
+        //         'email': email,
+        //         'tel': tel,
+        //         'address': address,
+        //         'numAdults': numAdults,
+        //         'numChildren': numChildren,
+        //         'totalPrice': totalPrice,
+        //         'paymentMethod': paymentMethod,
+        //         '_token': $('input[name="_token"]').val()
+        //     };
+        //     urlBooking=$('.booking-container').attr("action");
+        //     console.log(formDataBooking);
+        //     console.log(urlBooking);
+
+        //     $.ajax({
+        //         type: "POST",
+        //         url: urlBooking,
+        //         data: formDataBooking,
+        //         success: function (response) {
+        //             // if (response && response.payUrl) {
+        //             //     // Mở popup thanh toán hoặc chuyển hướng người dùng đến URL thanh toán Momo
+        //             //     window.location.href = response.payUrl;
+        //             // } else {
+        //             //     toastr.error("Không thể tạo thanh toán Momo.");
+        //             // }
+        //         },
+        //         error: function () {
+        //             toastr.error("Có lỗi xảy ra khi kết nối đến Momo.");
+        //         },
+        //     });
+         }
 
 
     });

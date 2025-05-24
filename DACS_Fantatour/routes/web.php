@@ -65,5 +65,6 @@ Route::post('/user-profile', [UserProfileController::class, 'update'])->name('up
 Route::post('/change-password-profile', [UserProfileController::class, 'changePassword'])->name('change-password');
 Route::post('/change-avatar-profile', [UserProfileController::class, 'changeAvatar'])->name('change-avatar');
 
-
+//xử lý thông tin thanh toans
 Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking');
+Route::post('/create-booking', [BookingController::class, 'createBooking'])->name('create-booking');

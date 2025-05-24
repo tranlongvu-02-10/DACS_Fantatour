@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class LoginController extends Controller
 {
     private $login;
-    private $user;
+    protected $user; 
 
     public function __construct()
     {

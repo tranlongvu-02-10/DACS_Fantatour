@@ -4,7 +4,7 @@
 <section class="container" style="margin-top:50px; margin-bottom: 100px">
     {{-- <h1 class="text-center booking-header">Tổng Quan Về Chuyến Đi</h1> --}}
 
-        <form action="javascript:void(0);" method="post" class="booking-container">
+        <form action="{{ route('create-booking') }}" method="post" class="booking-container">
             @csrf
             <!-- Contact Information -->
             <div class="booking-info">
@@ -133,6 +133,7 @@
                         <div class="summary-item total-price">
                             <span>Tổng cộng:</span>
                             <span>0 VNĐ</span>
+                            <input type="hidden" class="totalPrice" name="totalPrice" value="">
                         </div>
                     </div>
                     <div class="order-coupon">
