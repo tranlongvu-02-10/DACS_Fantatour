@@ -4,6 +4,7 @@ namespace App\Http\Controllers\clients;
 
 use App\Http\Controllers\Controller;
 use App\Models\clients\Booking;
+use App\Models\clients\Checkout;
 use App\Models\clients\Tours;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,14 @@ class BookingController extends Controller
 {
     private $tour;
     private $booking;
+    private $checkout;
 
     public function __construct()
     {
         parent::__construct(); // Gọi constructor của Controller để khởi tạo $user
         $this->tour = new Tours();
         $this->booking = new Booking();
+        $this->checkout = new Checkout();
 
     }
     public function index($id)
@@ -35,12 +38,15 @@ class BookingController extends Controller
         $fullName = $req->input('fullName');
         $numAdults = $req->input('numAdults');
         $numChildren = $req->input('numChildren');
-        $paymentMethod = $req->input('payment_hidden');
+        $paymentMethod = $req->input('payment');
         $tel = $req->input('tel');
         $totalPrice = $req->input('totalPrice');
         $tourId = $req->input('tourId');
         $userId = $this->getUserId();
 
+        /*
+         * Xử lý booking và checkout
+         */
         $dataBooking = [
             'tourId' => $tourId,
             'userId' => $userId,
@@ -53,12 +59,36 @@ class BookingController extends Controller
             'totalPrice' => $totalPrice
         ];
         //dd($dataBooking);
-        $booking = $this->booking->createBooking($dataBooking);
-        if(!$booking)
+        $bookingId = $this->booking->createBooking($dataBooking);
+        
+
+        
+        $dataCheckout = [
+            'bookingId' => $bookingId,
+            'paymentMethod' => $paymentMethod,
+            'amount' => $totalPrice,
+            'paymentStatus' => 'n',
+        ];
+        $checkout = $this->checkout->createCheckout($dataCheckout);
+
+        /*
+         * Cập nhật số lượng mới cho tour đó, trừ số lượng
+         */
+        
+
+        if(empty($bookingId) && !$checkout) 
         {
+           
             toastr()->error('Có vấn đề khi đặt tour!');
             return redirect()->back();
         }
+         $tour = $this->tour->getTourDetail($tourId);
+            $dataUpdate = [
+            'quantity' => $tour->quantity - ($numAdults + $numChildren)
+            ];
+            $updateQuantity = $this->tour->updateTours($tourId, $dataUpdate);
+
+            
         toastr()->success('Đặt tour thành công!');
         return redirect()->route('tours');
     }

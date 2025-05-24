@@ -488,13 +488,36 @@ $(document).ready(function () {
             const input = $(this).siblings('input');
             const min = parseInt(input.attr('min'));
             let value = parseInt(input.val());
+            const quantityAvailable = parseInt($(".quantityAvailable").text().match(/\d+/)[0]); // Lấy số chỗ còn nhận 
 
-            // Kiểm tra nút tăng hay giảm
-            if ($(this).text() === '+') {
-                value++;
-            } else if (value > min) {
-                value--;
+
+            // Lấy tổng số lượng người lớn và trẻ em
+        const totalAdults = parseInt($("#numAdults").val());
+        const totalChildren = parseInt($("#numChildren").val());
+        
+             // Kiểm tra nút tăng hay giảm
+        if ($(this).text() === "+") {
+            // Kiểm tra nếu đang tăng số lượng người lớn
+            if (input.attr("id") === "numAdults") {
+                // Kiểm tra nếu tổng số người lớn và trẻ em không vượt quá số chỗ còn nhận
+                if (totalAdults + totalChildren < quantityAvailable) {
+                    value++;
+                } else {
+                    toastr.error("Không thể thêm số người lớn vượt quá số chỗ còn nhận!"); // Thông báo nếu vượt quá
+                }
             }
+            // Kiểm tra nếu đang tăng số lượng trẻ em
+            else if (input.attr("id") === "numChildren") {
+                // Kiểm tra nếu tổng số người lớn và trẻ em không vượt quá số chỗ còn nhận
+                if (totalAdults + totalChildren < quantityAvailable) {
+                    value++;
+                } else {
+                    toastr.error("Không thể thêm số trẻ em vượt quá số chỗ còn nhận!"); // Thông báo nếu vượt quá
+                }
+            }
+        } else if (value > min) {
+            value--;
+        }
 
             // Cập nhật số lượng vào input
             input.val(value);

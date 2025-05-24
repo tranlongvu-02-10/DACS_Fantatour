@@ -130,6 +130,14 @@ class Tours extends Model
         // dd($queryLog); // In ra log truy vấn nếu cần thiết
         return $tours;
     }
+    public function updateTours($tourId, $data)
+    {
+        $update = DB::table($this->table)
+            ->where('tourId', $tourId)
+            ->update($data);
+
+        return $update;
+    }
 
         
 }
