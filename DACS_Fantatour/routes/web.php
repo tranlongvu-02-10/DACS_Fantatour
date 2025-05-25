@@ -14,6 +14,7 @@ use App\Http\Controllers\clients\BookingController;
 use App\Http\Controllers\clients\UserProfileController;
 use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\clients\LoginGoogleController;
+use App\Http\Controllers\clients\PayPalController;
 use App\Http\Controllers\clients\SearchController;
 
 /*
@@ -68,3 +69,9 @@ Route::post('/change-avatar-profile', [UserProfileController::class, 'changeAvat
 //xử lý thông tin thanh toans
 Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking');
 Route::post('/create-booking', [BookingController::class, 'createBooking'])->name('create-booking');
+
+//thanh toán paypal
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');

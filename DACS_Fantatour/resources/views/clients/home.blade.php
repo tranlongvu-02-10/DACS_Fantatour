@@ -67,8 +67,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="destination1.html" class="theme-btn mt-10 style-two">
-                                <span data-hover="Explore Destinations">Khám phá Điểm đến</span>
+                            <a href="{{ route('destination') }}" class="theme-btn mt-10 style-two">
+                                <span data-hover="Khám phá Điểm đến">Khám phá Điểm đến</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                         </div>

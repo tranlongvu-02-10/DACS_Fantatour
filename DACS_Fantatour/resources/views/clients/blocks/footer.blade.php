@@ -1,66 +1,66 @@
 <!-- footer area start -->
-<footer class="main-footer footer-two bgp-bottom bgc-black rel z-15 pt-100 pb-115" style="background-image: url(assets/images/backgrounds/footer-two.png);">
+<footer class="main-footer footer-two bgp-bottom bgc-black rel z-15 pt-100 pb-115" style="background-image: url({{ asset('clients/assets/images/backgrounds/footer-two.png')}});">
     <div class="widget-area">
         <div class="container">
             <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2">
                 <div class="col col-small" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
                         <div class="footer-logo mb-40">
-                            <a href="{{ Route('home') }}"><img src="{{asset('clients/assets/images/logos/logo.png') }}" alt="Logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('clients/assets/images/logos/logo.png') }}" alt="Logo"></a>
                         </div>
                         <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6858419647233!2d106.75874497485786!3d10.83533628931709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527ae7b121297%3A0x9fda1a8492c5074d!2zNDgvMy8zQSDEkC4gU-G7kSAzLCBUcsaw4budbmcgVGjhu40sIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1746602269569!5m2!1svi!2s" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6857729938574!2d106.7587396101279!3d10.835341558060687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527ae7b121297%3A0x9fda1a8492c5074d!2zNDgvMy8zQSDEkC4gU-G7kSAzLCBUcsaw4budbmcgVGjhu40sIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1748119699944!5m2!1svi!2s" 
+                            style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col col-small" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-links ms-sm-5">
                         <div class="footer-title">
-                            <h5>Services</h5>
+                            <h5>Dịch vụ</h5>
                         </div>
                         <ul class="list-style-three">
-                            <li><a href="destination-details.html">Best Tour Guide</a></li>
-                            <li><a href="destination-details.html">Tour Booking</a></li>
-                            <li><a href="destination-details.html">Hotel Booking</a></li>
-                            <li><a href="destination-details.html">Ticket Booking</a></li>
+                            <li><a href="{{ route('travel-guides') }}">Hướng dẫn viên du lịch tốt nhất</a></li>
+                            <li><a href="{{ route('tours') }}">Đặt tour</a></li>
+                            <li><a href="{{ route('tours') }}">Đặt vé</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col col-small" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-links ms-md-4">
                         <div class="footer-title">
-                            <h5>Company</h5>
+                            <h5>Công ty</h5>
                         </div>
                         <ul class="list-style-three">
-                            <li><a href="about.html">About Company</a></li>
-                            <li><a href="blog.html">Community Blog</a></li>
-                            <li><a href="contact.html">Jobs and Careers</a></li>
-                            <li><a href="blog.html">latest News Blog</a></li>
+                            <li><a href="{{ route('about') }}">Giới thiệu về công ty</a></li>
+                            <li><a href="{{ route('contact') }}">Việc làm và nghề nghiệp</a></li>
+                            <li><a href="{{ route('contact') }}">Liên hệ với chúng tôi</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col col-small" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-links ms-lg-4">
                         <div class="footer-title">
-                            <h5>Destinations</h5>
+                            <h5>Điểm đến</h5>
                         </div>
                         <ul class="list-style-three">
-                            <li><a href="destination-details.html">African Safaris</a></li>
-                            <li><a href="destination-details.html">Alaska & Canada</a></li>
-                            <li><a href="destination-details.html">South America</a></li>
-                            <li><a href="destination-details.html">Middle East</a></li>
+                            <li><a href="{{ route('destination') }}">Miền Bắc</a></li>
+                            <li><a href="{{ route('destination') }}">Miền Trung</a></li>
+                            <li><a href="{{ route('destination') }}">Miền Nam</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col col-md-6 col-10 col-small" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-contact">
                         <div class="footer-title">
-                            <h5>Get In Touch</h5>
+                            <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i> 578 Level, D-block 45 Street Melbourne, Australia</li>
-                            <li><i class="fal fa-envelope"></i> <a href="mailto:supportrevelo@gmail.com">supportrevelo @gmail.com</a></li>
-                            <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123) 345 88</a></li>
+                            <li><i class="fal fa-map-marked-alt"></i>48/3/3A, Đường số 3, Trường thọ, Thủ đức< TP.HCM</li>
+                            <li><i class="fal fa-envelope"></i> <a
+                                    href="mailto:tranlongvu02102004@gmail.com">tranlongvu02102004@gmail.com</a></li>
+                            <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123)
+                                    345 88</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,16 +72,8 @@
             <div class="row">
                <div class="col-lg-5">
                     <div class="copyright-text text-center text-lg-start">
-                        <p>@Copy 2025 <a href="{{ Route('home') }}">Fantatour</a>, All rights reserved</p>
+                        <p>@Copy 2025 <a href="\">Fantatour</a>, All rights reserved</p>
                     </div>
-               </div>
-               <div class="col-lg-7 text-center text-lg-end">
-                   <ul class="footer-bottom-nav">
-                       <li><a href="about.html">Terms</a></li>
-                       <li><a href="about.html">Privacy Policy</a></li>
-                       <li><a href="about.html">Legal notice</a></li>
-                       <li><a href="about.html">Accessibility</a></li>
-                   </ul>
                </div>
             </div>
         </div>
@@ -127,6 +119,9 @@
 <!-- Custom script -->
 <script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
 <script src="{{asset('clients/assets/js/jquery.datetimepicker.full.min.js')}}"></script>
+{{-- paypal-payment  --}}
+<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
+
 
 </body>
 </html>

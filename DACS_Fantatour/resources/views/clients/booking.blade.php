@@ -141,6 +141,7 @@
                         <input type="text" placeholder="Mã giảm giá" style="width: 65%;">
                         <button style="width: 30%" class="booking-btn btn-coupon">Áp dụng</button>
                     </div>
+                    <div id="paypal-button-container"></div>
                     <button type="submit" class="booking-btn btn-submit-booking">Xác Nhận và Thanh Toán</button>
                 </div>
             </div>
