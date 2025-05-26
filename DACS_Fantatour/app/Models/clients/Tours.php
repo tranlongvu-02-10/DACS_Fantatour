@@ -139,6 +139,19 @@ class Tours extends Model
         return $update;
     }
 
+    //Lấy detail tour đã đặt
+    public function tourBooked($bookingId, $checkoutId)
+    {
+        $booked = DB::table($this->table)
+            ->join('tbl_bookingg', 'tbl_tourss.tourId', '=', 'tbl_bookingg.tourId')
+            ->join('tbl_checkoutt', 'tbl_bookingg.bookingId', '=', 'tbl_checkoutt.bookingId')
+            ->where('tbl_bookingg.bookingId', '=', $bookingId)
+            ->where('tbl_checkoutt.checkoutId', '=', $checkoutId)
+            ->first();
+
+        return $booked;
+    }
+
         
 }
 

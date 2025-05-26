@@ -16,6 +16,7 @@ use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\clients\LoginGoogleController;
 use App\Http\Controllers\clients\PayPalController;
 use App\Http\Controllers\clients\SearchController;
+use App\Http\Controllers\clients\TourBookedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,9 +70,17 @@ Route::post('/change-avatar-profile', [UserProfileController::class, 'changeAvat
 //xử lý thông tin thanh toans
 Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking');
 Route::post('/create-booking', [BookingController::class, 'createBooking'])->name('create-booking');
+Route::get('/booking', [BookingController::class, 'handlePaymentMomoCallback'])->name('handlePaymentMomoCallback');
 
 //thanh toán paypal
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+//thanh toán Momo
+Route::post('/create-momo-payment', [BookingController::class, 'createMomoPayment'])->name('createMomoPayment');
+
+
+//Tour booked
+Route::get('/tour-booked', [TourBookedController::class, 'index'])->name('tour-booked')->middleware('checkLoginClient');
