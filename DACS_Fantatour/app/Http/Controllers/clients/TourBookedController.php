@@ -44,5 +44,35 @@ class TourBookedController extends Controller
         // dd($tour_booked);
         return view("clients.tour-booked", compact('title', 'tour_booked', 'hide', 'bookingId'));
     }
+    public function cancelBooking(Request $req)
+    {
+        $tourId = $req->tourId;
+        $quantityAdults = $req->quantity__adults;
+        $quantityChildren = $req->quantity__children;
+        $bookingId = $req->bookingId;
+
+
+        $tour = $this->tour->getTourDetail($tourId);
+        $currentQuantity = $tour->quantity;
+
+        // Tính toán số lượng trả lại
+        $return_quantity = $quantityAdults + $quantityChildren;
+
+        // Cập nhật lại số lượng mới cho tour
+        $newQuantity = $currentQuantity + $return_quantity;
+        $updateQuantity = $this->tour->updateTours($tourId, ['quantity' => $newQuantity]);
+
+        // Hủy booking
+        $updateBooking = $this->booking->cancelBooking($bookingId);
+
+        if ($updateQuantity && $updateBooking) {
+            toastr()->success('Hủy thành công!', 'Thông báo');
+            
+        }else{
+            toastr()->error('Có lỗi xảy ra !', 'Thông báo');
+        }
+
+        return redirect()->route('home');
+    }
 
 }

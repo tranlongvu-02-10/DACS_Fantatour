@@ -24,6 +24,10 @@ class Home extends Model
             $tour->imagess = DB::table('tbl_imagess')
                 ->where('tourId', $tour->tourId)
                 ->pluck('imageURL');
+            
+            // Tạo instance của Tours và gọi reviewStats
+            $toursModel = new Tours();
+            $tour->rating = $toursModel->reviewStats($tour->tourId)->averageRating;
    
         }
         return $tours;  

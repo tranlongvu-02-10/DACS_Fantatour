@@ -31,4 +31,30 @@ class User extends Model
 
         return $update;
     }
+    public function getMyTours($id)
+    {
+        $myTours =  DB::table('tbl_bookingg')
+        ->join('tbl_tourss', 'tbl_bookingg.tourId', '=', 'tbl_tourss.tourId')
+        ->join('tbl_checkoutt', 'tbl_bookingg.bookingId', '=', 'tbl_checkoutt.bookingId')
+        ->where('tbl_bookingg.userId', $id)
+        ->orderByDesc('tbl_bookingg.bookingDate')
+        ->take(3)
+        ->get();
+
+        foreach ($myTours as $tour) {
+            // Lấy rating từ tbl_reviews cho mỗi tour
+            $tour->rating = DB::table('tbl_reviewss')
+                ->where('tourId', $tour->tourId)
+                ->where('userId', $id)
+                ->value('rating'); // Dùng value() để lấy giá trị rating
+        }
+        foreach ($myTours as $tour) {
+            // Lấy danh sách hình ảnh thuộc về tour
+            $tour->images = DB::table('tbl_imagess')
+                ->where('tourId', $tour->tourId)
+                ->pluck('imageURL');
+        }
+
+        return $myTours;
+    }
 }

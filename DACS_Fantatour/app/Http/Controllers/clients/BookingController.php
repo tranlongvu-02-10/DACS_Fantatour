@@ -192,5 +192,15 @@ class BookingController extends Controller
             return view('clients.booking', compact('title', 'tour'));
         }
     }
+    //Kiểm tra người dùng đã đặt và hoàn thành tour hay chưa để đánh giá
+    public function checkBooking(Request $req){
+        $tourId = $req->tourId;
+        $userId = $this->getUserId();
+        $check = $this->booking->checkBooking($tourId,$userId);
+        if (!$check) {
+            return response()->json(['success' => false]);
+        }
+        return response()->json(['success' => true]);
+    }
 
 }

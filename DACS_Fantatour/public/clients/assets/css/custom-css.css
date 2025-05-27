@@ -41,15 +41,29 @@
     padding: 8px 0;
     margin: 0;
     position: absolute;
-    top: 50px;              /* Hiển thị dưới button */
+    top: 50px;
     right: 0;
     background-color: #ffffff;
-    display: none;          /* Mặc định ẩn menu */
+    display: none;
     border: 1px solid #ddd;
     border-radius: 6px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     z-index: 1000;
-    min-width: 160px;
+    min-width: 180px;
+}
+
+.dropdown-menu li {
+    padding: 10px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dropdown-menu li + li {
+    border-top: 1px solid #eee; /* Thêm đường kẻ ngang giữa các mục */
+}
+
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
 }
 
 

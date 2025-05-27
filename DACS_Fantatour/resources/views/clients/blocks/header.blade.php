@@ -114,8 +114,10 @@
                         <!-- Nav Search -->
                         <div class="nav-search">
                             <button class="far fa-search"></button>
-                            <form action="#" class="hide">
-                                <input type="text" placeholder="Search" class="searchbox" required="">
+                            <form action="#" class="hide" method="GET">
+                                <input type="text" name="keyword" placeholder="Search" class="searchbox" required>
+                                <i class="fa fa-microphone" aria-hidden="true" style="margin: 0 16px"
+                                    id="voice-search"></i>
                                 <button type="submit" class="searchbutton far fa-search"></button>
                             </form>
                         </div>
@@ -146,6 +148,7 @@
                                                     @if (session()->has('username'))
                                                         <li>{{ session()->get('username') }}</li>
                                                         <li><a href="{{ route('user-profile') }}">Thông tin cá nhân</a></li>
+                                                        <li><a href="{{ route('my-tours') }}">Tour đã đặt</a></li>
                                                         <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                                     @else
                                                         <li><a href="{{ route('login') }}">Đăng nhập</a></li>
