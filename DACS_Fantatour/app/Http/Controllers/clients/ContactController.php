@@ -27,7 +27,7 @@ class ContactController extends Controller
             'message'     => $message
         ];
 
-        $createContact = DB::table('tbl_contact')->insert($dataContact); 
+        $createContact = DB::table('tbl_contactt')->insert($dataContact); 
 
         if($createContact){
             toastr()->success('Gửi thành công. Chúng tôi sẽ sớm liên hệ tới bạn!');

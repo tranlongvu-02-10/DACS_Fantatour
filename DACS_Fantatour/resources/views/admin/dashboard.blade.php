@@ -19,10 +19,6 @@
                         <div class="count green"><i class="fa fa-sort-asc"></i> {{ $summary['countBooking'] }}</div>
                     </div>
                     <div class="col-md-3 col-sm-4  tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Số người dùng đăng ký</span>
-                        <div class="count green"><i class="fa fa-sort-asc"></i> 2,500</div>
-                    </div>
-                    <div class="col-md-3 col-sm-4  tile_stats_count">
                         <span class="count_top"><i class="fa fa-user"></i> Tổng doanh thu</span>
                         <div class="count red">{{ number_format($summary['totalAmount'], 0, ',', '.') }} vnđ</div>
                         <span class="sparkline_two" style="height: 160px;"><canvas width="196" height="40"
