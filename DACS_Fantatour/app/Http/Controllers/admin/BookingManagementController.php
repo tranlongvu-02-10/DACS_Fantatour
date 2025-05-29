@@ -63,7 +63,7 @@ class BookingManagementController extends Controller
         // dd($invoice_booking);
         $hide='hide';
         if ($invoice_booking->transactionId == null) {
-            $invoice_booking->transactionId = 'Thanh toán tại công ty Travela';
+            $invoice_booking->transactionId = 'Thanh toán tại Fantatour';
         }
         if ($invoice_booking->paymentStatus === 'n') {
             $hide = '';
@@ -80,7 +80,7 @@ class BookingManagementController extends Controller
         $invoice_booking = $this->booking->getInvoiceBooking($bookingId);
 
         if ($invoice_booking->transactionId == null) {
-            $invoice_booking->transactionId = 'Thanh toán tại công ty Travela';
+            $invoice_booking->transactionId = 'Thanh toán tại Fantatour';
         }
 
         try {

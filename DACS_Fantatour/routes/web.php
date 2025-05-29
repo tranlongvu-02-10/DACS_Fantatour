@@ -42,23 +42,23 @@ use App\Http\Controllers\admin\UserManagementController;
 //   return view(view: 'home');
 //});
 
-Route::get(uri: '/', action: [HomeController::class, 'index']);
-Route::get(uri: '/home', action: [HomeController::class, 'index'])->name(name: 'home');
-Route::get(uri:'/about', action: [AboutController::class, 'index'])->name(name: 'about');
-Route::get(uri:'/tours', action: [ToursController::class, 'index'])->name(name: 'tours');
-Route::get(uri:'/travel-guides', action: [TravelguidesController::class, 'index'])->name(name: 'travel-guides');
-Route::get(uri:'/destination', action: [DestinationController::class, 'index'])->name(name: 'destination');
-Route::get(uri:'/tours-detail/{id?}', action: [TourdetaildetailController::class, 'index'])->name(name: 'tours-detail');
-Route::get(uri:'/blogs', action: [BlogController::class, 'index'])->name(name: 'blogs');
-Route::get(uri:'/blog-detail', action: [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
+Route::get('/', [HomeController::class, 'index']);
+Route::get( '/home', [HomeController::class, 'index'])->name(name: 'home');
+Route::get('/about', [AboutController::class, 'index'])->name(name: 'about');
+Route::get('/tours', [ToursController::class, 'index'])->name(name: 'tours');
+Route::get('/travel-guides', [TravelguidesController::class, 'index'])->name(name: 'travel-guides');
+Route::get('/destination',  [DestinationController::class, 'index'])->name(name: 'destination');
+Route::get('/tours-detail/{id?}', action: [TourdetaildetailController::class, 'index'])->name(name: 'tours-detail');
+Route::get('/blogs', [BlogController::class, 'index'])->name(name: 'blogs');
+Route::get('/blog-detail', [BlogDetailController::class, 'index'])->name(name: 'blog-detail');
 
 
 //xử lý đăng nhập
-Route::get(uri:'/login', action: [LoginController::class, 'index'])->name(name: 'login');
-Route::post(uri:'/register', action: [LoginController::class, 'register'])->name(name: 'register');
-Route::post(uri:'/login', action: [LoginController::class, 'login'])->name(name: 'user-login');
-Route::get(uri:'/logout', action: [LoginController::class, 'logout'])->name(name: 'logout');
-Route::get(uri:'activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');
+Route::get('/login', [LoginController::class, 'index'])->name(name: 'login');
+Route::post('/register', [LoginController::class, 'register'])->name(name: 'register');
+Route::post('/login', [LoginController::class, 'login'])->name(name: 'user-login');
+Route::get('/logout', [LoginController::class, 'logout'])->name(name: 'logout');
+Route::get('activate-account/{token}', action: [LoginController::class, 'activateAccount'])->name(name: 'activate.account');
 
 //Đăng nhập bằng gg
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login-google');

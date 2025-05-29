@@ -17,12 +17,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         View::composer('admin.blocks.sidebar', function ($view) {

@@ -320,28 +320,78 @@ $(document).ready(function () {
             },
         });
 
-        // Khởi tạo Dropzone
-        Dropzone.autoDiscover = false; // Ngăn Dropzone tự động init
-        dropzoneOldImages = new Dropzone("#myDropzone-listTour", {
-            url: "http://127.0.0.1:8000/admin/add-temp-images", // URL upload ảnh
-            method: "post",
-            paramName: "image",
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            dictRemoveFile: "Xóa ảnh",
-            autoProcessQueue: true, // Không tự động upload
-            maxFiles: 5, // Giới hạn số file tối đa
-            parallelUploads: 5, // Số file được upload song song
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // Thêm CSRF token vào headers
-            },
-            init: function () {
-                // Lắng nghe sự kiện 'sending' để thêm thông tin vào formData
-                this.on("sending", function (file, xhr, formData) {
-                    formData.append("tourId", tourIdSendingImage); // tourId là ID của tour mà bạn cần gửi
-                });
-            },
+       // Khởi tạo form tải lên ảnh
+// Tương tự Dropzone.autoDiscover = false, không cần tự động khởi tạo
+var dropzoneOldImages = {
+    // Giả lập đối tượng Dropzone để giữ cấu trúc
+    init: function () {
+        // Tạo form HTML thay vì Dropzone
+        var form = document.createElement("form");
+        form.id = "myDropzone-listTour";
+        form.action = "http://127.0.0.1:8000/admin/add-temp-images"; // URL upload ảnh
+        form.method = "post";
+        form.enctype = "multipart/form-data";
+
+        // Thêm CSRF token vào form
+        var csrfInput = document.createElement("input");
+        csrfInput.type = "hidden";
+        csrfInput.name = "_token";
+        csrfInput.value = $('meta[name="csrf-token"]').attr("content"); // Giữ nguyên cách lấy CSRF token
+        form.appendChild(csrfInput);
+
+        // Thêm input ẩn cho tourId
+        var tourIdInput = document.createElement("input");
+        tourIdInput.type = "hidden";
+        tourIdInput.name = "tourId";
+        tourIdInput.value = tourIdSendingImage; // tourId là ID của tour mà bạn cần gửi
+        form.appendChild(tourIdInput);
+
+        // Tạo input file
+        var fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.name = "image[]"; // Sửa thành mảng để hỗ trợ nhiều file
+        fileInput.accept = ".jpg,.png"; // Tương tự acceptedFiles
+        fileInput.multiple = true; // Cho phép chọn nhiều file
+        fileInput.addEventListener("change", function () {
+            // Kiểm tra giới hạn 5 file
+            if (this.files.length > 5) {
+                alert("Bạn chỉ có thể tải lên tối đa 5 ảnh!");
+                this.value = ""; // Xóa các file được chọn
+                return;
+            }
+            // Tự động submit form khi chọn file (tương tự autoProcessQueue: true)
+            form.submit();
         });
+        form.appendChild(fileInput);
+
+        // Tạo nút "Xóa ảnh" (giả lập addRemoveLinks)
+        var removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.textContent = "Xóa ảnh"; // Tương tự dictRemoveFile
+        removeButton.addEventListener("click", function () {
+            fileInput.value = ""; // Xóa file đã chọn
+            alert("Đã xóa các ảnh được chọn!");
+        });
+        form.appendChild(removeButton);
+
+        // Thêm form vào DOM
+        var container = document.querySelector("#myDropzone-listTour");
+        if (container) {
+            container.appendChild(form);
+        } else {
+            console.error("Không tìm thấy phần tử #myDropzone-listTour");
+        }
+
+        // Giả lập sự kiện 'sending'
+        form.addEventListener("submit", function (event) {
+            // Có thể thêm logic xử lý trước khi gửi, tương tự sự kiện 'sending'
+            console.log("Đang gửi form với tourId:", tourIdInput.value);
+        });
+    }
+};
+
+// Gọi init để khởi tạo form
+dropzoneOldImages.init();
 
         $("#wizard_verticle").smartWizard({
             transitionEffect: "slide",
@@ -354,7 +404,7 @@ $(document).ready(function () {
 
     function loadOldImages(images) {
         images.forEach(function (image) {
-            let imageUrl = `/admin/assets/images/gallery-tours/${image.imageURL}`; // Tạo đường dẫn đầy đủ
+            let imageUrl = `/clients/assets/images/gallery-tours/${image.imageURL}`; // Tạo đường dẫn đầy đủ
 
             let mockFile = {
                 name: image.imageURL, // Tên tệp ảnh

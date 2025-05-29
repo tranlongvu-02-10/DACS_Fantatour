@@ -39,6 +39,7 @@ class ToursController extends Controller
 
         return view('clients.tours', compact('title', 'tours', 'domainsCount','toursPopular'));
     }
+    
 
     //Xử lý filter tours
     public function filterTours(Request $req)

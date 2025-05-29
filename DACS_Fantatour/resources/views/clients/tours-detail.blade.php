@@ -10,7 +10,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
                         data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                         <li class="breadcrumb-item active">{{ $title }}</li>
                     </ol>
                 </nav>
@@ -254,35 +254,6 @@
                                     88</a></li>
                         </ul>
                     </div>
-                    @if (!empty($tourRecommendations))
-                        <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="50">
-                            <h6 class="widget-title">Tours tương tự</h6>
-                            @foreach ($tourRecommendations as $tour)
-                                <div class="destination-item tour-grid style-three bgc-lighter">
-                                    <div class="image">
-                                        {{-- <span class="badge">10% Off</span> --}}
-                                        <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images[0]) }}"
-                                            alt="Tour" style="max-height: 137px">
-                                    </div>
-                                    <div class="content">
-                                        <div class="destination-header">
-                                            <span class="location"><i class="fal fa-map-marker-alt"></i>
-                                                {{ $tour->destination }}</span>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <span>({{ $tour->rating }})</span>
-                                            </div>
-                                        </div>
-                                        <h6><a
-                                                href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
-                                        </h6>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-
                 </div>
             </div>
         </div>
