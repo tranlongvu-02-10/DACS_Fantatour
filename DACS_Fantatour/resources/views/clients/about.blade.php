@@ -156,26 +156,10 @@
             <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="team-item hover-content" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    <img src="{{ asset('clients/assets/images/team/guide-dien.jpg') }}" alt="Guide">
+                    <img src="{{ asset('clients/assets/images/team/longvu.jpg') }}" alt="Guide">
                     <div class="content">
-                        <h6>NGUYEN MINH DIEN</h6>
+                        <h6>TRẦN LONG VŨ</h6>
                         <span class="designation">Founder</span>
-                        <div class="social-style-one inner-content">
-                            <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="team-item hover-content" data-aos="fade-up" data-aos-duration="1500"
-                    data-aos-offset="50">
-                    <img src="{{ asset('clients/assets/images/team/guide-ngan.jpg') }}" alt="Guide">
-                    <div class="content">
-                        <h6>BAO NGAN</h6>
-                        <span class="designation">Co-founder</span>
                         <div class="social-style-one inner-content">
                             <a href="contact.html"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="fab fa-facebook-f"></i></a>

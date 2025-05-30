@@ -98,7 +98,7 @@
                             <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i> 48/3/3A, Đường số 3, Trường thọ, Thủ đức< TP.HCM</li>
+                            <li><i class="fal fa-map-marked-alt"></i> 48/3/3A, Đường số 3, Trường thọ, Thủ đức, TP.HCM</li>
                             <li><i class="fal fa-envelope"></i> <a
                                     href="mailto:tranlongvu02102004@gmail.com">tranlongvu02102004@gmail.com</a></li>
                             <li><i class="fal fa-clock"></i> Thứ 2 - Thứ 6, 08am - 05pm</li>
