@@ -35,7 +35,7 @@ class SearchController extends Controller
             'ct' => 'Cần Thơ',
             'vt' => 'Vũng Tàu',
             'qn' => 'Quảng Ninh',
-            'la' => 'Lào Cai',
+            'sp' => 'SAPA',
             'bd' => 'Bình Định',
         ];
 

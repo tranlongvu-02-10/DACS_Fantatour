@@ -196,7 +196,7 @@
                                                 <a href="{{ route('admin.booking-detail',['id' => $item->bookingId]) }}">{{ $item->bookingId }}</a>
                                             </th>
                                             <td>{{ $item->fullName }}</td>
-                                            <td>{{ $item->tourId }}</td>
+                                            <td>{{ $item->tour_name }}</td>
                                             <td>{{ number_format($item->totalPrice, 0, ',', '.') }}</td>
                                             <td>
                                                 <span class="badge badge-warning">Chưa xác nhận</span>

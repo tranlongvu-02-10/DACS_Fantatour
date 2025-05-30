@@ -26,7 +26,7 @@
                         <option value="ct">Cần Thơ</option>
                         <option value="vt">Vũng Tàu</option>
                         <option value="qn">Quảng Ninh</option>
-                        <option value="la">Lào Cai (Sa Pa)</option>
+                        <option value="sp">SAPA</option>
                         <option value="bd">Bình Định (Quy Nhơn)</option>
                     </select>
                     
