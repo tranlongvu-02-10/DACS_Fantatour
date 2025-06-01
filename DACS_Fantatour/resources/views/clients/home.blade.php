@@ -48,357 +48,207 @@
          
          
         <!-- About Us Area start -->
-        <section class="about-us-area py-100 rpb-90 rel z-1">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-5 col-lg-6">
-                        <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="section-title mb-25">
-                                <h2>Du lịch với sự tự tin Lý do hàng đầu để chọn fantatour của chúng tôi</h2>
-                            </div>
-                            <p>Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn và những điểm tham quan không thể bỏ qua</p>
-                            <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Năm</span> của kinh nghiệm</span></div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="counter-item counter-text-wrap">
-                                        <span class="count-text k-plus" data-speed="3000" data-stop="3">0</span>
-                                        <span class="counter-title">Điểm đến phổ biến</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="counter-item counter-text-wrap">
-                                        <span class="count-text m-plus" data-speed="3000" data-stop="9">0</span>
-                                        <span class="counter-title">Khách hàng hài lòng</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="{{ route('destination') }}" class="theme-btn mt-10 style-two">
-                                <span data-hover="Khám phá Điểm đến">Khám phá Điểm đến</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
+<section class="about-us-area py-100 rpb-90 rel z-1">
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-xl-5 col-lg-6">
+            <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                <div class="section-title mb-25">
+                    <h2>Du lịch với sự tự tin Lý do hàng đầu để chọn fantatour của chúng tôi</h2>
+                </div>
+                <p>Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn và những điểm tham quan không thể bỏ qua</p>
+                <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Năm</span> của kinh nghiệm</span></div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="counter-item counter-text-wrap">
+                            <span class="count-text k-plus" data-speed="3000" data-stop="3">0</span>
+                            <span class="counter-title">Điểm đến phổ biến</span>
                         </div>
                     </div>
-                    <div class="col-xl-7 col-lg-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="about-us-image">
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape1.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape2.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape3.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape4.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape5.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape6.png')}}" alt="Shape"></div>
-                            <div class="shape"><img src="{{asset('clients/assets/images/about/shape7.png')}}" alt="Shape"></div>
-                            <img src="{{asset('clients/assets/images/about/about.png')}}" alt="About">
+                    <div class="col-6">
+                        <div class="counter-item counter-text-wrap">
+                            <span class="count-text m-plus" data-speed="3000" data-stop="9">0</span>
+                            <span class="counter-title">Khách hàng hài lòng</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ route('destination') }}" class="theme-btn mt-10 style-two">
+                    <span data-hover="Khám phá Điểm đến">Khám phá Điểm đến</span>
+                    <i class="fal fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-7 col-lg-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+        <img src="{{asset('clients/assets/images/features/anh.webp')}}" alt="features" style="width:100%; height:auto;">
+        </div>
+    </div>
+</div>
+</section>
+<!-- About Us Area end -->
+
+<!-- Features Area start -->
+<section class="features-area pt-100 pb-45 rel z-1 features-bg">
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-xl-6">
+            <div class="features-content-part mb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                <div class="section-title mb-60">
+                    <h2>"Khám Phá Những Hành Trình Tuyệt Vời – Nơi Mỗi Chuyến Đi Là Một Ký Ức Đáng Nhớ Cùng Fantatour"</h2>
+                </div>
+                <div class="features-customer-box">
+                    <div class="image">
+                        <img src="{{asset('clients/assets/images/features/features-box.jpg')}}" alt="Features">
+                    </div>
+                    <div class="content">
+                        <div class="feature-authors mb-15">
+                            <img src="{{asset('clients/assets/images/features/27b7e2a7ec8d59d3009c (2).jpg')}}" alt="Author">
+                            <span>4k+</span>
+                        </div>
+                        <h6>Khách hàng hài lòng</h6>
+                        <div class="divider style-two counter-text-wrap my-25"><span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span></div>
+                        <p>Chúng tôi tự hào cung cấp các hành trình được cá nhân hóa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+            <div class="row pb-25">
+                <div class="col-md-6 d-flex flex-column justify-content-between h-100">
+                    <div class="feature-item h-100">
+                        <div class="icon"><i class="flaticon-tent"></i></div>
+                        <div class="content">
+                            <h5><a href="tour-details.html">Cắm trại</a></h5>
+                            <p>Cắm trại là cách tuyệt vời để kết nối với thiên nhiên</p>
+                        </div>
+                    </div>
+                    <div class="feature-item h-100">
+                        <div class="icon"><i class="flaticon-tent"></i></div>
+                        <div class="content">
+                            <h5><a href="tour-details.html">Chèo thuyền</a></h5>
+                            <p>Chèo thuyền là hoạt động ngoài trời thú vị mang tính phiêu lưu</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex flex-column justify-content-between h-100">
+                    <div class="feature-item h-100">
+                        <div class="icon"><i class="flaticon-tent"></i></div>
+                        <div class="content">
+                            <h5><a href="tour-details.html">Xe đạp leo núi</a></h5>
+                            <p>Đạp xe leo núi là môn thể thao thú vị giúp rèn luyện thể lực</p>
+                        </div>
+                    </div>
+                    <div class="feature-item h-100">
+                        <div class="icon"><i class="flaticon-tent"></i></div>
+                        <div class="content">
+                            <h5><a href="tour-details.html">Câu cá & Thuyền</a></h5>
+                            <p>Câu cá và chèo thuyền mang lại niềm vui là hoạt động cốt lõi</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- About Us Area end -->
-         
-         
-       <!-- Popular Destinations Area start -->
-<section class="popular-destinations-area rel z-1">
+
+        </div>
+    </div>
+</div>
+</section>
+<!-- Features Area end -->
+<!-- Popular Destinations Area start -->
+    <section class="popular-destinations-area rel z-1">
     <div class="container-fluid">
-        <div class="popular-destinations-wrap br-20 bgc-lighter pt-100 pb-70">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Khám phá các điểm đến phổ biến</h2>
-                        <p>Website <span class="count-text plus" data-speed="3000" data-stop="24080">0</span> trải
-                            nghiệm phổ biến nhất</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    @php $count = 0; @endphp
-                    @foreach ($toursPopular as $tour)
-                        @if ($count == 2 || $count == 3)
-                            <!-- Cột thứ 3 và thứ 4 sẽ là col-md-6 -->
-                            <div class="col-md-6 item ">
-                            @else
-                                <!-- Các cột còn lại sẽ là col-xl-3 col-md-6 -->
-                                <div class="col-xl-3 col-md-6 item ">
-                        @endif
-
-                        <div class="destination-item style-two" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image" style="max-height: 250px">
-                                <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
-                                    alt="Destination">
-                            </div>
-                            <div class="content">
-                                <h6 class="tour-title"><a
-                                        href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
-                                </h6>
-                                <span class="time">{{ $tour->time }}</span>
-                                <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="more"><i
-                                        class="fas fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-
-                </div> <!-- Đóng div col-md-6 hoặc col-xl-3 col-md-6 -->
-
-                @php $count++; @endphp
-                @endforeach
+    <div class="popular-destinations-wrap br-20 bgc-lighter pt-100 pb-70">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up"
+                data-aos-duration="1500" data-aos-offset="50">
+                <h2>Khám phá các điểm đến phổ biến</h2>
+                <p>Website trải
+                    nghiệm phổ biến nhất</p>
             </div>
         </div>
     </div>
-    </div>
-</section>
-<!-- Popular Destinations Area end -->
+    <div class="container">
+        <div class="row justify-content-center">
+            @php $count = 0; @endphp
+            @foreach ($toursPopular as $tour)
+                @if ($count == 2 || $count == 3)
+                    <!-- Cột thứ 3 và thứ 4 sẽ là col-md-6 -->
+                    <div class="col-md-6 item ">
+                    @else
+                        <!-- Các cột còn lại sẽ là col-xl-3 col-md-6 -->
+                        <div class="col-xl-3 col-md-6 item ">
+                @endif
 
-        
-        
-        <!-- Features Area start -->
-        <section class="features-area pt-100 pb-45 rel z-1">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6">
-                        <div class="features-content-part mb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="section-title mb-60">
-                                <h2>Trải nghiệm du lịch tuyệt đỉnh mang đến sự khác biệt cho fantatour chúng tôi</h2>
-                            </div>
-                            <div class="features-customer-box">
-                                <div class="image">
-                                    <img src="{{asset('clients/assets/images/features/features-box.jpg')}}" alt="Features">
-                                </div>
-                                <div class="content">
-                                    <div class="feature-authors mb-15">
-                                        <img src="{{asset('clients/assets/images/features/feature-author1.jpg')}}" alt="Author">
-                                        <img src="{{asset('clients/assets/images/features/feature-author2.jpg')}}" alt="Author">
-                                        <img src="{{asset('clients/assets/images/features/feature-author3.jpg')}}" alt="Author">
-                                        <span>4k+</span>
-                                    </div>
-                                    <h6>850K+ Khách hàng hài lòng</h6>
-                                    <div class="divider style-two counter-text-wrap my-25"><span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span></div>
-                                    <p>Chúng tôi tự hào cung cấp các hành trình được cá nhân hóa</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="destination-item style-two" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="image" style="max-height: 250px">
+                        <a href="#" class="heart"><i class="fas fa-heart"></i></a>
+                        <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
+                            alt="Destination">
                     </div>
-                    <div class="col-xl-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="row pb-25">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <div class="icon"><i class="flaticon-tent"></i></div>
-                                    <div class="content">
-                                        <h5><a href="tour-details.html">Cắm trại</a></h5>
-                                        <p>Cắm trại là cách tuyệt vời để kết nối với thiên nhiên</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="icon"><i class="flaticon-tent"></i></div>
-                                    <div class="content">
-                                        <h5><a href="tour-details.html">Chèo thuyền</a></h5>
-                                        <p>Chèo thuyền là một hoạt động ngoài trời thú vị mang tính phiêu lưu</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item mt-20">
-                                    <div class="icon"><i class="flaticon-tent"></i></div>
-                                    <div class="content">
-                                        <h5><a href="tour-details.html">Xe đạp leo núi</a></h5>
-                                        <p>Đạp xe leo núi là môn thể thao thú vị giúp rèn luyện thể lực</p>
-                                    </div>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="icon"><i class="flaticon-tent"></i></div>
-                                    <div class="content">
-                                        <h5><a href="tour-details.html">Câu cá & Thuyền</a></h5>
-                                        <p>Câu cá và chèo thuyền mang lại niềm vui là hoạt động cốt lõi</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="content">
+                        <h6 class="tour-title"><a
+                                href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                        </h6>
+                        <span class="time">{{ $tour->time }}</span>
+                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="more"><i
+                                class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Features Area end -->
-      
-        <!-- Testimonials Area start -->
-        <section class="testimonials-area rel z-1">
-            <div class="container">
-                <div class="testimonials-wrap bgc-lighter">
-                    <div class="row">
-                        <div class="col-lg-5 rel" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="testimonial-left-image rmb-55" style="background-image: url({{asset('clients/assets/images/testimonials/testimonial-left.jpg')}});"></div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="testimonial-right-content" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                                <div class="section-title mb-55">
-                                    <h2><span>5280</span>  Khách hàng toàn cầu nói về chúng tôi Dịch vụ</h2>
-                                </div>
-                                <div class="testimonials-active">
-                                    <div class="testimonial-item">
-                                        <div class="testi-header">
-                                            <div class="quote"><i class="flaticon-double-quotes"></i></div>
-                                            <h4>Dịch vụ chất lượng</h4>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="text">"Chuyến đi của chúng tôi hoàn toàn hoàn hảo, cảm ơn công ty du lịch này! Họ chăm lo mọi chi tiết, từ chỗ ở, và thậm chí gợi ý những trải nghiệm tuyệt vời"</div>
-                                        <div class="author">
-                                            <div class="image"><img src="{{asset('clients/assets/images/testimonials/author.jpg')}}" alt="Author"></div>
-                                            <div class="content">
-                                                <h5>Randall V. Vasquez</h5>
-                                                <span>Graphics Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-item">
-                                        <div class="testi-header">
-                                            <div class="quote"><i class="flaticon-double-quotes"></i></div>
-                                            <h4>Dịch vụ chất lượng</h4>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="text">"Chuyến đi của chúng tôi hoàn toàn hoàn hảo, cảm ơn công ty du lịch này! Họ chăm lo mọi chi tiết, từ chỗ ở, và thậm chí gợi ý những trải nghiệm tuyệt vời"</div>
-                                        <div class="author">
-                                            <div class="image"><img src="{{asset('clients/assets/images/testimonials/author.jpg')}}" alt="Author"></div>
-                                            <div class="content">
-                                                <h5>Randall V. Vasquez</h5>
-                                                <span>Graphics Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Testimonials Area end -->
+
+        </div> <!-- Đóng div col-md-6 hoặc col-xl-3 col-md-6 -->
+
+        @php $count++; @endphp
+        @endforeach
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+<!-- Popular Destinations Area end -->
          
          
         <!-- CTA Area start -->
-        <section class="cta-area pt-100 rel z-1">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="cta-item" style="background-image: url({{asset('clients/assets/images/cta/cta1.jpg')}});">
-                            <span class="category">Cắm trại</span>
-                            <h2>Khám phá du lịch tốt nhất thế giới</h2>
-                            <a href="tour-details.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Explore Tours">Khám phá các tour du lịch</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="cta-item" style="background-image: url({{asset('clients/assets/images/cta/cta2.jpg')}});">
-                            <span class="category">Bãi biển</span>
-                            <h2>World largest Sea Beach in Thailand</h2>
-                            <a href="tour-details.html" class="theme-btn style-two">
-                                <span data-hover="Explore Tours">Khám phá các tour du lịch</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="cta-item" style="background-image: url({{asset('clients/assets/images/cta/cta3.jpg')}});">
-                            <span class="category">Thác nước</span>
-                            <h2>Largest Water falls Bali, Indonesia</h2>
-                            <a href="tour-details.html" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Explore Tours">Khám phá các tour du lịch</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+<section class="cta-area pt-100 rel z-1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-duration="1500" data-aos-offset="50">
+                <div class="cta-item"
+                    style="background-image: url( {{ asset('clients/assets/images/cta/cta1.jpg') }});">
+                    <span class="category">Khám Phá Vẻ Đẹp Văn Hóa Việt</span>
+                    <h2>Tìm hiểu những giá trị văn hóa độc đáo của các vùng miền Việt Nam.</h2>
+                    <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
+                        <span data-hover="Khám phá">Khám phá</span>
+                        <i class="fal fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-        <!-- CTA Area end -->
-         
-         
-        <!-- Blog Area start -->
-        <section class="blog-area py-70 rel z-1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center counter-text-wrap mb-70" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <h2>Đọc tin tức mới nhất & Blog</h2>
-                            <p>Một trang wed <span class="count-text plus bgc-primary" data-speed="3000" data-stop="34500">0</span> trải nghiệm phổ biến nhất mà bạn sẽ nhớ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-md-6">
-                        <div class="blog-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="content">
-                                <a href="blog.html" class="category">Du lịch</a>
-                                <h5><a href="blog-details.html">Hướng dẫn hoàn hảo để lập kế hoạch cho kỳ nghỉ trong mơ của bạn với fantatour</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Bình luận (5)</a></li>
-                                </ul>
-                            </div>
-                            <div class="image">
-                                <img src="{{asset('clients/assets/images/blog/blog1.jpg')}}" alt="Blog">
-                            </div>
-                            <a href="blog-details.html" class="theme-btn">
-                                <span data-hover="Book Now">Đọc thêm</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="blog-item" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="content">
-                                <a href="blog.html" class="category">Du lịch</a>
-                                <h5><a href="blog-details.html">Những trải nghiệm trong danh sách mong muốn của công ty du lịch fantatour</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Bình luận (5)</a></li>
-                                </ul>
-                            </div>
-                            <div class="image">
-                                <img src="{{asset('clients/assets/images/blog/blog2.jpg')}}" alt="Blog">
-                            </div>
-                            <a href="blog-details.html" class="theme-btn">
-                                <span data-hover="Book Now">Đọc thêm</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="blog-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="content">
-                                <a href="blog.html" class="category">Du lịch</a>
-                                <h5><a href="blog-details.html">Khám phá Văn hóa và Ẩm thực Du lịch của Công ty Du lịch Điểm đến Ẩm thực</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Bình luận (5)</a></li>
-                                </ul>
-                            </div>
-                            <div class="image">
-                                <img src="{{asset('clients/assets/images/blog/blog3.jpg')}}" alt="Blog">
-                            </div>
-                            <a href="blog-details.html" class="theme-btn">
-                                <span data-hover="Book Now">Đọc thêm</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="50" data-aos-duration="1500"
+                data-aos-offset="50">
+                <div class="cta-item"
+                    style="background-image: url( {{ asset('clients/assets/images/cta/cta2.jpg') }});">
+                    <span class="category">Bãi biển Sea</span>
+                    <h2>Bãi trong xanh dạt dào ở Việt Nam</h2>
+                    <a href="{{ route('tours') }}" class="theme-btn style-two">
+                        <span data-hover="Khám phá">Khám phá</span>
+                        <i class="fal fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-        <!-- Blog Area end -->
-
+            <div class="col-xl-4 col-md-6" data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
+                data-aos-offset="50">
+                <div class="cta-item"
+                    style="background-image: url( {{ asset('clients/assets/images/cta/cta3.jpg') }});">
+                    <span class="category">Thác nước</span>
+                    <h2>Thác nước lớn nhất Việt Nam</h2>
+                    <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
+                        <span data-hover="Khám phá">Khám phá</span>
+                        <i class="fal fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CTA Area end -->
 @include('clients.blocks.footer_home')
            
        

@@ -23,13 +23,14 @@ class SearchController extends Controller
 
         $destinationMap = [
             'dn' => 'Đà Nẵng',
+            'qnn'=> 'Quảng Nam',
             'cd' => 'Côn Đảo',
             'hn' => 'Hà Nội',
             'hcm' => 'TP. Hồ Chí Minh',
             'hl' => 'Hạ Long',
             'nb' => 'Ninh Bình',
             'pq' => 'Phú Quốc',
-            'dl' => 'Đà Lạt',
+            'ld' => 'Lâm Đồng',
             'qt' => 'Quảng Trị',
             'kh' => 'Khánh Hòa',
             'ct' => 'Cần Thơ',

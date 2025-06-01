@@ -14,13 +14,14 @@
                     <select name="destination" id="destination">
                         <option value="">Chọn điểm đến</option>
                         <option value="dn">Đà Nẵng</option>
+                        <option value="qnn">Quảng Nam</option>
                         <option value="cd">Côn Đảo</option>
                         <option value="hn">Hà Nội</option>
                         <option value="hcm">TP. Hồ Chí Minh</option>
                         <option value="hl">Hạ Long</option>
                         <option value="nb">Ninh Bình</option>
                         <option value="pq">Phú Quốc</option>
-                        <option value="dl">Đà Lạt</option>
+                        <option value="ld">Lâm Đồng</option>
                         <option value="qt">Quảng Trị</option>
                         <option value="kh">Khánh Hòa (Nha Trang)</option>
                         <option value="ct">Cần Thơ</option>

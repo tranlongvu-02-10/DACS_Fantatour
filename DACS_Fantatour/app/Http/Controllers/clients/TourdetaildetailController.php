@@ -36,32 +36,11 @@ class TourdetaildetailController extends Controller
             $checkDisplay = 'hide';
         }
 
-        
-        // Gọi API Python để lấy danh sách tour liên quan
-        try {
-            $apiUrl = 'http://127.0.0.1:5555/api/tour-recommendations';
-            $response = Http::get($apiUrl, [
-                'tour_id' => $id
-            ]);
 
-            if ($response->successful()) {
-                $relatedTours = $response->json('related_tours');
-            } else {
-                $relatedTours = [];
-            }
-        } catch (\Exception $e) {
-            // Xử lý lỗi khi gọi API
-            $relatedTours = [];
-            Log::error('Lỗi khi gọi API liên quan: ' . $e->getMessage());
-        }
-
-        $id_toursRe = $relatedTours;
-
-        $tourRecommendations = $this->tours->toursRecommendation($id_toursRe);
         // dd($tourRecommendations);    
         // dd($avgStar);
 
-        return view('clients.tours-detail', compact('title', 'tourDetail', 'getReviews', 'avgStar', 'countReview', 'checkDisplay','tourRecommendations'));
+        return view('clients.tours-detail', compact('title', 'tourDetail', 'getReviews', 'avgStar', 'countReview', 'checkDisplay'));
     }
     public function reviews(Request $req)
     {

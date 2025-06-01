@@ -181,8 +181,7 @@
         <div class="section-title text-center text-white counter-text-wrap mb-50" data-aos="fade-up"
             data-aos-duration="1500" data-aos-offset="50">
             <h2>Làm thế nào để hưởng lợi từ các chuyến du lịch của chúng tôi</h2>
-            <p>Website <span class="count-text plus" data-speed="3000" data-stop="34500">0</span> phổ biến nhất
-                kinh nghiệm bạn sẽ nhớ</p>
+            <p>Website phổ biến nhất kinh nghiệm bạn sẽ nhớ</p>
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1500"

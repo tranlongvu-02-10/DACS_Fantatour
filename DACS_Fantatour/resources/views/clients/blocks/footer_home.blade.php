@@ -1,6 +1,6 @@
 <!-- footer area start -->
 <footer class="main-footer bgs-cover overlay rel z-1 pb-25"
-    style="background-image: url({{ asset('clients/assets/images/backgrounds/footer.jpg') }});">
+    style="background-image: url({{ asset('clients/assets/images/backgrounds/mui-dinh-cau-dep-me-hon-luc-hoang-hon.jpeg') }});">
     <div class="container">
         <div class="footer-top pt-100 pb-30">
             <div class="row justify-content-between">

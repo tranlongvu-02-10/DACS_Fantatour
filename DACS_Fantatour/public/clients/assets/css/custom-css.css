@@ -394,5 +394,26 @@
 }
 
 
+/*xử lý thêm Features backrough */
+.features-bg {
+    background-image: url('/clients/assets/images/Features/hehe.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.features-area h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1.4;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+
+
 
 
