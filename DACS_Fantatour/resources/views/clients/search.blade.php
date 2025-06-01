@@ -3,6 +3,10 @@
 <!-- Tour Grid Area start -->
 <section class="tour-grid-page py-100 rel z-2">
     <div class="container">
+        <div class="section-title text-center mb-60 tour-grid-heading" data-aos="fade-up" data-aos-duration="1200">
+            <h2>Khám phá những tour nổi bật nhất và tận hưởng hành trình tuyệt vời trên từng cung đường</h2>
+        </div>
+
         <div class="row">
             @if ($tours->isEmpty())
                 <h4 class="alert alert-danger">Không có tour nào liên quan đến tìm kiếm của bạn. Thử tìm kiếm với từ khóa khác nhé!</h4>

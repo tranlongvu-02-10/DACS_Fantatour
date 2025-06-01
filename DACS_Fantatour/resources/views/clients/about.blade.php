@@ -96,7 +96,7 @@
 
 
 <!-- About Us Area start -->
-<section class="about-us-area pt-70 pb-100 rel z-1">
+<section class="about-us-area pt-70 pb-100 rel z-1" >
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-5 col-lg-6">
@@ -107,21 +107,7 @@
                     <p>Chúng tôi hợp tác chặt chẽ với khách hàng để hiểu rõ những thách thức và mục tiêu, cung
                         cấp các giải pháp tùy chỉnh để nâng cao hiệu quả, tăng lợi nhuận và thúc đẩy tăng trưởng bền
                         vững.</p>
-                    <div class="row pt-25">
-                        <div class="col-6">
-                            <div class="counter-item counter-text-wrap">
-                                <span class="count-text k-plus" data-speed="2000" data-stop="1">0</span>
-                                <span class="counter-title">Điểm đến phổ biến</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="counter-item counter-text-wrap">
-                                <span class="count-text m-plus" data-speed="3000" data-stop="8">0</span>
-                                <span class="counter-title">Khách hàng hài lòng</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="destination-details.html" class="theme-btn mt-10 style-two">
+                    <a href="{{ route('destination') }}" class="theme-btn mt-10 style-two">
                         <span data-hover="Explore Destinations">Khám phá các điểm đến</span>
                         <i class="fal fa-arrow-right"></i>
                     </a>
@@ -145,9 +131,8 @@
             <div class="col-lg-12">
                 <div class="section-title text-center counter-text-wrap mb-50" data-aos="fade-up"
                     data-aos-duration="1500" data-aos-offset="50">
-                    <h2>Gặp gỡ những hướng dẫn viên du lịch giàu kinh nghiệm của chúng tôi</h2>
-                    <p>Website <span class="count-text plus bgc-primary" data-speed="3000" data-stop="34500">0</span>
-                        trải nghiệm phổ biến nhất mà bạn sẽ nhớ</p>
+                    <h2>Gặp gỡ hướng dẫn viên du lịch giàu kinh nghiệm của chúng tôi</h2>
+                    <p>Website trải nghiệm phổ biến nhất mà bạn sẽ nhớ</p>
                 </div>
             </div>
         </div>
@@ -176,7 +161,8 @@
 
 
 <!-- Features Area start -->
-<section class="about-feature-two bgc-black pt-100 pb-45 rel z-1">
+<section class="about-feature-two bgc-black pt-100 pb-45 rel z-1"
+    style="background: url('{{ asset('clients/assets/images/about/bien-my-khe.jpg') }}') no-repeat center center / cover;">
     <div class="container">
         <div class="section-title text-center text-white counter-text-wrap mb-50" data-aos="fade-up"
             data-aos-duration="1500" data-aos-offset="50">

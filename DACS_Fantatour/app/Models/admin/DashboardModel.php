@@ -92,7 +92,4 @@ class DashboardModel extends Model
 
         return $revenueData;
     }
-
-
-
 }
