@@ -55,12 +55,13 @@ FantaTour là giao diện người dùng của hệ thống đặt tour du lịc
   - Kích hoạt email xác thực
  
 travela/
-├── app/               # Controllers, Models, Services
-├── database/          # Migrations & Seeders
-├── public/            # Assets công khai (JS, CSS, hình ảnh)
-├── resources/         # Blade Templates & View files
+├── app/               # Controllers, Models, Services (xử lý logic backend)
+├── database/          # Migrations và Seeders (khởi tạo dữ liệu)
+├── public/            # Tài nguyên công khai (JS, CSS, hình ảnh,...)
+├── resources/         # Giao diện người dùng với Blade Templates
 ├── routes/            # Định tuyến ứng dụng (web.php, api.php)
-├── storage/           # File uploads, logs
-└── tests/             # Unit & Feature tests
+├── storage/           # Lưu trữ file, cache và logs
+└── tests/             # Unit Test và Feature Test tự động
+
 
 
