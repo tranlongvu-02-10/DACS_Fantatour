@@ -415,6 +415,126 @@
 
 
 
+/* icon zalo */
+.floating-social {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1000;
+}
+
+.floating-social .icon {
+    position: relative;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    animation: shake-loop 0.5s infinite ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.2s ease-in-out;
+    overflow: visible;
+}
+
+/* Hiệu ứng lắc */
+@keyframes shake-loop {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(4deg); }
+  50% { transform: rotate(-4deg); }
+  75% { transform: rotate(4deg); }
+}
+
+/* Hiệu ứng lắc khi hover */
+.floating-social .icon:hover {
+    transform: scale(1.1);
+    animation: shake-hover 0.4s;
+}
+
+@keyframes shake-hover {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+/* SVG kích thước to */
+.floating-social .icon svg {
+    width: 65px;
+    height: 65px;
+}
+
+/* Hiệu ứng tỏa ra và biến mất */
+.floating-social .icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 132, 255, 0.6); /* màu tỏa ra */
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    animation: pulse-ring 1.8s infinite ease-out;
+    z-index: -1;
+}
+
+/* Keyframes cho hiệu ứng tỏa ra */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.floating-social .icon::after {
+    background: rgba(0, 132, 255, 0.3); /* từ 0.15 lên 0.3 */
+    border: none;
+}
+
+.zalo-chat-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+.zalo-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    
+}
+
+.zalo-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

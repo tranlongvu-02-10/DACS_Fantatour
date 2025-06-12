@@ -1003,4 +1003,14 @@ $(document).ready(function () {
     }
     
     
+    
 });
+
+function toggleZaloWidget() {
+        const zaloWidget = document.querySelector('.zalo-chat-widget');
+        if (zaloWidget.style.display === 'none' || zaloWidget.style.display === '') {
+            zaloWidget.style.display = 'block';
+        } else {
+            zaloWidget.style.display = 'none';
+        }
+    }

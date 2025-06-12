@@ -13,7 +13,6 @@
                         <div class="section-title">
                             <h2>Liên hệ</h2>
                         </div>
-                        <p>Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu <span style="color: red">*</span></p>
                         <div class="row mt-35">
                             <div class="col-md-6">
                                 <div class="form-group">

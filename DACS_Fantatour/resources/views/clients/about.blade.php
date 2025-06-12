@@ -18,12 +18,14 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="experience-years rmb-20">
-                                <span class="title bgc-secondary">Năm kinh nghiệm</span>
-                                <span class="text">Chúng tôi có </span>
-                                <span class="years">5+</span>
-                            </div>
+                            <!-- Thêm ảnh minh họa với kích thước lớn hơn -->
+                            <img src="{{ asset('clients/assets/images/about/kinhnghieemj.jpg') }}" 
+                                alt="Ảnh minh họa" 
+                                class="img-fluid rmb-20" 
+                                style="width: 100%; max-width: none;" />
                         </div>
+
+
                         <div class="col-md-8">
                             <p>Chúng tôi chuyên tạo ra những trải nghiệm thành phố khó quên cho du khách muốn khám phá
                                 trái tim và tâm hồn của cảnh quan đô thị. Các tour du lịch có hướng dẫn viên chuyên
@@ -56,7 +58,7 @@
         <div class="row align-items-center">
             <div class="col-xl-4 col-md-6">
                 <div class="about-feature-image" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                    <img src="{{ asset('clients/assets/images/about/about-feature1.jpg') }}" alt="About">
+                    <img src="{{ asset('clients/assets/images/about/phanthiet.jpg') }}" alt="About">
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
@@ -115,7 +117,7 @@
             </div>
             <div class="col-xl-7 col-lg-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
                 <div class="about-us-page">
-                    <img src="{{ asset('clients/assets/images/about/about-page.jpg') }}" alt="About">
+                    <img src="{{ asset('clients/assets/images/about/hehe.jpg') }}" alt="About">
                 </div>
             </div>
         </div>

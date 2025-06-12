@@ -105,7 +105,7 @@
                             <span>4k+</span>
                         </div>
                         <h6>Khách hàng hài lòng</h6>
-                        <div class="divider style-two counter-text-wrap my-25"><span><span class="count-text plus" data-speed="3000" data-stop="25">0</span> Years</span></div>
+                        <div><span></div>
                         <p>Chúng tôi tự hào cung cấp các hành trình được cá nhân hóa</p>
                     </div>
                 </div>
@@ -181,8 +181,11 @@
                 <div class="destination-item style-two" data-aos-duration="1500" data-aos-offset="50">
                     <div class="image" style="max-height: 250px">
                         <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                        <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
-                            alt="Destination">
+                        @if(!empty($tour->images) && count($tour->images) > 0)
+                            <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}" alt="Destination">
+                        @else
+                            <img src="{{ asset('clients/assets/images/default-image.jpg') }}" alt="Default">
+                        @endif
                     </div>
                     <div class="content">
                         <h6 class="tour-title"><a
