@@ -152,12 +152,16 @@
     <script src="{{asset('clients/assets/js/aos.js')}}"></script>
     <!-- Custom script -->
     <script src="{{asset('clients/assets/js/script.js')}}"></script>
+    {{-- paypal-payment  --}}
+    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
     <!-- Custom script -->
     <script src="{{asset('clients/assets/js/custom-js.js')}}"></script>
     <script src="{{asset('clients/assets/js/jquery.datetimepicker.full.min.js')}}"></script>
-    {{-- paypal-payment  --}}
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
-
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

@@ -5,18 +5,11 @@ namespace App\Providers;
 use App\Models\admin\ContactModel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
     public function boot()
     {
         View::composer('admin.blocks.sidebar', function ($view) {
@@ -27,5 +20,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('unreadCount', $unreadData['countUnread']);
             $view->with('unreadContacts', $unreadData['contacts']);
         });
+        // Thêm đoạn này để Laravel sử dụng ngôn ngữ từ session
+        App::setLocale(Session::get('locale', config('app.locale')));
     }
 }

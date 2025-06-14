@@ -109,8 +109,7 @@
                                                 href="{{ route('contact') }}">Liên Hệ</a></li>
                                     </ul>
                                 </div>
-                                
-
+                                <div class="dropdown">
                             </nav>
                             <!-- Main Menu End-->
                         </div>
@@ -125,8 +124,25 @@
                                 <button type="submit" class="searchbutton far fa-search"></button>
                             </form>
                         </div>
-                    
-                        
+                        <!-- Nav ngôn ngữ -->
+                        <div class="dropdown lang-dropdown ms-3">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('clients/assets/images/flags/' . (app()->getLocale() == 'vi' ? 'vi.png' : 'en.jpg')) }}" alt="flag" width="20">
+                                {{ strtoupper(app()->getLocale()) }}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/lang/vi">
+                                        <img src="{{ asset('clients/assets/images/flags/vi.png') }}" alt="Tiếng Việt" width="20"> Tiếng Việt
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/lang/en">
+                                        <img src="{{ asset('clients/assets/images/flags/en.jpg') }}" alt="English" width="20"> English
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
                             <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
@@ -162,6 +178,7 @@
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

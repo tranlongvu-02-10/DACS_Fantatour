@@ -515,6 +515,63 @@
 
 
 
+/* Thanh đổi ngôn ngữ */
+.lang-dropdown {
+    position: relative;
+    margin-left: 20px;
+}
+
+.lang-dropdown .dropdown-toggle {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    padding: 6px 10px;
+    font-size: 16px;
+    cursor: pointer; /* Thêm con trỏ để rõ ràng đây là nút có thể nhấp */
+}
+
+.lang-dropdown .dropdown-toggle img {
+    width: 26px;
+    height: auto;
+}
+
+.lang-dropdown .dropdown-menu {
+    padding: 8px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1000; /* Thêm z-index để đảm bảo dropdown hiển thị trên các phần tử khác */
+    display: none; /* Đảm bảo dropdown ẩn mặc định, Bootstrap sẽ xử lý hiển thị */
+}
+
+.lang-dropdown .dropdown-menu.show {
+    display: block; /* Hiển thị dropdown khi có lớp 'show' từ Bootstrap */
+}
+
+.lang-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    padding: 6px 16px;
+    transition: background-color 0.2s; /* Thêm hiệu ứng chuyển màu khi hover */
+}
+
+.lang-dropdown .dropdown-item img {
+    width: 60px;
+    height: auto;
+}
+
+/* Đảm bảo dropdown không bị cắt bởi overflow */
+.lang-dropdown {
+    overflow: visible;
+}
+
+
+
+
 
 
 

@@ -108,6 +108,14 @@ Route::get('/search-voice-text', [SearchController::class, 'searchTours'])->name
 //Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/create-contact', [ContactController::class, 'createContact'])->name('create-contact');
+//ngôn ngữ
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'vi'])) {
+        abort(400);
+    }
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
 
 //ADMIN
 // Routes without middleware

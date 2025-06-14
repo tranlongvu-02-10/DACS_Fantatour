@@ -1001,9 +1001,6 @@ $(document).ready(function () {
         console.log('Speech recognition not supported in this browser.');
         toastr.error('Trình duyệt của bạn không hỗ trợ nhận diện giọng nói.');
     }
-    
-    
-    
 });
 
 function toggleZaloWidget() {
@@ -1015,5 +1012,10 @@ function toggleZaloWidget() {
         }
     }
 
+document.querySelector('.dropdown-toggle').addEventListener('click', (event) => {
+    console.log('Dropdown button clicked');
+    // Không gọi event.preventDefault() để giữ hành vi mặc định của Bootstrap
+});
 
-    
+
+   
