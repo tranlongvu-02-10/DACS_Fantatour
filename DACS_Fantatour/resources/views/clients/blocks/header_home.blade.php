@@ -105,6 +105,7 @@
                                         <li class="{{ Request::url() == route('contact') ? 'active' : '' }}"><a
                                                 href="{{ route('contact') }}">Liên Hệ</a></li>
                                     </ul>
+                                    
                                 </div>
 
                             </nav>
