@@ -76,7 +76,9 @@ class SearchController extends Controller
             $response = Http::get($apiUrl, [
                 'keyword' => $keyword
             ]);
-
+            
+             // Ghi log phản hồi từ Flask để kiểm tra dữ liệu
+            Log::info('Flask API response:', $response->json());
             if ($response->successful()) {
                 $resultTours = $response->json('related_tours');
             } else {

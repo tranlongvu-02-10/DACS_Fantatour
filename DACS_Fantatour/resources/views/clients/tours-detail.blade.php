@@ -1,5 +1,4 @@
 @include('clients.blocks.header')
-
 <section class="page-banner-two rel z-1">
     <div class="container-fluid">
         <hr class="mt-0">
@@ -10,7 +9,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
                         data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                         <li class="breadcrumb-item active">{{ $title }}</li>
                     </ol>
                 </nav>
@@ -18,7 +17,6 @@
         </div>
     </div>
 </section>
-
 <!-- Tour Gallery start -->
 <div class="tour-gallery">
     <div class="container-fluid">
@@ -88,26 +86,27 @@
 <!-- Tour Header Area end -->
 
 
-
 <!-- Tour Details Area start -->
 <section class="tour-details-page pb-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="tour-details-content">
-                    <h3>Khám phá các tour du lịch</h3>
-                    <p>{!! $tourDetail->description !!}</p>
+                    <h3>Khám phá Tours</h3>
+                    <p>{!! $tourDetail->description !!} </p>
                     <div class="row pb-55">
                         <div class="col-md-6">
                             <div class="tour-include-exclude mt-30">
-                                <h5>Bao gồm</h5>
+                                <h5>Bao gồm và không bao gồm</h5>
                                 <ul class="list-style-one check mt-25">
                                     <li><i class="far fa-check"></i> Dịch vụ đón và trả khách</li>
-                                    <li><i class="far fa-check"></i> 1 Bữa Ăn Mỗi Ngày</li>
-                                    <li><i class="far fa-check"></i> Bữa tối trên du thuyền và sự kiện âm nhạc</li>
-                                    <li><i class="far fa-check"></i> Ghé thăm 7 địa điểm tuyệt vời nhất trong thành phố</li>
+                                    <li><i class="far fa-check"></i> 1 bữa ăn mỗi ngày</li>
+                                    <li><i class="far fa-check"></i> Bữa tối trên du thuyền & Sự kiện âm nhạc</li>
+                                    <li><i class="far fa-check"></i> Tham quan 7 địa điểm tuyệt vời nhất trong thành phố
+                                    </li>
                                     <li><i class="far fa-check"></i> Nước đóng chai trên xe buýt</li>
-                                    <li><i class="far fa-check"></i> Vận chuyển Xe buýt du lịch hạng sang</li>
+                                    <li><i class="far fa-check"></i> Phương tiện di chuyển Xe buýt du lịch hạng sang
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -115,9 +114,10 @@
                             <div class="tour-include-exclude mt-30">
                                 <h5>Không bao gồm</h5>
                                 <ul class="list-style-one mt-25">
+                                    <li><i class="far fa-times"></i> Tiền boa</li>
                                     <li><i class="far fa-times"></i> Đón và trả khách tại khách sạn</li>
-                                    <li><i class="far fa-times"></i> Bữa trưa, Thức ăn & Đồ uống</li>
-                                    <li><i class="far fa-times"></i> Tùy chọn nâng cấp lên kính</li>
+                                    <li><i class="far fa-times"></i> Bữa trưa, Đồ ăn & Đồ uống</li>
+                                    <li><i class="far fa-times"></i> Nâng cấp tùy chọn lên một ly</li>
                                     <li><i class="far fa-times"></i> Dịch vụ bổ sung</li>
                                     <li><i class="far fa-times"></i> Bảo hiểm</li>
                                 </ul>
@@ -125,8 +125,6 @@
                         </div>
                     </div>
                 </div>
-                
-
                 <h3>Lịch trình</h3>
                 <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
                     @php
@@ -249,18 +247,46 @@
                         <h5 class="widget-title">Cần trợ giúp?</h5>
                         <ul class="list-style-one">
                             <li><i class="far fa-envelope"></i> <a
-                                    href="emilto:tranlongvu02102004@gmail.com">tranlongvu02102004@gmail.com</a></li>
+                                    href="emilto:minhdien.dev@gmail.com">minhdien.dev@gmail.com</a></li>
                             <li><i class="far fa-phone-volume"></i> <a href="callto:+000(123)45688">+000 (123) 456
                                     88</a></li>
                         </ul>
                     </div>
+                    @if (!empty($tourRecommendations))
+                        <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
+                            <h6 class="widget-title">Tours tương tự</h6>
+                            @foreach ($tourRecommendations as $tour)
+                                <div class="destination-item tour-grid style-three bgc-lighter">
+                                    <div class="image">
+                                        {{-- <span class="badge">10% Off</span> --}}
+                                        <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
+                                            alt="Tour" style="max-height: 137px">
+                                    </div>
+                                    <div class="content">
+                                        <div class="destination-header">
+                                            <span class="location"><i class="fal fa-map-marker-alt"></i>
+                                                {{ $tour->destination }}</span>
+                                            <div class="ratting">
+                                                <i class="fas fa-star"></i>
+                                                <span>({{ $tour->rating }})</span>
+                                            </div>
+                                        </div>
+                                        <h6><a
+                                                href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Tour Details Area end -->
-
 
 @include('clients.blocks.new_letter')
 @include('clients.blocks.footer')

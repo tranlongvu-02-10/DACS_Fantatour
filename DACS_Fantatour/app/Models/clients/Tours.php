@@ -305,29 +305,31 @@ class Tours extends Model
     }
     //Get id search tours
     public function toursSearch($ids)
-    {
-
-        if (empty($ids)) {
-            // Return an empty collection to avoid executing the query with an empty `FIELD` clause
-            return collect();
-        }
-
-        $tourSearch = DB::table($this->table)
-            ->where('availability', '1')
-            ->whereIn('tourId', $ids)
-            ->orderByRaw("FIELD(tourId, " . implode(',', array_map('intval', $ids)) . ")") // Chuyển tất cả các giá trị sang kiểu int và giữ thứ tự
-            ->get();
-        foreach ($tourSearch as $tour) {
-            // Lấy danh sách hình ảnh thuộc về tour
-            $tour->images = DB::table('tbl_imagess')
-                ->where('tourId', $tour->tourId)
-                ->pluck('imageURL');
-            // Lấy số lượng đánh giá và số sao trung bình của tour
-            $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
-        }
-
-        return $tourSearch;
+{
+    if (empty($ids)) {
+        return collect();
     }
+
+    // Làm phẳng mảng, loại trùng, đảm bảo mảng 1 chiều
+    $ids = collect($ids)->flatten()->unique()->values()->all();
+
+    $tourSearch = DB::table($this->table)
+        ->where('availability', '1')
+        ->whereIn('tourId', $ids)
+        ->orderByRaw("FIELD(tourId, " . implode(',', array_map('intval', $ids)) . ")")
+        ->get();
+
+    foreach ($tourSearch as $tour) {
+        $tour->images = DB::table('tbl_imagess')
+            ->where('tourId', $tour->tourId)
+            ->pluck('imageURL');
+
+        $tour->rating = $this->reviewStats($tour->tourId)->averageRating;
+    }
+
+    return $tourSearch;
+}
+
 
         
 }
