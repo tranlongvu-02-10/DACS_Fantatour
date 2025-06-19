@@ -252,6 +252,38 @@
     </div>
 </section>
 <!-- CTA Area end -->
+
+<!-- Popup quảng bá tour -->
+<div id="tourPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <button id="closePopup" class="popup-close">×</button>
+
+        <!-- Hình ảnh poster -->
+        <img src="{{ asset('clients/assets/images/poster/banner-poster-tour1.png') }}" alt="Poster Tour" style="width: 100%; height: auto; display: block;">
+
+        <!-- Phần nội dung thêm -->
+        <div style="padding: 16px;">
+            <h3 style="margin-top: 0;">🔥 TOUR DU LỊCH TRONG TẦM TAY, BOOK NGAY!</h3>
+            <p>Độc quyền đặt tour online để săn ngay chùm tour <strong>VIỆT NAM</strong> siêu hot với ưu đãi <strong>GIẢM ĐẾN 1.000.000₫ 🎁</strong>, số lượng có hạn!</p>
+
+            <!-- Nút dẫn đến trang đặt tour -->
+            <div style="text-align: right; margin-top: 10px;">
+                <a href="{{ route('tours') }}" class="btn btn-primary" style="
+                    background-color: #0056b3;
+                    color: white;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    display: inline-block;
+                ">
+                    Xem chi tiết
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @include('clients.blocks.footer_home')
            
        

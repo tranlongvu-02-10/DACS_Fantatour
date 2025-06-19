@@ -1018,4 +1018,18 @@ document.querySelector('.dropdown-toggle').addEventListener('click', (event) => 
 });
 
 
+// poster
+document.addEventListener('DOMContentLoaded', function () {
+    // Kiểm tra xem popup đã từng hiển thị trong session chưa
+    if (!sessionStorage.getItem('tourPopupShown')) {
+        document.getElementById('tourPopup').style.display = 'flex';
+        sessionStorage.setItem('tourPopupShown', 'true');
+    }
+
+    document.getElementById('closePopup').addEventListener('click', function () {
+        document.getElementById('tourPopup').style.display = 'none';
+    });
+});
+
+
    

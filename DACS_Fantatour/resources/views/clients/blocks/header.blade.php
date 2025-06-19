@@ -100,6 +100,10 @@
                                             <ul>
                                                 <li><a href="{{ route('tours') }}">Tours</a></li>
                                                 <li><a href="{{ route('travel-guides') }}">Hướng dẫn viên</a></li>
+                                                <li>
+                                                    <a href="https://car4rent.com" target="_blank" rel="noopener noreferrer">Thuê xe</a>
+                                                </li>
+
                                             </ul>
                                         </li>
 

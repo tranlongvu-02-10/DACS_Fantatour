@@ -571,6 +571,44 @@
 }
 
 
+/* poster */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+}
+.popup-content {
+    position: relative;
+    width: 90%; /* Tăng chiều ngang tổng thể */
+    max-width: 800px; /* Tăng giới hạn chiều rộng tối đa */
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.popup-content img {
+    width: 100%;       /* Đảm bảo ảnh vừa khung popup */
+    height: auto;      /* Giữ đúng tỷ lệ ảnh */
+    display: block;    /* Xóa khoảng trắng dư */
+}
+
 
 
 
