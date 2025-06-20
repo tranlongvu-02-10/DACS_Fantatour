@@ -31,9 +31,19 @@
                             </div>
                             <div class="content">
                                 <span class="location"><i class="fal fa-map-marker-alt"></i>{{ $tour->destination }}</span>
+
+                                {{-- Hiển thị thời tiết --}}
+                                @if (!empty($tour->weather))
+                                    <div class="weather-info small mb-1">
+                                        <img src="http://openweathermap.org/img/wn/{{ $tour->weather['icon'] }}@2x.png" alt="Weather" style="width:30px;">
+                                        <span>{{ $tour->weather['temp'] }}°C, {{ ucfirst($tour->weather['desc']) }}</span>
+                                    </div>
+                                @endif
+
                                 <h5><a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a></h5>
                                 <span class="time">{{ $tour->time }}</span>
                             </div>
+
                             <div class="destination-footer">
                                 <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người</span>
                                 <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="read-more">Đặt ngay <i class="fal fa-angle-right"></i></a>

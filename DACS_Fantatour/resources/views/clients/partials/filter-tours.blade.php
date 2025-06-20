@@ -11,6 +11,14 @@
                 <div class="destination-header">
                     <span class="location"><i class="fal fa-map-marker-alt"></i>
                         {{ $tour->destination }}</span>
+                    @if (!empty($tour->weather))
+                        <div class="weather-info small" style="margin-top: 5px;">
+                            <img src="http://openweathermap.org/img/wn/{{ $tour->weather['icon'] }}@2x.png"
+                                alt="Weather icon" style="width: 30px; vertical-align: middle;">
+                            <span>{{ $tour->weather['temp'] }}°C - {{ ucfirst($tour->weather['desc']) }}</span>
+                        </div>
+                    @endif
+
                     <div class="ratting">
                         @for ($i = 0; $i < 5; $i++)
                             @if ($tour->rating && $i < $tour->rating)
