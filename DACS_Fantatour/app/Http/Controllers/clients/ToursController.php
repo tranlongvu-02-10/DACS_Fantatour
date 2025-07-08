@@ -40,7 +40,19 @@ class ToursController extends Controller
         'Hà Nội' => 'Hanoi',
         'Đà Nẵng' => 'Da Nang',
         'TP Hồ Chí Minh' => 'Ho Chi Minh',
-        // có thể thêm nhiều nếu cần
+        'SAPA' => 'Sa Pa',
+        'PHÚ QUỐC' => 'Phu Quoc',
+        'Hạ Long' => 'Ha Long',
+        'Ninh Bình' => 'Ninh Binh',
+        'Quảng Nam' => 'Quang Nam',
+        'Vũng Tàu' => 'Vung Tau',
+        'Lâm Đồng' => 'Da Lat',
+        'Khánh Hòa' => 'Nha Trang',
+        'Côn Đảo' => 'Con Dao',
+        'Cần Thơ' => 'Can Tho',
+        'Quảng Trị' => 'Quang Tri',
+        'Quảng Ninh' => 'Quang Ninh',
+        'Bình Định' => 'Binh Dinh',
     ];
 
     foreach ($tours as $tour) {
