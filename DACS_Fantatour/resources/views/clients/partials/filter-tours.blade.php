@@ -17,7 +17,12 @@
                                 alt="Weather icon" style="width: 30px; vertical-align: middle;">
                             <span>{{ $tour->weather['temp'] }}°C - {{ ucfirst($tour->weather['desc']) }}</span>
                         </div>
+                    @else
+                        <div class="weather-info small text-danger" style="margin-top: 5px;">
+                            Không lấy được thời tiết
+                        </div>
                     @endif
+
 
                     <div class="ratting">
                         @for ($i = 0; $i < 5; $i++)
