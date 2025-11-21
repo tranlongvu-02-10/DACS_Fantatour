@@ -7,7 +7,7 @@
                 <div class="col-xl-5 col-lg-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
                         <div class="footer-logo mb-25">
-                            <a href="index.html"><img src="{{ asset('clients/assets/images/logos/logo.png') }}"
+                            <a href="{{ route('home') }}"><img src="{{ asset('clients/assets/images/logos/logo.png') }}"
                                     alt="Logo"></a>
                         </div>
                         <p>Chúng tôi biên soạn các hành trình riêng biệt phù hợp với sở thích của bạn, đảm bảo mọi
@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="copyright-text text-center text-lg-start">
-                        <p>@Copy 2025 <a href="{{ route('home') }}">Fantatour</a>, All rights reserved</p>
+                        <p>@Copy 2025 <a href="{{ route('home') }}">Tourista</a>, All rights reserved</p>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                     </svg>
                 </a>
             </li>
-            
+
             <!-- Zalo Icon -->
             <li class="iso-pro">
                 <span></span>
@@ -164,7 +164,7 @@
                     </svg>
                 </a>
             </li>
-            
+
             <!-- Chat AI Icon -->
             <li class="iso-pro">
                 <span></span>
@@ -172,7 +172,7 @@
                 <span></span>
                 <a href="#" title="Trợ lý AI" onclick="toggleAIChat(); return false;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="svg">
-                        <path fill="#007bff" d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-1-4c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13z"/>
+                        <path fill="#007bff" d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-1-4c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13z" />
                     </svg>
                 </a>
             </li>
@@ -217,8 +217,8 @@
         <div class="bot-message"><b>Bot:</b> Xin chào 👋! Tôi có thể giúp bạn tìm tour trong hệ thống.</div>
     </div>
     <div class="ai-chat-input">
-        <input id="userInput" type="text" placeholder="Nhập tin nhắn..." 
-               onkeydown="if(event.key === 'Enter') sendMessage();">
+        <input id="userInput" type="text" placeholder="Nhập tin nhắn..."
+            onkeydown="if(event.key === 'Enter') sendMessage();">
         <button onclick="sendMessage()">Gửi</button>
     </div>
 </div>
@@ -227,21 +227,21 @@
 <script>
     window.chatbotUrl = "{{ route('chatbot.handle') }}";
     window.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-    
+
     // Khởi tạo - Ẩn widget Zalo khi trang load
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('zalo-chat-widget').classList.add('zalo-hidden');
         document.getElementById('ai-chat-box').style.display = 'none';
     });
-    
+
     // Hàm toggle Zalo Widget - ĐÃ SỬA
     function toggleZaloWidget() {
         const widget = document.getElementById('zalo-chat-widget');
         const isHidden = widget.classList.contains('zalo-hidden');
-        
+
         // Đóng AI chat nếu đang mở
         document.getElementById('ai-chat-box').style.display = 'none';
-        
+
         if (isHidden) {
             widget.classList.remove('zalo-hidden');
             widget.classList.add('zalo-visible');
@@ -249,105 +249,107 @@
             widget.classList.remove('zalo-visible');
             widget.classList.add('zalo-hidden');
         }
-        
+
         // Ngăn sự kiện click lan ra ngoài
         event.stopPropagation();
     }
-    
+
     // Hàm toggle AI Chat
     function toggleAIChat() {
         const chatBox = document.getElementById('ai-chat-box');
         const isVisible = chatBox.style.display === 'flex';
-        
+
         // Đóng Zalo nếu đang mở
         document.getElementById('zalo-chat-widget').classList.add('zalo-hidden');
         document.getElementById('zalo-chat-widget').classList.remove('zalo-visible');
-        
+
         if (!isVisible) {
             chatBox.style.display = 'flex';
         } else {
             chatBox.style.display = 'none';
         }
-        
+
         // Ngăn sự kiện click lan ra ngoài
         event.stopPropagation();
     }
-    
+
     // Hàm gửi tin nhắn AI
     function sendMessage() {
         const userInput = document.getElementById('userInput');
         const messages = document.getElementById('messages');
-        
+
         if (userInput.value.trim() === '') return;
-        
+
         // Thêm tin nhắn người dùng
         const userMessage = document.createElement('div');
         userMessage.className = 'user-message';
         userMessage.innerHTML = `<b>Bạn:</b> ${userInput.value}`;
         messages.appendChild(userMessage);
-        
+
         // Hiệu ứng typing
         const typingMessage = document.createElement('div');
         typingMessage.className = 'typing-message';
         typingMessage.innerHTML = '<b>Bot:</b> <span class="typing-dots">...</span>';
         messages.appendChild(typingMessage);
         messages.scrollTop = messages.scrollHeight;
-        
+
         // Gửi yêu cầu đến server
         fetch(window.chatbotUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': window.csrfToken
-            },
-            body: JSON.stringify({ message: userInput.value })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Xóa tin nhắn typing
-            typingMessage.remove();
-            
-            // Thêm phản hồi từ bot
-            const botMessage = document.createElement('div');
-            botMessage.className = 'bot-message';
-            botMessage.innerHTML = `<b>Bot:</b> ${data.response}`;
-            messages.appendChild(botMessage);
-            
-            // Cuộn xuống cuối
-            messages.scrollTop = messages.scrollHeight;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Xóa tin nhắn typing
-            typingMessage.remove();
-            
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'bot-message';
-            errorMessage.innerHTML = `<b>Bot:</b> Xin lỗi, đã xảy ra lỗi. Vui lòng thử lại.`;
-            messages.appendChild(errorMessage);
-            messages.scrollTop = messages.scrollHeight;
-        });
-        
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': window.csrfToken
+                },
+                body: JSON.stringify({
+                    message: userInput.value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Xóa tin nhắn typing
+                typingMessage.remove();
+
+                // Thêm phản hồi từ bot
+                const botMessage = document.createElement('div');
+                botMessage.className = 'bot-message';
+                botMessage.innerHTML = `<b>Bot:</b> ${data.response}`;
+                messages.appendChild(botMessage);
+
+                // Cuộn xuống cuối
+                messages.scrollTop = messages.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Xóa tin nhắn typing
+                typingMessage.remove();
+
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'bot-message';
+                errorMessage.innerHTML = `<b>Bot:</b> Xin lỗi, đã xảy ra lỗi. Vui lòng thử lại.`;
+                messages.appendChild(errorMessage);
+                messages.scrollTop = messages.scrollHeight;
+            });
+
         // Xóa input
         userInput.value = '';
     }
-    
+
     // Đóng widget khi click ra ngoài
     document.addEventListener('click', function(event) {
         const zaloWidget = document.getElementById('zalo-chat-widget');
         const aiChatBox = document.getElementById('ai-chat-box');
         const floatingSocial = document.querySelector('.floating-social');
-        
+
         // Kiểm tra click có phải trên widget hoặc floating social không
         const isClickInsideZalo = zaloWidget.contains(event.target);
         const isClickInsideAI = aiChatBox.contains(event.target);
         const isClickInsideFloating = floatingSocial.contains(event.target);
-        
+
         if (!isClickInsideZalo && !isClickInsideFloating && !zaloWidget.classList.contains('zalo-hidden')) {
             zaloWidget.classList.add('zalo-hidden');
             zaloWidget.classList.remove('zalo-visible');
         }
-        
+
         if (!isClickInsideAI && !isClickInsideFloating && aiChatBox.style.display === 'flex') {
             aiChatBox.style.display = 'none';
         }
@@ -444,7 +446,7 @@
         position: relative;
     }
 
-    .iso-pro:hover a > .svg {
+    .iso-pro:hover a>.svg {
         transform: translate(-5px, -5px);
         border-radius: 100%;
     }
@@ -511,7 +513,7 @@
         padding: 15px;
         width: 100%;
         height: 420px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         display: flex;
         flex-direction: column;
     }
@@ -603,7 +605,7 @@
         display: none;
         flex-direction: column;
         z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .ai-chat-header {
@@ -655,9 +657,19 @@
     }
 
     @keyframes typing {
-        0%, 20% { opacity: 0; }
-        50% { opacity: 1; }
-        100% { opacity: 0; }
+
+        0%,
+        20% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
     }
 
     .ai-chat-input {
@@ -691,13 +703,13 @@
     }
 </style>
 {{-- End --}}
-    
+
 
 
 @if (session('error'))
-    <script>
-        alert("{{ session('error') }}");
-    </script>
+<script>
+    alert("{{ session('error') }}");
+</script>
 @endif
 <!-- Jquery -->
 <script src="{{ asset('clients/assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -748,6 +760,5 @@
 
 
 </body>
+
 </html>
-
-

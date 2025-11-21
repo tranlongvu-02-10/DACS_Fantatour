@@ -66,12 +66,20 @@ body {
   --base-font: 'Outfit', sans-serif;
   --heading-font: 'Outfit', sans-serif;
 
-  --primary-color: #3c396ac5;       /* tím công nghệ */
-  --secondary-color: #9D4EDD;     /* tím gradient */
-  --heading-color: #1A1A2E;      /* tím than đậm */
-  --base-color: #4B4B4B;          /* màu chữ chính */
-  --lighter-color: #F3EFFF;       /* tím nhạt làm nền */
-  --border-color: #D4C2F0;        /* viền tím pastel */
+  
+  /* --primary-color: #3c396ac5;     
+  --secondary-color: #9D4EDD;     
+  --heading-color: #1A1A2E;      
+  --base-color: #4B4B4B;          
+  --lighter-color: #F3EFFF;       
+  --border-color: #D4C2F0;       */
+
+  --primary-color: #00bfff;        /* xanh cyan chính - màu nút "Giới Thiệu" */
+  --secondary-color: #4DD0E1;      /* xanh nhạt hơn cho gradient */
+  --heading-color: #1A1A2E;        /* giữ nguyên - màu heading đậm */
+  --base-color: #4B4B4B;           /* giữ nguyên - màu chữ chính */
+  --lighter-color: #FFFFFF;        /* xanh cyan rất nhạt làm nền */
+  --border-color: #c0c0c0;         /* viền xanh pastel */
   
   --primary-rgb: 108, 99, 255;
   --secondary-rgb: 157, 78, 221;
@@ -81,17 +89,23 @@ body {
 
 a {
   color: var(--base-color);
+  font-weight: 600;
   cursor: pointer;
   outline: none;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  text-decoration: none; }
+  text-decoration: none; 
+}
   a:hover, a:focus, a:visited {
-    text-decoration: none;
-    outline: none; }
+    text-decoration: none !important;
+    outline: none; 
+  }
   a:hover {
-    color: var(--heading-color); }
+    color: var(--heading-color); 
+    font-weight: bold;
+    
+  }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: var(--heading-color); }

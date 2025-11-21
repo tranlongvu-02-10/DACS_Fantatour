@@ -19,9 +19,9 @@
                         </div>
                         <div class="col-md-4">
                             <!-- Thêm ảnh minh họa với kích thước lớn hơn -->
-                            <img src="{{ asset('clients/assets/images/about/kinhnghieemj.jpg') }}" 
-                                alt="Ảnh minh họa" 
-                                class="img-fluid rmb-20" 
+                            <img src="{{ asset('clients/assets/images/about/kinhnghieemj.jpg') }}"
+                                alt="Ảnh minh họa"
+                                class="img-fluid rmb-20"
                                 style="width: 100%; max-width: none;" />
                         </div>
 
@@ -98,7 +98,7 @@
 
 
 <!-- About Us Area start -->
-<section class="about-us-area pt-70 pb-100 rel z-1" >
+<section class="about-us-area pt-70 pb-100 rel z-1">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-5 col-lg-6">
@@ -146,6 +146,22 @@
                     <img src="{{ asset('clients/assets/images/team/longvu.jpg') }}" alt="Guide">
                     <div class="content">
                         <h6>TRẦN LONG VŨ</h6>
+                        <span class="designation">Founder</span>
+                        <div class="social-style-one inner-content">
+                            <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="contact.html"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="team-item hover-content" data-aos="fade-up" data-aos-duration="1500"
+                    data-aos-offset="50">
+                    <img src="{{ asset('clients/assets/images/team/ttrunghau.jpg') }}" alt="Guide">
+                    <div class="content">
+                        <h6>TRẦN TRUNG HẬU</h6>
                         <span class="designation">Founder</span>
                         <div class="social-style-one inner-content">
                             <a href="contact.html"><i class="fab fa-twitter"></i></a>
@@ -261,4 +277,4 @@
 
 
 
-@include('clients.blocks.footer')
+@include('clients.blocks.footer_home')
