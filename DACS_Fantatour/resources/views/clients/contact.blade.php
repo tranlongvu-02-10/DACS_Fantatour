@@ -78,6 +78,7 @@
     </div>
 </section>
 <!-- Contact Form Area end -->
+
 <!-- Contact Info Area start -->
 <section class="contact-info-area pt-100 rel z-1">
     <div class="container">
@@ -143,9 +144,6 @@
     </div>
 </section>
 <!-- Contact Info Area end -->
-
-
-
 
 <!-- Contact Map Start -->
 <div class="contact-map">

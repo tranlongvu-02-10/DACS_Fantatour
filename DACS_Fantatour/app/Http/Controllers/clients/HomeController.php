@@ -59,10 +59,69 @@ class HomeController extends Controller
         }else {
             $toursPopular = $this->tours->toursPopular(6);
         }
-
+        $this->addWeatherToTours($tours);
+        $this->addWeatherToTours($toursPopular);
         // dd($toursPopular);
         return view('clients.home', compact('title', 'tours', 'toursPopular'));
     }
+    private function addWeatherToTours(&$tours)
+    {
+        $apiKey = env('OPENWEATHER_API_KEY');
+
+        $cityMap = [
+            'HÀ NỘI' => 'Hanoi',
+            'ĐÀ NẴNG' => 'Da Nang',
+            'TP HỒ CHÍ MINH' => 'Ho Chi Minh',
+            'SAPA' => 'Sa Pa',
+            'PHÚ QUỐC' => 'Rach Gia',
+            'HẠ LONG' => 'Ha Long',
+            'NINH BÌNH' => 'Ninh Binh',
+            'QUẢNG NAM' => 'Da Nang',
+            'VŨNG TÀU' => 'Vung Tau',
+            'LÂM ĐỒNG' => 'Da Lat',
+            'KHÁNH HÒA' => 'Nha Trang',
+            'CÔN ĐẢO' => 'Con Dao',
+            'CẦN THƠ' => 'Can Tho',
+            'QUẢNG TRỊ' => 'Quang Tri',
+            'QUẢNG NINH' => 'Quang Ninh',
+            'BÌNH ĐỊNH' => 'Binh Dinh',
+        ];
+
+        $normalizedCityMap = collect($cityMap)->mapWithKeys(function ($value, $key) {
+            return [\Str::of($key)->lower()->slug('_')->__toString() => $value];
+        });
+
+        foreach ($tours as $tour) {
+            $originalCity = trim($tour->destination ?? 'Hanoi');
+            $normalizedCity = \Str::of($originalCity)->lower()->slug('_')->__toString();
+
+            $city = $normalizedCityMap->get($normalizedCity, $originalCity);
+            $cacheKey = 'weather_' . strtolower(str_replace(' ', '_', $city));
+
+            $weatherData = cache()->remember($cacheKey, 3600, function () use ($city, $apiKey) {
+                $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+                    'q' => $city,
+                    'appid' => $apiKey,
+                    'units' => 'metric',
+                    'lang' => 'vi',
+                ]);
+                return $response->successful() ? $response->json() : null;
+            });
+
+            if ($weatherData) {
+                $tour->weather = [
+                    'temp' => round($weatherData['main']['temp']),
+                    'desc' => $weatherData['weather'][0]['description'],
+                    'icon' => $weatherData['weather'][0]['icon'],
+                ];
+            } else {
+                $tour->weather = null;
+            }
+        }
+    }
+    
+
+
 
 
 }

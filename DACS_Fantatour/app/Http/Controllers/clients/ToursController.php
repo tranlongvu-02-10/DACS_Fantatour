@@ -5,6 +5,10 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use App\Models\clients\Tours;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+
 
 class ToursController extends Controller
 {
@@ -18,28 +22,30 @@ class ToursController extends Controller
     }
 
     public function index(Request $request)
-    {
-        $title = 'Đặt chuyến đi';
-        $tours = $this->tours->getAllTours(9);
-        $domain = $this->tours->getDomain();
-        // dd($tours);
-        $domainsCount = [
-            'mien_bac' => optional($domain->firstWhere('domain', 'b'))->count,
-            'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
-            'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
-        ];
+{
+    $title = 'Đặt chuyến đi';
+    $tours = $this->tours->getAllTours(9);
+    $domain = $this->tours->getDomain();
 
-        // Kiểm tra nếu yêu cầu là AJAX
-        if ($request->ajax()) {
-            return response()->json([
-                'tours' => view('clients.partials.filter-tours', compact('tours'))->render(),
-            ]);
-        }
-        $toursPopular = $this->tours->toursPopular(2);
+    $domainsCount = [
+        'mien_bac' => optional($domain->firstWhere('domain', 'b'))->count,
+        'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
+        'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
+    ];
+    // Thêm thời tiết cho danh sách tours
+    $this->addWeatherToTours($tours);
 
-        return view('clients.tours', compact('title', 'tours', 'domainsCount','toursPopular'));
+    if ($request->ajax()) {
+        return response()->json([
+            'tours' => view('clients.partials.filter-tours', compact('tours'))->render(),
+        ]);
     }
-    
+
+    $toursPopular = $this->tours->toursPopular(2);
+
+    return view('clients.tours', compact('title', 'tours', 'domainsCount', 'toursPopular'));
+}
+
 
     //Xử lý filter tours
     public function filterTours(Request $req)
@@ -109,8 +115,74 @@ class ToursController extends Controller
                 ['path' => url()->current()] // Path for pagination
             );
         }
-
+        $this->addWeatherToTours($tours);
         return view('clients.partials.filter-tours', compact('tours'));
 
     }
+    
+    private function addWeatherToTours(&$tours)
+{
+    $apiKey = env('OPENWEATHER_API_KEY');
+
+    $cityMap = [
+        'HÀ NỘI' => 'Hanoi',
+        'ĐÀ NẴNG' => 'Da Nang',
+        'TP HỒ CHÍ MINH' => 'Ho Chi Minh',
+        'SAPA' => 'Sa Pa',
+        'PHÚ QUỐC' => 'Rach Gia',
+        'HẠ LONG' => 'Ha Long',
+        'NINH BÌNH' => 'Ninh Binh',
+        'QUẢNG NAM' => 'Da Nang',
+        'VŨNG TÀU' => 'Vung Tau',
+        'LÂM ĐỒNG' => 'Da Lat',
+        'KHÁNH HÒA' => 'Nha Trang',
+        'CÔN ĐẢO' => 'Con Dao',
+        'CẦN THƠ' => 'Can Tho',
+        'QUẢNG TRỊ' => 'Quang Tri',
+        'QUẢNG NINH' => 'Quang Ninh',
+        'BÌNH ĐỊNH' => 'Binh Dinh',
+    ];
+
+    $normalizedCityMap = collect($cityMap)->mapWithKeys(function ($value, $key) {
+        return [Str::of($key)->lower()->slug('_')->__toString() => $value];
+    });
+
+    foreach ($tours as $tour) {
+        $originalCity = trim($tour->destination ?? 'Hanoi');
+        $normalizedCity = Str::of($originalCity)->lower()->slug('_')->__toString();
+
+        if (!$normalizedCityMap->has($normalizedCity)) {
+            Log::info("City not found in cityMap: " . $originalCity);
+        }
+
+        $city = $normalizedCityMap->get($normalizedCity, $originalCity);
+        $cacheKey = 'weather_' . strtolower(str_replace(' ', '_', $city));
+
+        $weatherData = cache()->remember($cacheKey, 3600, function () use ($city, $apiKey) {
+            $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+                'q' => $city,
+                'appid' => $apiKey,
+                'units' => 'metric',
+                'lang' => 'vi',
+            ]);
+
+            if (!$response->successful()) {
+                Log::warning("🌧️ Không lấy được thời tiết cho $city", ['error' => $response->body()]);
+                return null;
+            }
+
+            return $response->json();
+        });
+
+        if ($weatherData) {
+            $tour->weather = [
+                'temp' => round($weatherData['main']['temp']),
+                'desc' => $weatherData['weather'][0]['description'],
+                'icon' => $weatherData['weather'][0]['icon'],
+            ];
+        } else {
+            $tour->weather = null;
+        }
+    }
+}
 }

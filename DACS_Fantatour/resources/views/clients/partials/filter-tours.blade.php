@@ -3,7 +3,7 @@
         <div class="destination-item tour-grid style-three bgc-lighter block_tours equal-block-fix" data-aos="fade-up"
             data-aos-duration="1500" data-aos-offset="50">
             <div class="image">
-                <span class="badge bgc-pink">Featured</span>
+                <span class="badge bgc-pink">Giá tốt nhất</span>
                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                 <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0] . '') }}" alt="Tour List">
             </div>
@@ -11,6 +11,19 @@
                 <div class="destination-header">
                     <span class="location"><i class="fal fa-map-marker-alt"></i>
                         {{ $tour->destination }}</span>
+                    @if (!empty($tour->weather))
+                        <div class="weather-info small" style="margin-top: 5px;">
+                            <img src="http://openweathermap.org/img/wn/{{ $tour->weather['icon'] }}@2x.png"
+                                alt="Weather icon" style="width: 30px; vertical-align: middle;">
+                            <span>{{ $tour->weather['temp'] }}°C - {{ ucfirst($tour->weather['desc']) }}</span>
+                        </div>
+                    @else
+                        <div class="weather-info small text-danger" style="margin-top: 5px;">
+                            Không lấy được thời tiết
+                        </div>
+                    @endif
+
+
                     <div class="ratting">
                         @for ($i = 0; $i < 5; $i++)
                             @if ($tour->rating && $i < $tour->rating)

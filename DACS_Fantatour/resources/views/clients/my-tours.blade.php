@@ -13,30 +13,36 @@
                 <div class="col-12 mb-5 text-center">
                     <div class="section-title" data-aos="fade-up" data-aos-duration="1200">
                         <h2 class="mb-3 fw-bold text-primary">Khám phá các Tour của bạn</h2>
-                        <p class="text-muted fs-6">Danh sách tour bạn đã đặt – xem lại hành trình, đánh giá và những kỷ niệm đáng nhớ.</p>
+                        <p class="text-muted fs-6">Danh sách tour bạn đã đặt – xem lại hành trình, đánh giá và những kỷ
+                            niệm đáng nhớ.</p>
                     </div>
                 </div>
 
                 @forelse ($myTours as $tour)
-                    <div class="destination-item style-three bgc-lighter mb-4 rounded shadow-sm overflow-hidden" 
-                         data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="destination-item style-three bgc-lighter mb-4 rounded shadow-sm overflow-hidden"
+                        data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="image position-relative">
                             @if ($tour->bookingStatus == 'b')
-                                <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Đợi xác nhận</span>
+                                <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Đợi xác
+                                    nhận</span>
                             @elseif ($tour->bookingStatus == 'y')
-                                <span class="badge bg-pink text-white position-absolute top-0 start-0 m-2">Sắp khởi hành</span>
+                                <span class="badge bg-pink text-white position-absolute top-0 start-0 m-2">Sắp khởi
+                                    hành</span>
                             @elseif ($tour->bookingStatus == 'f')
                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">Hoàn thành</span>
                             @elseif ($tour->bookingStatus == 'c')
                                 <span class="badge bg-danger position-absolute top-0 start-0 m-2">Đã hủy</span>
                             @endif
 
-                            <img class="w-100" src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}" alt="Tour List">
+                            <img class="w-100"
+                                src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
+                                alt="Tour List">
                         </div>
 
                         <div class="content p-4">
                             <div class="destination-header d-flex justify-content-between align-items-center mb-2">
-                                <span class="location text-muted"><i class="fal fa-map-marker-alt"></i> {{ $tour->destination }}</span>
+                                <span class="location text-muted"><i class="fal fa-map-marker-alt"></i>
+                                    {{ $tour->destination }}</span>
                                 <div class="ratting text-warning">
                                     @for ($i = 0; $i < 5; $i++)
                                         @if ($tour->rating && $i < $tour->rating)
@@ -49,7 +55,8 @@
                             </div>
 
                             <h5 class="fw-semibold">
-                                <a href="{{ route('tour-booked', ['bookingId' => $tour->bookingId, 'checkoutId' => $tour->checkoutId]) }}" class="text-dark">
+                                <a href="{{ route('tour-booked', ['bookingId' => $tour->bookingId, 'checkoutId' => $tour->checkoutId]) }}"
+                                    class="text-dark">
                                     {{ $tour->title }}
                                 </a>
                             </h5>
@@ -59,8 +66,11 @@
                             </div>
 
                             <ul class="blog-meta list-inline text-muted small mb-3">
-                                <li class="list-inline-item me-3"><i class="far fa-clock me-1"></i>{{ $tour->time }}</li>
-                                <li class="list-inline-item"><i class="far fa-user me-1"></i>{{ $tour->numAdults + $tour->numChildren }} người</li>
+                                <li class="list-inline-item me-3"><i class="far fa-clock me-1"></i>{{ $tour->time }}
+                                </li>
+                                <li class="list-inline-item"><i
+                                        class="far fa-user me-1"></i>{{ $tour->numAdults + $tour->numChildren }} người
+                                </li>
                             </ul>
 
                             <div class="destination-footer d-flex justify-content-between align-items-center mt-3">
@@ -69,7 +79,8 @@
                                 </span>
 
                                 @if ($tour->bookingStatus == 'f')
-                                    <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="theme-btn style-two style-three">
+                                    <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}"
+                                        class="theme-btn style-two style-three">
                                         @if ($tour->rating)
                                             <span data-hover="Đã đánh giá">Đã đánh giá</span>
                                         @else

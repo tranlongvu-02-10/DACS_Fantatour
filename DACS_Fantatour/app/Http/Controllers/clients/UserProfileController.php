@@ -65,34 +65,39 @@ class UserProfileController extends Controller
     }
 
     public function changeAvatar(Request $req){
-        $userId = $this->getUserId();
-        $req->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB
-        ]);
+    $userId = $this->getUserId();
+    $req->validate([
+        'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB
+    ]);
 
-        // Lấy tệp ảnh
-        $avatar = $req->file('avatar');
-        // Tạo tên mới cho tệp ảnh
-        $filename = time() . '.' . $avatar->getClientOriginalExtension(); // Tên tệp mới theo thời gian
+    // Lấy tệp ảnh
+    $avatar = $req->file('avatar');
+    // Tạo tên mới cho tệp ảnh
+    $filename = time() . '.' . $avatar->getClientOriginalExtension(); // Tên tệp mới theo thời gian
 
-        $user = $this->user->getUser($userId);
-        if ($user->avatar) {
-            // Đường dẫn đến ảnh cũ
-            $oldAvatarPath = public_path('clients/assets/images/user-profile' . $user->avatar);
+    $user = $this->user->getUser($userId);
+    if ($user->avatar) {
+        // Đường dẫn đến ảnh cũ
+        $oldAvatarPath = public_path('clients/assets/images/user-profile/' . $user->avatar);
 
-            // Kiểm tra tệp cũ có tồn tại và xóa nếu có
-            if (file_exists($oldAvatarPath)) {
-                unlink($oldAvatarPath);
-            }
+        // Kiểm tra tệp cũ có tồn tại và xóa nếu có
+        if (file_exists($oldAvatarPath)) {
+            unlink($oldAvatarPath);
         }
-        // Di chuyển ảnh vào thư mục clients/assets/images/user-profile/
-        $avatar->move(public_path('clients/assets/images/user-profile'), $filename);
-        $update = $this->user->updateUser($userId, ['avatar' => $filename]);
-        if (!$update) {
-            return response()->json(['error' => true, 'message' => 'Có vấn đề khi cập nhật ảnh!']);
-        }
-        return response()->json(['success' => true, 'message' => 'Cập nhật ảnh thành công!']);
-
-        return;
     }
+    // Di chuyển ảnh vào thư mục clients/assets/images/user-profile/
+    $avatar->move(public_path('clients/assets/images/user-profile'), $filename);
+
+    // Update DB
+    $update = $this->user->updateUser($userId, ['avatar' => $filename]);
+
+    if (!$update) {
+        return response()->json(['error' => true, 'message' => 'Có vấn đề khi cập nhật ảnh!']);
+    }
+
+    //Thêm dòng này để lưu session avatar mới
+    session()->put('avatar', $filename);
+
+    return response()->json(['success' => true, 'message' => 'Cập nhật ảnh thành công!']);
+}
 }

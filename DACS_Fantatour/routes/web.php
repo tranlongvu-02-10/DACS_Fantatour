@@ -18,6 +18,7 @@ use App\Http\Controllers\clients\PayPalController;
 use App\Http\Controllers\clients\SearchController;
 use App\Http\Controllers\clients\TourBookedController;
 use App\Http\Controllers\clients\MyTourController;
+use App\Http\Controllers\clients\ChatBotController;
 
 use App\Http\Controllers\admin\AdminManagementController;
 use App\Http\Controllers\admin\BookingManagementController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginAdminController;
 use App\Http\Controllers\admin\ToursManagementController;
 use App\Http\Controllers\admin\UserManagementController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +111,10 @@ Route::get('/search-voice-text', [SearchController::class, 'searchTours'])->name
 //Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/create-contact', [ContactController::class, 'createContact'])->name('create-contact');
+
+//Chatbot 
+Route::post('/chatbot/handle', [ChatBotController::class, 'handle'])->name('chatbot.handle');
+
 //ngôn ngữ
 Route::get('/lang/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'vi'])) {
