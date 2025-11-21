@@ -9,14 +9,112 @@
     max-width: 100%; /* Đảm bảo chiếm đủ bề ngang */
     text-align: center; /* Căn giữa nếu muốn */
 }
-.hero-subtitle {
-    color: #fff; /* trắng hoặc màu tương phản với nền */
-    text-align: center;
-    font-size: 4vw;
-    margin-top: 1rem;
-    z-index: 2;
-    position: relative;
+
+
+/* From Uiverse.io by dexter-st */
+.loader-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  width: auto;
+  margin: 1rem auto;  
+  font-family: "Poppins", sans-serif;
+  font-size: 3vw; /* thay 4vw bằng 3vw cho vừa hero */
+  font-weight: 600;
+  user-select: none;
+  color: #fffbfb;
+  scale: 1.5; /* nhỏ hơn bản gốc */
+  z-index: 2;
 }
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+  mask: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 6px,
+    black 7px,
+    black 8px
+  );
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 50%, #ff0 0%, transparent 50%),
+    radial-gradient(circle at 45% 45%, #f00 0%, transparent 45%),
+    radial-gradient(circle at 55% 55%, #0ff 0%, transparent 45%),
+    radial-gradient(circle at 45% 55%, #0f0 0%, transparent 45%),
+    radial-gradient(circle at 55% 45%, #00f 0%, transparent 45%);
+  mask: radial-gradient(
+    circle at 50% 50%,
+    transparent 0%,
+    transparent 10%,
+    black 25%
+  );
+  animation:
+    transform-animation 2s infinite alternate,
+    opacity-animation 4s infinite;
+  animation-timing-function: cubic-bezier(0.6, 0.8, 0.5, 1);
+}
+
+@keyframes transform-animation {
+  0% {
+    transform: translate(-55%);
+  }
+  100% {
+    transform: translate(55%);
+  }
+}
+
+@keyframes opacity-animation {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0;
+  }
+}
+
+.loader-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: loader-letter-anim 4s infinite linear;
+  z-index: 2;
+}
+
+.loader-letter:nth-child(1) { animation-delay: 0.1s; }
+.loader-letter:nth-child(2) { animation-delay: 0.2s; }
+.loader-letter:nth-child(3) { animation-delay: 0.3s; }
+/* ...cứ tăng dần 0.1s cho đến hết... */
+
+@keyframes loader-letter-anim {
+  0% { opacity: 0; }
+  5% {
+    opacity: 1;
+    text-shadow: 0 0 4px #fff;
+    transform: scale(1.1) translateY(-2px);
+  }
+  20% { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+
 
 
 /****************************************
@@ -32,6 +130,7 @@
 .main-header.header-one .main-menu .navbar-collapse .navigation .active {
     background: var(--primary-color);
 }
+
 
 /****************************************
 *              trang tour            *
@@ -415,105 +514,6 @@
 
 
 
-/* icon Zalo */
-.floating-social {
-    position: fixed;
-    right: 20px;
-    bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Đảm bảo icon & khung chat cùng canh phải */
-    gap: 16px;
-    z-index: 1000;
-}
-
-.floating-social .icon {
-    position: relative;
-    width: 65px;     /* Đặt width và height cố định để đồng bộ */
-    height: 65px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: none;
-    animation: shake-loop 0.5s infinite ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    transition: transform 0.2s ease-in-out;
-    overflow: visible;
-}
-
-/* SVG kích thước đồng bộ với icon */
-.floating-social .icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-/* Hiệu ứng lắc khi hover */
-.floating-social .icon:hover {
-    transform: scale(1.1);
-    animation: shake-hover 0.4s;
-}
-
-/* Hiệu ứng tỏa ra và biến mất */
-.floating-social .icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 132, 255, 0.3);
-    border-radius: 50%;
-    animation: pulse-ring 1.8s infinite ease-out;
-    z-index: -1;
-}
-
-/* Keyframes */
-@keyframes shake-loop {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(4deg); }
-  50% { transform: rotate(-4deg); }
-  75% { transform: rotate(4deg); }
-}
-
-@keyframes shake-hover {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  50% { transform: rotate(-5deg); }
-  75% { transform: rotate(5deg); }
-}
-
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.8; }
-  70% { transform: scale(1.8); opacity: 0; }
-  100% { transform: scale(2); opacity: 0; }
-}
-
-/* Chat widget */
-.zalo-chat-widget {
-    position: fixed;
-    bottom: 125px;  /* khoảng cách trên icon 65px + 16px gap */
-    right: 20px;
-    width: 400px;   /* chỉnh phù hợp để khớp với icon */
-    z-index: 10000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-}
-
-/* Ẩn/hiện */
-.zalo-hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.zalo-visible {
-    visibility: visible;
-    opacity: 1;
-    transition: all 0.3s ease;
-}
-
-
 
 /* Thanh đổi ngôn ngữ */
 .lang-dropdown {
@@ -571,6 +571,10 @@
 }
 
 
+
+
+
+
 /* poster */
 .popup-overlay {
     position: fixed;
@@ -608,6 +612,421 @@
     height: auto;      /* Giữ đúng tỷ lệ ảnh */
     display: block;    /* Xóa khoảng trắng dư */
 }
+
+
+
+
+
+/* TOUR CHẠY NGANG - riêng biệt */
+.tour-section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;        
+  padding: 0;       
+  margin: 40px auto 0 auto;   /* cách block trên */
+  width: 98%;                
+  max-width: 1800px;          
+  box-sizing: border-box;
+}
+
+/* Banner trái */
+.tour-section-banner {
+  flex: 1;
+  position: relative;
+  min-height: 550px;
+}
+.tour-section-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px; 
+}
+.tour-section-banner .banner-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+.tour-section-banner .banner-text h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.tour-section-banner .btn-primary {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.tour-section-banner .btn-primary:hover {
+  background: #0056b3;
+}
+
+/* Slider tour phải */
+.tour-section-slider {
+  flex: 2;                   
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;         
+  border-radius: 0 12px 12px 0;
+  background: #f9f9f9;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tour-section-slider .swiper-slide {
+  width: 350px !important;
+  height: 100%;
+}
+
+.tour-section-slider .tour-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.tour-section-slider .tour-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.tour-section-slider .tour-info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tour-section-slider .destination-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tour-section-slider .location {
+  font-size: 14px;
+}
+.tour-section-slider .ratting {
+  color: #ffd700;
+}
+.tour-section-slider .tour-info h4 a {
+  text-decoration: none;
+  color: #333;
+}
+.tour-section-slider .tour-info h4 a:hover {
+  color: #007bff;
+}
+.tour-section-slider .destination-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.tour-section-slider .price {
+  font-weight: bold;
+}
+.tour-section-slider .theme-btn {
+  background: #6c757d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.tour-section-slider .theme-btn:hover {
+  background: #5a6268;
+}
+.tour-section-slider .actions {
+  display: flex;
+  gap: 10px;
+}
+.tour-section-slider .btn-secondary {
+  background-color: #ccc;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+.tour-section-slider .btn-secondary:hover {
+  background-color: #bbb;
+}
+.tour-section-slider .btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+.tour-section-slider .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Swiper navigation and pagination */
+.tour-section-slider .swiper-button-next, 
+.tour-section-slider .swiper-button-prev {
+  color: #007bff;
+}
+.tour-section-slider .swiper-pagination-bullet {
+  background: #007bff;
+}
+.tour-section-slider .swiper-pagination-bullet-active {
+  background: #0056b3;
+}
+
+
+/*
+********* Nút đặt ngay header *********/
+
+/* Nút hiệu ứng bật nhẹ riêng */
+.btn-hover-jump {
+  background-color: #fff;
+  color: #000;
+  border-radius: 9em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 1em 2em;
+  cursor: pointer;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 0 #000;
+  text-decoration: none; /* bỏ gạch chân của thẻ <a> */
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-hover-jump:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 #000;
+}
+
+.btn-hover-jump:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 #000;
+}
+
+
+
+/*  */
+.button {
+  color: white;
+  background-color: #222;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.7rem 2rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.button svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 0.75rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.button:focus svg,
+.button:active svg {
+  animation: spin_357 0.5s linear;
+}
+
+/* 🔹 Nút nhỏ gọn hơn */
+.small-btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+}
+
+.small-btn svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.4rem;
+}
+
+@keyframes spin_357 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+/* Hiệu ứng xoay 3D cho trang Home */
+.home-3d-wrapper {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home-3d-inner {
+  --w: 130px;
+  --h: 180px;
+  --translateZ: calc((var(--w) + var(--h)) + 0px);
+  --rotateX: -15deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 25%;
+  left: calc(50% - (var(--w) / 2) - 2.5px);
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+  animation: home-3d-rotate 20s linear infinite;
+}
+
+@keyframes home-3d-rotate {
+  from {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+  }
+  to {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
+  }
+}
+
+.home-3d-card {
+  position: absolute;
+  border: 2px solid rgba(var(--color-card));
+  border-radius: 12px;
+  overflow: hidden;
+  inset: 0;
+  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
+    translateZ(var(--translateZ));
+}
+
+.home-3d-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0000
+    radial-gradient(
+      circle,
+      rgba(var(--color-card), 0.2) 0%,
+      rgba(var(--color-card), 0.6) 80%,
+      rgba(var(--color-card), 0.9) 100%
+    );
+}
+
+
+
+
+
+
+
+/* From Uiverse.io by MijailVillegas */
+.social-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: fit-content;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(15px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.192),
+    inset 0 0 5px rgba(255, 255, 255, 0.274), 0 5px 5px rgba(0, 0, 0, 0.164);
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.social-card:hover {
+  background: rgba(173, 173, 173, 0.05);
+}
+
+.social-card ul {
+  padding: 1rem;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.iso-pro {
+  position: relative;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.iso-pro .svg {
+  transition: all 0.3s;
+  padding: 1rem;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  fill: currentColor;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5),
+    0 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.iso-pro:hover a > .svg {
+  transform: translate(10px, -10px);
+}
+
+.text {
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.3s;
+  color: #abb9cb;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5),
+    0 5px 5px rgba(0, 0, 0, 0.082);
+}
+
+.iso-pro:hover .text {
+  opacity: 1;
+  transform: translate(10px, -2px) skew(-5deg);
+}
+
+
+
+
+
+
 
 
 

@@ -11,6 +11,28 @@ class Tours extends Model
 {
     use HasFactory;
     protected $table = 'tbl_tourss';
+    protected $primaryKey = 'tourId';  // khóa chính
+    public $timestamps = false;        // bảng không có created_at, updated_at
+
+    // Cho phép gán dữ liệu hàng loạt
+    protected $fillable = [
+        'title',
+        'description',
+        'priceAdult',
+        'priceChild',
+        'time',
+        'destination',
+        'quantity',
+        'startDate',
+        'endDate',
+        'availability',
+    ];
+
+    // Nếu có cột ngày thì cast sang date
+    protected $casts = [
+        'startDate' => 'date',
+        'endDate'   => 'date',
+    ];
 
     //Lấy tất cả tour
    public function getAllTours($perPage = 9)

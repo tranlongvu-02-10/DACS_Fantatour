@@ -32,77 +32,8 @@ class ToursController extends Controller
         'mien_trung' => optional($domain->firstWhere('domain', 't'))->count,
         'mien_nam' => optional($domain->firstWhere('domain', 'n'))->count,
     ];
-
-    //  Lấy thời tiết
-    $apiKey = env('OPENWEATHER_API_KEY');
-
-    $cityMap = [
-        'HÀ NỘI' => 'Hanoi',
-        'ĐÀ NẴNG' => 'Da Nang',
-        'TP HỒ CHÍ MINH' => 'Ho Chi Minh',
-        'SAPA' => 'Sa Pa',
-        'PHÚ QUỐC' => 'Rach Gia',
-        'HẠ LONG' => 'Ha Long',
-        'NINH BÌNH' => 'Ninh Binh',
-        'QUẢNG NAM' => 'Da Nang',
-        'VŨNG TÀU' => 'Vung Tau',
-        'LÂM ĐỒNG' => 'Da Lat',
-        'KHÁNH HÒA' => 'Nha Trang',
-        'CÔN ĐẢO' => 'Con Dao',
-        'CẦN THƠ' => 'Can Tho',
-        'QUẢNG TRỊ' => 'Quang Tri',
-        'QUẢNG NINH' => 'Quang Ninh',
-        'BÌNH ĐỊNH' => 'Binh Dinh',
-    ];
-
-
-    foreach ($tours as $tour) {
-    $originalCity = trim($tour->destination ?? 'Hanoi');
-
-// Chuyển về dạng không dấu và thường để map chính xác
-$normalizedCity = Str::of($originalCity)->lower()->slug('_')->__toString();
-
-// Tạo một cityMap chuẩn hóa key
-$normalizedCityMap = collect($cityMap)
-    ->mapWithKeys(function ($value, $key) {
-        return [
-            Str::of($key)->lower()->slug('_')->__toString() => $value
-        ];
-    });
-
-if (!$normalizedCityMap->has($normalizedCity)) {
-    Log::info("City not found in cityMap: " . $originalCity);
-}
-
-$city = $normalizedCityMap->get($normalizedCity, $originalCity);
-    $cacheKey = 'weather_' . strtolower(str_replace(' ', '_', $city));
-
-    $weatherData = cache()->remember($cacheKey, 3600, function () use ($city, $apiKey) {
-        $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
-            'q' => $city,
-            'appid' => $apiKey,
-            'units' => 'metric',
-            'lang' => 'vi',
-        ]);
-
-        if (!$response->successful()) {
-            Log::warning("🌧️ Không lấy được thời tiết cho $city", ['error' => $response->body()]);
-            return null;
-        }
-
-        return $response->json();
-    });
-
-    if ($weatherData) {
-        $tour->weather = [
-            'temp' => round($weatherData['main']['temp']),
-            'desc' => $weatherData['weather'][0]['description'],
-            'icon' => $weatherData['weather'][0]['icon'],
-        ];
-    } else {
-        $tour->weather = null;
-    }
-}
+    // Thêm thời tiết cho danh sách tours
+    $this->addWeatherToTours($tours);
 
     if ($request->ajax()) {
         return response()->json([
@@ -184,8 +115,74 @@ $city = $normalizedCityMap->get($normalizedCity, $originalCity);
                 ['path' => url()->current()] // Path for pagination
             );
         }
-
+        $this->addWeatherToTours($tours);
         return view('clients.partials.filter-tours', compact('tours'));
 
     }
+    
+    private function addWeatherToTours(&$tours)
+{
+    $apiKey = env('OPENWEATHER_API_KEY');
+
+    $cityMap = [
+        'HÀ NỘI' => 'Hanoi',
+        'ĐÀ NẴNG' => 'Da Nang',
+        'TP HỒ CHÍ MINH' => 'Ho Chi Minh',
+        'SAPA' => 'Sa Pa',
+        'PHÚ QUỐC' => 'Rach Gia',
+        'HẠ LONG' => 'Ha Long',
+        'NINH BÌNH' => 'Ninh Binh',
+        'QUẢNG NAM' => 'Da Nang',
+        'VŨNG TÀU' => 'Vung Tau',
+        'LÂM ĐỒNG' => 'Da Lat',
+        'KHÁNH HÒA' => 'Nha Trang',
+        'CÔN ĐẢO' => 'Con Dao',
+        'CẦN THƠ' => 'Can Tho',
+        'QUẢNG TRỊ' => 'Quang Tri',
+        'QUẢNG NINH' => 'Quang Ninh',
+        'BÌNH ĐỊNH' => 'Binh Dinh',
+    ];
+
+    $normalizedCityMap = collect($cityMap)->mapWithKeys(function ($value, $key) {
+        return [Str::of($key)->lower()->slug('_')->__toString() => $value];
+    });
+
+    foreach ($tours as $tour) {
+        $originalCity = trim($tour->destination ?? 'Hanoi');
+        $normalizedCity = Str::of($originalCity)->lower()->slug('_')->__toString();
+
+        if (!$normalizedCityMap->has($normalizedCity)) {
+            Log::info("City not found in cityMap: " . $originalCity);
+        }
+
+        $city = $normalizedCityMap->get($normalizedCity, $originalCity);
+        $cacheKey = 'weather_' . strtolower(str_replace(' ', '_', $city));
+
+        $weatherData = cache()->remember($cacheKey, 3600, function () use ($city, $apiKey) {
+            $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+                'q' => $city,
+                'appid' => $apiKey,
+                'units' => 'metric',
+                'lang' => 'vi',
+            ]);
+
+            if (!$response->successful()) {
+                Log::warning("🌧️ Không lấy được thời tiết cho $city", ['error' => $response->body()]);
+                return null;
+            }
+
+            return $response->json();
+        });
+
+        if ($weatherData) {
+            $tour->weather = [
+                'temp' => round($weatherData['main']['temp']),
+                'desc' => $weatherData['weather'][0]['description'],
+                'icon' => $weatherData['weather'][0]['icon'],
+            ];
+        } else {
+            $tour->weather = null;
+        }
+    }
+}
 }

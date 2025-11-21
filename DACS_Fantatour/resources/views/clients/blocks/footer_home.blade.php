@@ -131,40 +131,567 @@
 <!--End pagewrapper-->
 
 {{-- hộp thoại zalo and mess --}}
-<div class="floating-social" >
-    <!-- mess Icon -->
-    <a href="https://m.me/your_page_id" target="_blank" class="icon messenger" title="Chat Messenger">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-        <path fill="#448AFF" d="M24,4C13.5,4,5,12.1,5,22c0,5.2,2.3,9.8,6,13.1V44l7.8-4.7c1.6,0.4,3.4,0.7,5.2,0.7c10.5,0,19-8.1,19-18C43,12.1,34.5,4,24,4z"></path><path fill="#FFF" d="M12 28L22 17 27 22 36 17 26 28 21 23z"></path>
-        </svg>
-    </a>
-    <!-- Phone Icon -->
-    <a href="tel:19006420" class="icon phone" title="Gọi 1900 6420">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-        <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
-        </svg>
-    </a>
-    <!-- Zalo Icon -->
-    <div class="icon zalo" title="Chat Zalo" onclick="toggleZaloWidget()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48">
-            <path fill="#2962ff" d="M15,36V6.827l-1.211-0.811C8.64,8.083,5,13.112,5,19v10c0,7.732,6.268,14,14,14h10	c4.722,0,8.883-2.348,11.417-5.931V36H15z"></path>
-            <path fill="#eee" d="M29,5H19c-1.845,0-3.601,0.366-5.214,1.014C10.453,9.25,8,14.528,8,19	c0,6.771,0.936,10.735,3.712,14.607c0.216,0.301,0.357,0.653,0.376,1.022c0.043,0.835-0.129,2.365-1.634,3.742	c-0.162,0.148-0.059,0.419,0.16,0.428c0.942,0.041,2.843-0.014,4.797-0.877c0.557-0.246,1.191-0.203,1.729,0.083	C20.453,39.764,24.333,40,28,40c4.676,0,9.339-1.04,12.417-2.916C42.038,34.799,43,32.014,43,29V19C43,11.268,36.732,5,29,5z"></path>
-            <path fill="#2962ff" d="M36.75,27C34.683,27,33,25.317,33,23.25s1.683-3.75,3.75-3.75s3.75,1.683,3.75,3.75	S38.817,27,36.75,27z M36.75,21c-1.24,0-2.25,1.01-2.25,2.25s1.01,2.25,2.25,2.25S39,24.49,39,23.25S37.99,21,36.75,21z"></path>
-            <path fill="#2962ff" d="M31.5,27h-1c-0.276,0-0.5-0.224-0.5-0.5V18h1.5V27z"></path>
-            <path fill="#2962ff" d="M27,19.75v0.519c-0.629-0.476-1.403-0.769-2.25-0.769c-2.067,0-3.75,1.683-3.75,3.75	S22.683,27,24.75,27c0.847,0,1.621-0.293,2.25-0.769V26.5c0,0.276,0.224,0.5,0.5,0.5h1v-7.25H27z M24.75,25.5	c-1.24,0-2.25-1.01-2.25-2.25S23.51,21,24.75,21S27,22.01,27,23.25S25.99,25.5,24.75,25.5z"></path>
-            <path fill="#2962ff" d="M21.25,18h-8v1.5h5.321L13,26h0.026c-0.163,0.211-0.276,0.463-0.276,0.75V27h7.5	c0.276,0,0.5-0.224,0.5-0.5v-1h-5.321L21,19h-0.026c0.163-0.211,0.276-0.463,0.276-0.75V18z"></path>
-        </svg>
+<div class="floating-social">
+    <!-- Card chứa các icon chat -->
+    <div class="card">
+        <ul>
+            <!-- Messenger Icon -->
+            <li class="iso-pro">
+                <span></span>
+                <span></span>
+                <span></span>
+                <a href="https://m.me/your_page_id" target="_blank" title="Chat Messenger">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48" class="svg">
+                        <path fill="#448AFF" d="M24,4C13.5,4,5,12.1,5,22c0,5.2,2.3,9.8,6,13.1V44l7.8-4.7c1.6,0.4,3.4,0.7,5.2,0.7c10.5,0,19-8.1,19-18C43,12.1,34.5,4,24,4z"></path>
+                        <path fill="#FFF" d="M12 28L22 17 27 22 36 17 26 28 21 23z"></path>
+                    </svg>
+                </a>
+            </li>
+            
+            <!-- Zalo Icon -->
+            <li class="iso-pro">
+                <span></span>
+                <span></span>
+                <span></span>
+                <a href="#" title="Chat Zalo" onclick="toggleZaloWidget(); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" class="svg">
+                        <path fill="#2962ff" d="M15,36V6.827l-1.211-0.811C8.64,8.083,5,13.112,5,19v10c0,7.732,6.268,14,14,14h10	c4.722,0,8.883-2.348,11.417-5.931V36H15z"></path>
+                        <path fill="#eee" d="M29,5H19c-1.845,0-3.601,0.366-5.214,1.014C10.453,9.25,8,14.528,8,19	c0,6.771,0.936,10.735,3.712,14.607c0.216,0.301,0.357,0.653,0.376,1.022c0.043,0.835-0.129,2.365-1.634,3.742	c-0.162,0.148-0.059,0.419,0.16,0.428c0.942,0.041,2.843-0.014,4.797-0.877c0.557-0.246,1.191-0.203,1.729,0.083	C20.453,39.764,24.333,40,28,40c4.676,0,9.339-1.04,12.417-2.916C42.038,34.799,43,32.014,43,29V19C43,11.268,36.732,5,29,5z"></path>
+                        <path fill="#2962ff" d="M36.75,27C34.683,27,33,25.317,33,23.25s1.683-3.75,3.75-3.75s3.75,1.683,3.75,3.75	S38.817,27,36.75,27z M36.75,21c-1.24,0-2.25,1.01-2.25,2.25s1.01,2.25,2.25,2.25S39,24.49,39,23.25S37.99,21,36.75,21z"></path>
+                        <path fill="#2962ff" d="M31.5,27h-1c-0.276,0-0.5-0.224-0.5-0.5V18h1.5V27z"></path>
+                        <path fill="#2962ff" d="M27,19.75v0.519c-0.629-0.476-1.403-0.769-2.25-0.769c-2.067,0-3.75,1.683-3.75,3.75	S22.683,27,24.75,27c0.847,0,1.621-0.293,2.25-0.769V26.5c0,0.276,0.224,0.5,0.5,0.5h1v-7.25H27z M24.75,25.5	c-1.24,0-2.25-1.01-2.25-2.25S23.51,21,24.75,21S27,22.01,27,23.25S25.99,25.5,24.75,25.5z"></path>
+                        <path fill="#2962ff" d="M21.25,18h-8v1.5h5.321L13,26h0.026c-0.163,0.211-0.276,0.463-0.276,0.75V27h7.5	c0.276,0,0.5-0.224,0.5-0.5v-1h-5.321L21,19h-0.026c0.163-0.211,0.276-0.463,0.276-0.75V18z"></path>
+                    </svg>
+                </a>
+            </li>
+            
+            <!-- Chat AI Icon -->
+            <li class="iso-pro">
+                <span></span>
+                <span></span>
+                <span></span>
+                <a href="#" title="Trợ lý AI" onclick="toggleAIChat(); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="svg">
+                        <path fill="#007bff" d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-1-4c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
-<!-- Widget Zalo -->
-<div class="zalo-chat-widget" 
-     data-oaid="2981869492739447451" 
-     data-welcome-message="Xin chào! Fantatour rất hân hạnh được hỗ trợ bạn!" 
-     data-autopopup="0" 
-     data-width="350" 
-     data-height="420"
-     style="position: fixed; bottom: 100px; right: 20px; display: none; z-index: 10000;">
+
+<!-- Widget Zalo - CHỈ CÓ 1 WIDGET DUY NHẤT -->
+<div id="zalo-chat-widget" class="zalo-chat-widget zalo-hidden">
+    <!-- Widget Zalo sẽ được tích hợp ở đây -->
+    <div class="zalo-widget-content">
+        <div class="zalo-header">
+            <h4>Chat với Zalo</h4>
+            <p>Tourista hỗ trợ bạn</p>
+        </div>
+        <div class="zalo-chat-area">
+            <!-- Nội dung chat Zalo thực tế sẽ được tích hợp ở đây -->
+            <div class="zalo-placeholder">
+                <p>Kết nối với Zalo Official Account</p>
+                <div class="zalo-qr-code">
+                    <!-- Có thể thêm QR code Zalo ở đây -->
+                    <div class="qr-placeholder">QR Code Zalo</div>
+                </div>
+                <div class="zalo-contact-info">
+                    <p><strong>Số điện thoại:</strong> 0123.456.789</p>
+                    <p><strong>Zalo ID:</strong> tourista</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleZaloWidget()" class="zalo-close-btn">
+            Đóng
+        </button>
+    </div>
 </div>
+
+<!-- Hộp thoại chatbot AI -->
+<div id="ai-chat-box" class="ai-chat-box">
+    <div class="ai-chat-header">
+        Trợ lý du lịch Tourista
+    </div>
+    <div id="messages" class="ai-chat-messages">
+        <div class="bot-message"><b>Bot:</b> Xin chào 👋! Tôi có thể giúp bạn tìm tour trong hệ thống.</div>
+    </div>
+    <div class="ai-chat-input">
+        <input id="userInput" type="text" placeholder="Nhập tin nhắn..." 
+               onkeydown="if(event.key === 'Enter') sendMessage();">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+</div>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script>
+    window.chatbotUrl = "{{ route('chatbot.handle') }}";
+    window.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    
+    // Khởi tạo - Ẩn widget Zalo khi trang load
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('zalo-chat-widget').classList.add('zalo-hidden');
+        document.getElementById('ai-chat-box').style.display = 'none';
+    });
+    
+    // Hàm toggle Zalo Widget - ĐÃ SỬA
+    function toggleZaloWidget() {
+        const widget = document.getElementById('zalo-chat-widget');
+        const isHidden = widget.classList.contains('zalo-hidden');
+        
+        // Đóng AI chat nếu đang mở
+        document.getElementById('ai-chat-box').style.display = 'none';
+        
+        if (isHidden) {
+            widget.classList.remove('zalo-hidden');
+            widget.classList.add('zalo-visible');
+        } else {
+            widget.classList.remove('zalo-visible');
+            widget.classList.add('zalo-hidden');
+        }
+        
+        // Ngăn sự kiện click lan ra ngoài
+        event.stopPropagation();
+    }
+    
+    // Hàm toggle AI Chat
+    function toggleAIChat() {
+        const chatBox = document.getElementById('ai-chat-box');
+        const isVisible = chatBox.style.display === 'flex';
+        
+        // Đóng Zalo nếu đang mở
+        document.getElementById('zalo-chat-widget').classList.add('zalo-hidden');
+        document.getElementById('zalo-chat-widget').classList.remove('zalo-visible');
+        
+        if (!isVisible) {
+            chatBox.style.display = 'flex';
+        } else {
+            chatBox.style.display = 'none';
+        }
+        
+        // Ngăn sự kiện click lan ra ngoài
+        event.stopPropagation();
+    }
+    
+    // Hàm gửi tin nhắn AI
+    function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const messages = document.getElementById('messages');
+        
+        if (userInput.value.trim() === '') return;
+        
+        // Thêm tin nhắn người dùng
+        const userMessage = document.createElement('div');
+        userMessage.className = 'user-message';
+        userMessage.innerHTML = `<b>Bạn:</b> ${userInput.value}`;
+        messages.appendChild(userMessage);
+        
+        // Hiệu ứng typing
+        const typingMessage = document.createElement('div');
+        typingMessage.className = 'typing-message';
+        typingMessage.innerHTML = '<b>Bot:</b> <span class="typing-dots">...</span>';
+        messages.appendChild(typingMessage);
+        messages.scrollTop = messages.scrollHeight;
+        
+        // Gửi yêu cầu đến server
+        fetch(window.chatbotUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': window.csrfToken
+            },
+            body: JSON.stringify({ message: userInput.value })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Xóa tin nhắn typing
+            typingMessage.remove();
+            
+            // Thêm phản hồi từ bot
+            const botMessage = document.createElement('div');
+            botMessage.className = 'bot-message';
+            botMessage.innerHTML = `<b>Bot:</b> ${data.response}`;
+            messages.appendChild(botMessage);
+            
+            // Cuộn xuống cuối
+            messages.scrollTop = messages.scrollHeight;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Xóa tin nhắn typing
+            typingMessage.remove();
+            
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'bot-message';
+            errorMessage.innerHTML = `<b>Bot:</b> Xin lỗi, đã xảy ra lỗi. Vui lòng thử lại.`;
+            messages.appendChild(errorMessage);
+            messages.scrollTop = messages.scrollHeight;
+        });
+        
+        // Xóa input
+        userInput.value = '';
+    }
+    
+    // Đóng widget khi click ra ngoài
+    document.addEventListener('click', function(event) {
+        const zaloWidget = document.getElementById('zalo-chat-widget');
+        const aiChatBox = document.getElementById('ai-chat-box');
+        const floatingSocial = document.querySelector('.floating-social');
+        
+        // Kiểm tra click có phải trên widget hoặc floating social không
+        const isClickInsideZalo = zaloWidget.contains(event.target);
+        const isClickInsideAI = aiChatBox.contains(event.target);
+        const isClickInsideFloating = floatingSocial.contains(event.target);
+        
+        if (!isClickInsideZalo && !isClickInsideFloating && !zaloWidget.classList.contains('zalo-hidden')) {
+            zaloWidget.classList.add('zalo-hidden');
+            zaloWidget.classList.remove('zalo-visible');
+        }
+        
+        if (!isClickInsideAI && !isClickInsideFloating && aiChatBox.style.display === 'flex') {
+            aiChatBox.style.display = 'none';
+        }
+    });
+</script>
+
+<style>
+    /* icon Zalo - GIỮ NGUYÊN */
+    .floating-social {
+        position: fixed;
+        right: 20px;
+        bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        z-index: 1000;
+    }
+
+    /* CSS MỚI CHO CARD */
+    .card {
+        max-width: fit-content;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        gap: 1rem;
+        backdrop-filter: blur(15px);
+        background: rgba(173, 173, 173, 0.05);
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.192),
+            inset 0 0 5px rgba(255, 255, 255, 0.274), 0 5px 5px rgba(0, 0, 0, 0.164);
+        transition: 0.5s;
+    }
+
+    .card:hover {
+        animation: ease-out 5s;
+        background: rgba(173, 173, 173, 0.1);
+    }
+
+    .card ul {
+        padding: 1rem;
+        display: flex;
+        list-style: none;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .card ul li {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .card .svg {
+        transition: all 0.3s;
+        padding: 1rem;
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+        color: rgb(255, 174, 0);
+        fill: currentColor;
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+            inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+    }
+
+    .card .text {
+        opacity: 0;
+        border-radius: 5px;
+        padding: 8px 12px;
+        transition: all 0.3s;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        z-index: 9999;
+        box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+            -10px 0 1px rgba(153, 153, 153, 0.2),
+            inset 0 0 20px rgba(255, 255, 255, 0.1),
+            inset 0 0 5px rgba(255, 255, 255, 0.2), 0 5px 5px rgba(0, 0, 0, 0.082);
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 15px;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    /*isometric projection cho card*/
+    .iso-pro {
+        transition: 0.5s;
+        position: relative;
+    }
+
+    .iso-pro:hover a > .svg {
+        transform: translate(-5px, -5px);
+        border-radius: 100%;
+    }
+
+    .iso-pro:hover .text {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-5px);
+    }
+
+    .iso-pro span {
+        opacity: 0;
+        position: absolute;
+        color: #1877f2;
+        border-color: #1877f2;
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+            inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+        border-radius: 50%;
+        transition: all 0.3s;
+        height: 60px;
+        width: 60px;
+    }
+
+    .iso-pro:hover span {
+        opacity: 1;
+    }
+
+    .iso-pro:hover span:nth-child(1) {
+        opacity: 0.2;
+    }
+
+    .iso-pro:hover span:nth-child(2) {
+        opacity: 0.4;
+        transform: translate(-5px, -5px);
+    }
+
+    .iso-pro:hover span:nth-child(3) {
+        opacity: 0.6;
+        transform: translate(-10px, -10px);
+    }
+
+    /* Chat widget - ĐÃ SỬA HOÀN TOÀN */
+    .zalo-chat-widget {
+        position: fixed;
+        bottom: 125px;
+        right: 20px;
+        width: 350px;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .zalo-hidden {
+        display: none !important;
+    }
+
+    .zalo-visible {
+        display: block !important;
+    }
+
+    .zalo-widget-content {
+        background: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        width: 100%;
+        height: 420px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .zalo-header {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .zalo-header h4 {
+        color: #0068ff;
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .zalo-header p {
+        color: #666;
+        font-size: 14px;
+        margin: 5px 0 0 0;
+    }
+
+    .zalo-chat-area {
+        flex: 1;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 15px;
+        background: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .zalo-placeholder {
+        text-align: center;
+        color: #888;
+    }
+
+    .zalo-qr-code {
+        margin: 15px 0;
+        padding: 10px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .qr-placeholder {
+        padding: 20px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .zalo-contact-info {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .zalo-contact-info p {
+        margin: 5px 0;
+    }
+
+    .zalo-close-btn {
+        width: 100%;
+        padding: 10px;
+        background: #0068ff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .zalo-close-btn:hover {
+        background: #0055cc;
+    }
+
+    /* AI Chat Box Styles */
+    .ai-chat-box {
+        position: fixed;
+        bottom: 180px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 8px;
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .ai-chat-header {
+        background: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        font-weight: bold;
+    }
+
+    .ai-chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        max-height: 300px;
+    }
+
+    .user-message {
+        text-align: right;
+        margin: 5px 0;
+        padding: 8px;
+        background: #e3f2fd;
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+
+    .bot-message {
+        text-align: left;
+        margin: 5px 0;
+        padding: 8px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+
+    .typing-message {
+        text-align: left;
+        margin: 5px 0;
+        padding: 8px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        margin-right: 20px;
+        font-style: italic;
+    }
+
+    .typing-dots {
+        animation: typing 1.5s infinite;
+    }
+
+    @keyframes typing {
+        0%, 20% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .ai-chat-input {
+        display: flex;
+        border-top: 1px solid #ccc;
+    }
+
+    .ai-chat-input input {
+        flex: 1;
+        border: none;
+        padding: 8px;
+        outline: none;
+    }
+
+    .ai-chat-input button {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    .ai-chat-input button:hover {
+        background: #0056b3;
+    }
+
+    /* Hiệu ứng cho icon trong card */
+    .card .iso-pro:hover .svg {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+    }
+</style>
+{{-- End --}}
+    
 
 
 @if (session('error'))
@@ -209,6 +736,12 @@
 <!-- Bootstrap JS + Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Thêm Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
 
 
 

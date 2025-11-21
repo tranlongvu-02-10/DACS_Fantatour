@@ -3,7 +3,7 @@
         <div class="destination-item tour-grid style-three bgc-lighter block_tours equal-block-fix" data-aos="fade-up"
             data-aos-duration="1500" data-aos-offset="50">
             <div class="image">
-                <span class="badge bgc-pink">Featured</span>
+                <span class="badge bgc-pink">Giá tốt nhất</span>
                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                 <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0] . '') }}" alt="Tour List">
             </div>

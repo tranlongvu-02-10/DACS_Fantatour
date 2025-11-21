@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Fantatour - {{ $title }}</title>
+    <title>Tourista - {{ $title }}</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="{{ asset('clients/assets/images/logos/favicon.png') }}" type="image/x-icon">
     <!-- Google Fonts -->
@@ -49,6 +49,10 @@
     <link rel="stylesheet" href="{{ asset('clients/assets/css/user-profile.css') }}" />
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Thêm Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
 
 
         
@@ -149,10 +153,8 @@
                         </div>
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="{{ route('tours') }}" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Đặt ngay">Đặt ngay</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
+                            <a href="{{ route('tours') }}" class="btn-hover-jump">Đặt ngay</a>
+
                             <!-- menu sidbar -->
                             <div class="menu-sidebar">
                                     <li class="drop-down">

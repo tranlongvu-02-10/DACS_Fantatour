@@ -1003,14 +1003,20 @@ $(document).ready(function () {
     }
 });
 
+
+/* Zalo*/
 function toggleZaloWidget() {
-        const zaloWidget = document.querySelector('.zalo-chat-widget');
-        if (zaloWidget.style.display === 'none' || zaloWidget.style.display === '') {
-            zaloWidget.style.display = 'block';
-        } else {
-            zaloWidget.style.display = 'none';
-        }
+    const zaloWidget = document.querySelector('.zalo-chat-widget');
+    if (zaloWidget.classList.contains('zalo-hidden')) {
+        zaloWidget.classList.remove('zalo-hidden');
+        zaloWidget.classList.add('zalo-visible');
+    } else {
+        zaloWidget.classList.remove('zalo-visible');
+        zaloWidget.classList.add('zalo-hidden');
     }
+}
+
+
 
 document.querySelector('.dropdown-toggle').addEventListener('click', (event) => {
     console.log('Dropdown button clicked');
@@ -1018,7 +1024,7 @@ document.querySelector('.dropdown-toggle').addEventListener('click', (event) => 
 });
 
 
-// poster
+/* poster*/
 document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra xem popup đã từng hiển thị trong session chưa
     if (!sessionStorage.getItem('tourPopupShown')) {
@@ -1032,4 +1038,70 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-   
+/* TOUR CHẠY NGANG - riêng biệt */
+document.addEventListener('DOMContentLoaded', function () {
+    const tourSectionSwiper = new Swiper('.tour-section-slider', {
+        loop: true,
+        autoplay: {
+            delay: 2000, // 3 giây chuyển slide
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.tour-section-next',
+            prevEl: '.tour-section-prev',
+        },
+        pagination: {
+            el: '.tour-section-pagination',
+            clickable: true,
+        },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+            1400: {
+                slidesPerView: 4, // màn hình lớn
+            },
+        },
+    });
+});
+
+/*Xử lý chatbot */
+
+document.getElementById("ai-chat-button").addEventListener("click", function() {
+    let box = document.getElementById("ai-chat-box");
+    box.style.display = (box.style.display === "none" || box.style.display === "") ? "flex" : "none";
+});
+
+async function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value.trim();
+    if (!message) return;
+
+    let messagesDiv = document.getElementById("messages");
+    messagesDiv.innerHTML += `<div><b>Bạn:</b> ${message}</div>`;
+    input.value = "";
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    try {
+        let response = await fetch(window.chatbotUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": window.csrfToken
+            },
+            body: JSON.stringify({ message })
+        });
+
+        let data = await response.json();
+        let reply = data.reply || "Xin lỗi, tôi chưa hiểu câu hỏi.";
+        messagesDiv.innerHTML += `<div><b>Bot:</b> ${reply}</div>`;
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    } catch (err) {
+        messagesDiv.innerHTML += `<div><b>Bot:</b> Có lỗi xảy ra khi kết nối server.</div>`;
+    }
+}

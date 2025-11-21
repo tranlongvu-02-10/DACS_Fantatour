@@ -62,16 +62,22 @@ body {
   line-height: 28px;
   font-size: 16px;
   font-family: var(--base-font);
+
   --base-font: 'Outfit', sans-serif;
   --heading-font: 'Outfit', sans-serif;
-  --primary-color: #63AB45;
-  --secondary-color: #F7921E;
-  --heading-color: #1C231F;
-  --base-color: #484848;
-  --lighter-color: #F9F9F7;
-  --border-color: #E9E9E9;
-  --primary-rgb: 99, 171, 69;
-  --secondary-rgb: 247, 146, 30; }
+
+  --primary-color: #3c396ac5;       /* tím công nghệ */
+  --secondary-color: #9D4EDD;     /* tím gradient */
+  --heading-color: #1A1A2E;      /* tím than đậm */
+  --base-color: #4B4B4B;          /* màu chữ chính */
+  --lighter-color: #F3EFFF;       /* tím nhạt làm nền */
+  --border-color: #D4C2F0;        /* viền tím pastel */
+  
+  --primary-rgb: 108, 99, 255;
+  --secondary-rgb: 157, 78, 221;
+}
+
+
 
 a {
   color: var(--base-color);
@@ -946,7 +952,7 @@ a.theme-btn {
   background-color: black; }
 
 .bgc-black {
-  background-color: var(--heading-color); }
+  background-color: black; }
 
 .bgc-lighter {
   background-color: var(--lighter-color); }
@@ -4080,17 +4086,20 @@ h6, .h6, blockquote {
   @media only screen and (max-width: 575px) {
     .main-hero-image {
       height: 400px; } }
-  .main-hero-image:before {
+.main-hero-image:before {
     position: absolute;
     left: 0;
     top: 0;
     content: '';
     width: 100%;
     height: 100%;
-    background: -webkit-gradient(linear, left top, left bottom, from(#1D231F), to(rgba(29, 35, 31, 0)));
-    background: -webkit-linear-gradient(top, #1D231F 0%, rgba(29, 35, 31, 0) 100%);
-    background: -o-linear-gradient(top, #1D231F 0%, rgba(29, 35, 31, 0) 100%);
-    background: linear-gradient(180deg, #1D231F 0%, rgba(29, 35, 31, 0) 100%); }
+    background: -webkit-gradient(linear, left top, left bottom, from(#1A1A2E), to(rgba(26, 26, 46, 0)));
+    background: -webkit-linear-gradient(top, #1A1A2E 0%, rgba(26, 26, 46, 0) 100%);
+    background: -o-linear-gradient(top, #1A1A2E 0%, rgba(26, 26, 46, 0) 100%);
+    background: linear-gradient(180deg, #1A1A2E 0%, rgba(26, 26, 46, 0) 100%);
+}
+
+
 
 .search-filter-inner {
   display: -webkit-box;
@@ -4512,7 +4521,7 @@ h6, .h6, blockquote {
       color: white;
       font-size: 18px;
       padding: 30px 50px 20px;
-      background: var(--secondary-color);
+      background: #dc3545;
       -webkit-transform: rotate(-45deg) translate(-30px, -40px);
       -ms-transform: rotate(-45deg) translate(-30px, -40px);
       transform: rotate(-45deg) translate(-30px, -40px); }
