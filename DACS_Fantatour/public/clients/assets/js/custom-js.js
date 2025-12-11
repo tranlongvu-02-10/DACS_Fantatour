@@ -1004,7 +1004,9 @@ $(document).ready(function () {
 });
 
 
-/* Zalo*/
+    /****************************************
+     *  Zalo    *
+     * ***************************************/
 function toggleZaloWidget() {
     const zaloWidget = document.querySelector('.zalo-chat-widget');
     if (zaloWidget.classList.contains('zalo-hidden')) {
@@ -1024,7 +1026,9 @@ document.querySelector('.dropdown-toggle').addEventListener('click', (event) => 
 });
 
 
-/* poster*/
+    /****************************************
+     *  Poster                               *
+     * ***************************************/
 document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra xem popup đã từng hiển thị trong session chưa
     if (!sessionStorage.getItem('tourPopupShown')) {
@@ -1038,7 +1042,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* TOUR CHẠY NGANG - riêng biệt */
+    /****************************************
+     *  HOME-TOUR CHẠY NGANG - riêng biệt    *
+     * ***************************************/
 document.addEventListener('DOMContentLoaded', function () {
     const tourSectionSwiper = new Swiper('.tour-section-slider', {
         loop: true,
@@ -1070,13 +1076,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/*Xử lý chatbot */
 
+    /****************************************
+     *  Xử lý chatbot Ai                     *
+     * ***************************************/
 document.getElementById("ai-chat-button").addEventListener("click", function() {
     let box = document.getElementById("ai-chat-box");
     box.style.display = (box.style.display === "none" || box.style.display === "") ? "flex" : "none";
 });
-
 async function sendMessage() {
     let input = document.getElementById("userInput");
     let message = input.value.trim();

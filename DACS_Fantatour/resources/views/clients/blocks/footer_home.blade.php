@@ -737,11 +737,15 @@
 <script src="{{ asset('clients/assets/js/script.js') }}"></script>
 {{-- jquery-toast  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="js/jquery.smartWizard.js"></script>
+
 <!-- Custom script by longvu-->
 <script src="{{ asset('clients/assets/js/custom-js.js') }}"></script>
 <script src="{{ asset('clients/assets/js/jquery.datetimepicker.full.min.js') }}"></script>
 {{-- paypal-payment  --}}
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD&locale=vi_VN&components=buttons&enable-funding=paylater"></script>
 
 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 

@@ -481,79 +481,6 @@
         </section>
         <!-- About Us Area end -->
 
-
-        <!-- tour chạy ngang tự động -->
-        <div class="tour-section-container">
-            <!-- Banner trái -->
-            <div class="tour-section-banner">
-                <img src="{{ asset('clients/assets/images/banner/search-banner1.jpg') }}" alt="Châu Âu">
-                <div class="banner-text">
-                    <a href="{{ route('tours') }}" class="btn-primary">
-                        KHÁM PHÁ NGAY <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Slider tour phải -->
-            <div class="swiper tour-section-slider">
-                <div class="swiper-wrapper">
-                    @foreach($tours as $tour)
-                        <div class="swiper-slide">
-                            <div class="tour-card">
-                                {{-- Ảnh tour --}}
-                                @if(!empty($tour->imagess) && count($tour->imagess) > 0)
-                                            <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->imagess[0]) }}" alt="Destination">
-                                        @else
-                                            <img src="{{ asset('clients/assets/images/default-image.jpg') }}" alt="Default Image">
-                                        @endif
-                                <!-- Thông tin tour -->
-                                <div class="tour-info">
-                                    <div class="destination-header">
-                                        <span class="location">
-                                        <i class="fal fa-map-marker-alt"></i> {{ $tour->destination }}
-                                        </span>
-                                        @if (!empty($tour->weather))
-                                            <div class="weather-info small mt-2">
-                                                <span>{{ $tour->weather['temp'] }}°C - {{ ucfirst($tour->weather['desc']) }}</span>
-                                            </div>
-                                        @else
-                                            <div class="weather-info small text-danger mt-2">
-                                                Không lấy được thời tiết
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">
-                                        {{ $tour->title }}
-                                        </a>
-                                    </h4>
-                                    <div class="destination-footer">
-                                        <span class="price">
-                                        <span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người
-                                        </span>
-                                    </div>
-                                    <div class="actions">
-                                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="btn-secondary">
-                                        XEM CHI TIẾT
-                                        </a>
-                                        <a href="{{ route('booking', ['id' => $tour->tourId]) }}" class="btn-primary">
-                                        ĐẶT TOUR
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Nút điều hướng -->
-                <div class="swiper-pagination tour-banner-pagination"></div>
-            </div>
-        </div> 
-        <!-- tour chạy ngang tự động kết thúc -->
-
-
-
         <!-- CTA Area start -->
         <section class="cta-area pt-100 rel z-1">
             <div class="container-fluid">
@@ -598,6 +525,71 @@
         </section>
         <!-- CTA Area end -->
 
+        <!-- tour chạy ngang tự động -->
+        <div class="tour-section-container">  <!-- Container chính -->
+            <!-- Banner trái -->
+            <div class="tour-section-banner">
+                <img src="{{ asset('clients/assets/images/banner/search-banner1.jpg') }}" alt="Châu Âu">
+                <div class="banner-text">
+                    <a href="{{ route('tours') }}" class="btn-primary">
+                        KHÁM PHÁ NGAY <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slider tour phải – thêm style height 100% -->
+            <div class="swiper tour-section-slider" style="height: 100%;">
+                <div class="swiper-wrapper">
+                    @foreach($tours as $tour)
+                        <div class="swiper-slide">
+                            <div class="tour-card">
+                                {{-- Ảnh tour --}}
+                                @if(!empty($tour->imagess) && count($tour->imagess) > 0)
+                                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->imagess[0]) }}" alt="Destination">
+                                @else
+                                    <img src="{{ asset('clients/assets/images/default-image.jpg') }}" alt="Default Image">
+                                @endif
+
+                                <!-- Thông tin tour – thêm flex để đều -->
+                                <div class="tour-info">
+                                    <div class="destination-header">
+                                        <span class="location">
+                                            <i class="fal fa-map-marker-alt"></i> {{ $tour->destination }}
+                                        </span>
+                                        @if (!empty($tour->weather))
+                                            <div class="weather-info">
+                                                <span>{{ $tour->weather['temp'] }}°C - {{ ucfirst($tour->weather['desc']) }}</span>
+                                            </div>
+                                        @endif
+                                        <!-- Nếu không có thời tiết thì để trống, không ảnh hưởng layout -->
+                                    </div>
+
+                                    <h4 class="tour-title">
+                                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">
+                                            {{ $tour->title }}
+                                        </a>
+                                    </h4>
+
+                                    <div class="destination-footer">
+                                        <span class="price">
+                                            {{ number_format($tour->priceAdult, 0, ',', '.') }} VND / người
+                                        </span>
+                                    </div>
+
+                                    <div class="actions">
+                                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="btn-secondary">XEM CHI TIẾT</a>
+                                        <a href="{{ route('booking', ['id' => $tour->tourId]) }}" class="btn-primary">ĐẶT TOUR</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination tour-banner-pagination"></div>
+            </div>
+        </div> 
+        <!-- tour chạy ngang tự động kết thúc -->
+
         <!-- Features Area start -->
         <section class="features-area pt-100 pb-45 rel z-1 features-bg">
         <div class="container">
@@ -605,7 +597,7 @@
                 <div class="col-xl-6">
                     <div class="features-content-part mb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-60">
-                            <h2>"Khám Phá Những Hành Trình Tuyệt Vời – Nơi Mỗi Chuyến Đi Là Một Ký Ức Đáng Nhớ Cùng Fantatour"</h2>
+                            <h2>"Khám Phá Những Hành Trình Tuyệt Vời – Nơi Mỗi Chuyến Đi Là Một Ký Ức Đáng Nhớ Cùng tourista"</h2>
                         </div>
                         <div class="features-customer-box">
                             <div class="image">
@@ -677,7 +669,7 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                             <div class="section-title mb-25">
-                                <h2 style="color: #ffffff;">Du lịch với sự tự tin Lý do hàng đầu để chọn fantatour của chúng tôi</h2>
+                                <h2 style="color: #ffffff;">Du lịch với sự tự tin Lý do hàng đầu để chọn tourista của chúng tôi</h2>
                             </div>
                             <p style="color: #e0e0e0;">Chúng tôi sẽ nỗ lực hết mình để biến giấc mơ du lịch của bạn thành hiện thực, những viên ngọc ẩn và những điểm tham quan không thể bỏ qua</p>
                             <div class="divider counter-text-wrap mt-45 mb-55" style="color: #ffffff;"><span>Chúng tôi có <span><span class="count-text plus" data-speed="3000" data-stop="25" style="color: #00ffaa;">0</span> Năm</span> của kinh nghiệm</span></div>
@@ -808,8 +800,6 @@
             </style>
         </section>
         <!-- About Us Area end -->
-
-
 
         <!-- Popular Destinations Area start -->
             <section class="popular-destinations-area rel z-1">
