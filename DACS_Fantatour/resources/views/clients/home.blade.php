@@ -530,15 +530,10 @@
             <!-- Banner trái -->
             <div class="tour-section-banner">
                 <img src="{{ asset('clients/assets/images/banner/search-banner1.jpg') }}" alt="Châu Âu">
-                <div class="banner-text">
-                    <a href="{{ route('tours') }}" class="btn-primary">
-                        KHÁM PHÁ NGAY <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
             </div>
 
             <!-- Slider tour phải – thêm style height 100% -->
-            <div class="swiper tour-section-slider" style="height: 100%;">
+            <div class="swiper tour-section-slider" style="height: 300%;">
                 <div class="swiper-wrapper">
                     @foreach($tours as $tour)
                         <div class="swiper-slide">
