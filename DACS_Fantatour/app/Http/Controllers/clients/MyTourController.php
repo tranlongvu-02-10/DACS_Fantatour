@@ -52,6 +52,6 @@ class MyTourController extends Controller
             $toursPopular = $this->tours->toursPopular(6);
         }
 
-        return view('clients.my-tours', compact('title', 'myTours','toursPopular'));
+        return view('clients.my-tours', compact('title', 'myTours', 'toursPopular'));
     }
 }

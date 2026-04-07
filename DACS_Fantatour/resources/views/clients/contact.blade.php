@@ -70,7 +70,7 @@
                     </div>
                     <div class="circle-logo">
                         <img src="{{ asset('clients/assets/images/contact/icon.png') }}" alt="Logo">
-                        <span class="title h2">Fantatour</span>
+                        <span class="title h2">tourista</span>
                     </div>
                 </div>
             </div>

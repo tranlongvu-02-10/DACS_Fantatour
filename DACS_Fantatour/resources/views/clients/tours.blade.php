@@ -3,7 +3,7 @@
     
 
         
-        <!-- Tour Grid Area start -->
+<!-- Tour Grid Area start -->
 <section class="tour-grid-page py-100 rel z-1">
     <div class="container">
         <div class="row">
@@ -223,7 +223,7 @@
                 </div>
 
                 <div class="tour-grid-wrap">
-                    <div class="loader"></div>
+                    {{-- <div class="loader"></div> --}}
                     <div class="row" id="tours-container">
                         @include('clients.partials.filter-tours')
 
@@ -241,23 +241,49 @@
 @include('clients.blocks.new_letter')    
 
 <!-- footer area start -->
-<footer class="main-footer footer-two bgp-bottom bgc-black rel z-15 pt-100 pb-115" style="background-image: url({{ asset('clients/assets/images/backgrounds/footer-two.png')}});">
-    <div class="widget-area">
-        <div class="container">
-            <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2">
-                <div class="col col-small" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+<footer class="main-footer bgs-cover overlay rel z-1 pb-25"
+    style="background-image: url({{ asset('clients/assets/images/backgrounds/mui-dinh-cau-dep-me-hon-luc-hoang-hon.jpeg') }});">
+    <div class="container">
+        <div class="footer-top pt-100 pb-30">
+            <div class="row justify-content-between">
+                <div class="col-xl-5 col-lg-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
-                        <div class="footer-logo mb-40">
-                            <a href="{{ route('home') }}"><img src="{{ asset('clients/assets/images/logos/logo.png') }}" alt="Logo"></a>
+                        <div class="footer-logo mb-25">
+                            <a href="{{ route('home') }}"><img src="{{ asset('clients/assets/images/logos/logo.png') }}"
+                                    alt="Logo"></a>
                         </div>
-                        <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6857729938574!2d106.7587396101279!3d10.835341558060687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527ae7b121297%3A0x9fda1a8492c5074d!2zNDgvMy8zQSDEkC4gU-G7kSAzLCBUcsaw4budbmcgVGjhu40sIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1748119699944!5m2!1svi!2s" 
-                            style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p>Chúng tôi biên soạn các hành trình riêng biệt phù hợp với sở thích của bạn, đảm bảo mọi
+                            chuyến đi đều
+                            liền mạch và làm phong phú thêm những viên ngọc ẩn giấu</p>
+                        <div class="social-style-one mt-15">
+                            <a href=><i class="fab fa-facebook-f"></i></a>
+                            <a href="contact.html"><i class="fab fa-youtube"></i></a>
+                            <a href="contact.html"><i class="fab fa-pinterest"></i></a>
+                            <a href="contact.html"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col col-small" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="footer-widget footer-links ms-sm-5">
+                <div class="col-xl-5 col-lg-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                    data-aos-offset="50">
+                    <div class="section-title counter-text-wrap mb-35">
+                        <h2>Đăng ký nhận bản tin</h2>
+                    </div>
+                    <form class="newsletter-form mb-50" action="#">
+                        <input id="news-email" type="email" placeholder="Email Address" required>
+                        <button type="submit" class="theme-btn bgc-secondary style-two">
+                            <span data-hover="Đăng ký">Đăng ký</span>
+                            <i class="fal fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget-area pt-95 pb-45">
+        <div class="container">
+            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                <div class="col col-small" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="footer-widget footer-links">
                         <div class="footer-title">
                             <h5>Dịch vụ</h5>
                         </div>
@@ -268,8 +294,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col col-small" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="footer-widget footer-links ms-md-4">
+                <div class="col col-small" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                    data-aos-offset="50">
+                    <div class="footer-widget footer-links">
                         <div class="footer-title">
                             <h5>Công ty</h5>
                         </div>
@@ -280,8 +307,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col col-small" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="footer-widget footer-links ms-lg-4">
+                <div class="col col-small" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                    data-aos-offset="50">
+                    <div class="footer-widget footer-links">
                         <div class="footer-title">
                             <h5>Điểm đến</h5>
                         </div>
@@ -292,15 +320,30 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col col-md-6 col-10 col-small" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                <div class="col col-small" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500"
+                    data-aos-offset="50">
+                    <div class="footer-widget footer-links">
+                        <div class="footer-title">
+                            <h5>Thể loại</h5>
+                        </div>
+                        <ul class="list-style-three">
+                            <li><a href="{{ route('contact') }}">Phiêu lưu</a></li>
+                            <li><a href="{{ route('contact') }}">Tour gia đình</a></li>
+                            <li><a href="{{ route('contact') }}">Tour động vật hoang dã</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-md-6 col-10 col-small" data-aos="fade-up" data-aos-delay="200"
+                    data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-contact">
                         <div class="footer-title">
                             <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i>48/3/3A, Đường số 3, Trường thọ, Thủ đức< TP.HCM</li>
+                            <li><i class="fal fa-map-marked-alt"></i> 48/3/3A, Đường số 3, Trường thọ, Thủ đức, TP.HCM</li>
                             <li><i class="fal fa-envelope"></i> <a
                                     href="mailto:tranlongvu02102004@gmail.com">tranlongvu02102004@gmail.com</a></li>
+                            <li><i class="fal fa-clock"></i> Thứ 2 - Thứ 6, 08am - 05pm</li>
                             <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123)
                                     345 88</a></li>
                         </ul>
@@ -309,22 +352,25 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom bg-transparent pt-20 pb-5">
+    <div class="footer-bottom pt-20 pb-5">
         <div class="container">
             <div class="row">
-               <div class="col-lg-5">
+                <div class="col-lg-5">
                     <div class="copyright-text text-center text-lg-start">
-                        <p>@Copy 2025 <a href="\">Fantatour</a>, All rights reserved</p>
+                        <p>@Copy 2025 <a href="{{ route('home') }}">Tourista</a>, All rights reserved</p>
                     </div>
-               </div>
+                </div>
             </div>
+            <!-- Scroll Top Button -->
+            <button class="scroll-top scroll-to-target" data-target="html"><img
+                    src="{{ asset('clients/assets/images/icons/scroll-up.png') }}" alt="Scroll  Up"></button>
         </div>
     </div>
 </footer>
 <!-- footer area end -->
 
 
-    <!-- Jquery -->
+<!-- Jquery -->
 <script src="{{asset('clients/assets/js/jquery-3.6.0.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('clients/assets/js/bootstrap.min.js')}}"></script>

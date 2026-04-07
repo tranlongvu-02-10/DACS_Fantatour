@@ -1004,7 +1004,9 @@ $(document).ready(function () {
 });
 
 
-/* Zalo*/
+    /****************************************
+     *  Zalo    *
+     * ***************************************/
 function toggleZaloWidget() {
     const zaloWidget = document.querySelector('.zalo-chat-widget');
     if (zaloWidget.classList.contains('zalo-hidden')) {
@@ -1024,7 +1026,9 @@ document.querySelector('.dropdown-toggle').addEventListener('click', (event) => 
 });
 
 
-/* poster*/
+    /****************************************
+     *  Poster                               *
+     * ***************************************/
 document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra xem popup đã từng hiển thị trong session chưa
     if (!sessionStorage.getItem('tourPopupShown')) {
@@ -1038,7 +1042,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* TOUR CHẠY NGANG - riêng biệt */
+    /****************************************
+     *  HOME-TOUR CHẠY NGANG - riêng biệt    *
+     * ***************************************/
 document.addEventListener('DOMContentLoaded', function () {
     const tourSectionSwiper = new Swiper('.tour-section-slider', {
         loop: true,
@@ -1070,38 +1076,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/*Xử lý chatbot */
 
-document.getElementById("ai-chat-button").addEventListener("click", function() {
-    let box = document.getElementById("ai-chat-box");
-    box.style.display = (box.style.display === "none" || box.style.display === "") ? "flex" : "none";
-});
+/****************************************
+ *  CHATBOT AI – PHIÊN BẢN HOÀN HẢO 2025 (ĐÃ SỬA LỖI) *
+ ****************************************/
 
-async function sendMessage() {
-    let input = document.getElementById("userInput");
-    let message = input.value.trim();
-    if (!message) return;
-
-    let messagesDiv = document.getElementById("messages");
-    messagesDiv.innerHTML += `<div><b>Bạn:</b> ${message}</div>`;
-    input.value = "";
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-    try {
-        let response = await fetch(window.chatbotUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": window.csrfToken
-            },
-            body: JSON.stringify({ message })
-        });
-
-        let data = await response.json();
-        let reply = data.reply || "Xin lỗi, tôi chưa hiểu câu hỏi.";
-        messagesDiv.innerHTML += `<div><b>Bot:</b> ${reply}</div>`;
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    } catch (err) {
-        messagesDiv.innerHTML += `<div><b>Bot:</b> Có lỗi xảy ra khi kết nối server.</div>`;
-    }
-}

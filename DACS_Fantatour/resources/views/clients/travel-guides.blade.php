@@ -91,4 +91,4 @@
 
 
 @include('clients.blocks.new_letter')
-@include('clients.blocks.footer')
+@include('clients.blocks.footer_home')

@@ -236,8 +236,8 @@
     margin: auto;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid green;
-    border-bottom: 16px solid green;
+    border-top: 16px solid rgb(26, 0, 128);
+    border-bottom: 16px solid rgb(43, 0, 128);
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
@@ -262,6 +262,8 @@
         transform: rotate(360deg);
     }
 }
+
+
 
 /***************************************
              thông tin cá nhân        
@@ -494,13 +496,6 @@
 
 
 /*xử lý thêm Features backrough */
-.features-bg {
-    background-image: url('/clients/assets/images/Features/hehe.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
 .features-area h2 {
     font-family: 'Playfair Display', serif;
@@ -508,7 +503,7 @@
     font-weight: 700;
     font-size: 38px;
     line-height: 1.4;
-    color: #ffffff;
+    color: #110e0e;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
 
@@ -619,170 +614,131 @@
 
 /* TOUR CHẠY NGANG - riêng biệt */
 .tour-section-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 20px;        
-  padding: 0;       
-  margin: 40px auto 0 auto;   /* cách block trên */
-  width: 98%;                
-  max-width: 1800px;          
-  box-sizing: border-box;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    height: 550px;  /* Hoặc để auto nếu banner tự do, nhưng cố định thì đẹp hơn */
 }
 
-/* Banner trái */
+/* Banner trái – chiếm 1 phần, chiều cao 100% */
 .tour-section-banner {
-  flex: 1;
-  position: relative;
-  min-height: 550px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
 }
 .tour-section-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px 0 0 12px; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .tour-section-banner .banner-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-}
-.tour-section-banner .banner-text h2 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-.tour-section-banner .btn-primary {
-  background: #007bff;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.tour-section-banner .btn-primary:hover {
-  background: #0056b3;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
 }
 
-/* Slider tour phải */
+/* Slider phải – bằng chiều cao banner trái */
 .tour-section-slider {
-  flex: 2;                   
-  position: relative;
-  overflow: hidden;
-  min-height: 550px;         
-  border-radius: 0 12px 12px 0;
-  background: #f9f9f9;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    flex: 2;
+    height: 100% !important;  /* Bắt buộc bằng bên trái */
+    background: #fff;
 }
 
-.tour-section-slider .swiper-slide {
-  width: 350px !important;
-  height: 100%;
-}
-
+/* Card tour – đều chiều cao, thông tin căn đẹp */
 .tour-section-slider .tour-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
 }
 
 .tour-section-slider .tour-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
 .tour-section-slider .tour-info {
-  padding: 15px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Đẩy nút xuống dưới cùng */
 }
 
-.tour-section-slider .destination-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+/* Header: location + weather – luôn đều, không lệch */
+.destination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    min-height: 40px;  /* Ép chiều cao cố định để đều */
 }
 
-.tour-section-slider .location {
-  font-size: 14px;
-}
-.tour-section-slider .ratting {
-  color: #ffd700;
-}
-.tour-section-slider .tour-info h4 a {
-  text-decoration: none;
-  color: #333;
-}
-.tour-section-slider .tour-info h4 a:hover {
-  color: #007bff;
-}
-.tour-section-slider .destination-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
-}
-.tour-section-slider .price {
-  font-weight: bold;
-}
-.tour-section-slider .theme-btn {
-  background: #6c757d;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-.tour-section-slider .theme-btn:hover {
-  background: #5a6268;
-}
-.tour-section-slider .actions {
-  display: flex;
-  gap: 10px;
-}
-.tour-section-slider .btn-secondary {
-  background-color: #ccc;
-  color: #000;
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-}
-.tour-section-slider .btn-secondary:hover {
-  background-color: #bbb;
-}
-.tour-section-slider .btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-}
-.tour-section-slider .btn-primary:hover {
-  background-color: #0056b3;
+.weather-info {
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
 }
 
-/* Swiper navigation and pagination */
-.tour-section-slider .swiper-button-next, 
-.tour-section-slider .swiper-button-prev {
-  color: #007bff;
-}
-.tour-section-slider .swiper-pagination-bullet {
-  background: #007bff;
-}
-.tour-section-slider .swiper-pagination-bullet-active {
-  background: #0056b3;
+/* Tiêu đề – cố định 3 dòng, thừa thì cắt */
+.tour-title {
+    flex-grow: 1;
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    height: 78px;  /* 3 dòng cố định */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
+.tour-title a {
+    color: #333;
+    text-decoration: none;
+}
+.tour-title a:hover {
+    color: #007bff;
+}
 
+/* Giá + nút – luôn ở dưới cùng, đều nhau */
+.destination-footer {
+    margin: 10px 0;
+}
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;  /* Quan trọng: đẩy xuống đáy */
+}
+
+.btn-secondary, .btn-primary {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+}
+.btn-secondary {
+    background: #f1f1f1;
+    color: #333;
+}
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
 /*
 ********* Nút đặt ngay header *********/
 
@@ -873,79 +829,6 @@
 }
 
 
-
-
-
-
-
-
-/* Hiệu ứng xoay 3D cho trang Home */
-.home-3d-wrapper {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.home-3d-inner {
-  --w: 130px;
-  --h: 180px;
-  --translateZ: calc((var(--w) + var(--h)) + 0px);
-  --rotateX: -15deg;
-  --perspective: 1000px;
-  position: absolute;
-  width: var(--w);
-  height: var(--h);
-  top: 25%;
-  left: calc(50% - (var(--w) / 2) - 2.5px);
-  z-index: 2;
-  transform-style: preserve-3d;
-  transform: perspective(var(--perspective));
-  animation: home-3d-rotate 20s linear infinite;
-}
-
-@keyframes home-3d-rotate {
-  from {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
-  }
-  to {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
-  }
-}
-
-.home-3d-card {
-  position: absolute;
-  border: 2px solid rgba(var(--color-card));
-  border-radius: 12px;
-  overflow: hidden;
-  inset: 0;
-  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
-    translateZ(var(--translateZ));
-}
-
-.home-3d-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #0000
-    radial-gradient(
-      circle,
-      rgba(var(--color-card), 0.2) 0%,
-      rgba(var(--color-card), 0.6) 80%,
-      rgba(var(--color-card), 0.9) 100%
-    );
-}
-
-
-
-
-
-
-
 /* From Uiverse.io by MijailVillegas */
 .social-card {
   position: fixed;
@@ -1024,8 +907,58 @@
 
 
 
+/* Chữ đứng im trang home */
+.loader-wrapper, .loader, .loader-letter {
+    animation: none !important;
+    opacity: 1 !important;
+}
+.loader { display: none !important; }
 
 
+
+/* css Chatbot ai */
+.ai-chat-box {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(20px);
+    opacity: 0;
+}
+.ai-chat-box:not(.hidden) {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.user-message {
+    text-align: right;
+    margin: 12px 0 12px auto;
+    max-width: 80%;
+    background: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px 18px 4px 18px;
+    align-self: flex-end;
+}
+
+.bot-message {
+    text-align: left;
+    margin: 12px auto 12px 0;
+    max-width: 80%;
+    background: #f1f3f5;
+    padding: 10px 16px;
+    border-radius: 18px 18px 18px 4px;
+    align-self: flex-start;
+}
+
+.typing { font-style: italic; color: #666; }
+.dots::after {
+    content: '';
+    animation: dots 1.5s infinite;
+}
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+}
 
 
 

@@ -34,10 +34,22 @@
                                 <h6 class="tour-title">
                                     <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
                                 </h6>
+                                <div class="weather-info small mb-1" style="min-height: 36px; display: flex; align-items: center;">
+                                    @if (!empty($tour->weather))
+                                        <img src="http://openweathermap.org/img/wn/{{ $tour->weather['icon'] }}@2x.png" alt="Weather" style="width:30px; margin-right: 8px;">
+                                        <span>{{ $tour->weather['temp'] }}°C, {{ ucfirst($tour->weather['desc']) }}</span>
+                                    @else
+                                        <!-- Giữ chỗ invisible -->
+                                        <span style="opacity: 0;">00°C, ............</span>
+                                    @endif
+                                </div>
                                 <span class="time">{{ $tour->time }}</span>
                                 <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}" class="more">
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
+                                <div class="destination-footer">
+                                    <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span> VND / người</span>
+                                </div>  
                             </div>
                         </div>
                     </div>

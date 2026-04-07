@@ -3,134 +3,114 @@
 namespace App\Http\Controllers\clients;
 
 use Illuminate\Http\Request;
-use App\Models\clients\Tours;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\ValidationException;
 
 class ChatBotController extends Controller
 {
     public function handle(Request $request)
     {
-        try {
-            $request->validate(['message' => 'required|string|max:500']);
-        } catch (ValidationException $e) {
-            return response()->json(['reply' => 'Tin nhắn không hợp lệ.']);
+        $message = trim($request->input('message', ''));
+        if (empty($message)) {
+            return response()->json(['reply' => 'Ơi bạn ơi, nhắn gì cho mình đi chứ, mình đang chờ nè']);
         }
 
-        $message = $request->input('message');
+        $msg = mb_strtolower($message);
 
-        // Prompt phân tích ý định
-        $analysisPrompt = "Phân tích câu hỏi: \"$message\". 
-        Trả về JSON chính xác:
-        {
-          \"destination\": \"Tên địa điểm (Hà Nội, Đà Nẵng...) hoặc null\",
-          \"minPrice\": \"Giá tối thiểu (số nguyên) hoặc null\",
-          \"maxPrice\": \"Giá tối đa (số nguyên) hoặc null\",
-          \"startDate\": \"Ngày khởi hành (YYYY-MM-DD) hoặc null\",
-          \"time\": \"Số ngày (ví dụ: 3) hoặc null\"
+        if (preg_match('/\b(chào|hi|hello|hey|alo|bot|hế lô|oi|ê|chào bot|bot ơi)\b/i', $message)) {
+            $greet = [
+                "Chào bạn iu ơi!!! Hôm nay muốn đi đâu chơi nào? Mình gợi ý tour xịn xò cho nè!",
+                "Hi hi bạn đẹp trai/xinh gái ơi! Muốn đi biển, đi núi hay đi ăn chơi nhảy múa nào?",
+                "A lô a lô! Có mình đây rồi nè! Bạn đang muốn đi du lịch hả? Kể mình nghe đi nào!",
+                "Chào buổi sáng/tối người đẹp! Muốn đi đâu chơi thì cứ nói, mình book tour liền á!"
+            ];
+            return response()->json(['reply' => $greet[array_rand($greet)]]);
         }
-        Chỉ trả JSON, xử lý synonym và lỗi chính tả.";
 
-        try {
-            // ✅ GỌI API PHÂN TÍCH
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-            ])
-            ->timeout(10)
-            ->retry(2, 1000)
-            ->post(
-                'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=' . config('services.gemini.api_key'),
+        // TRÍCH XUẤT TỪ KHÓA THÔNG MINH NHẤT
+        $clean = $msg;
 
-                [
-                    'contents' => [
-                        [
-                            'parts' => [
-                                ['text' => $analysisPrompt]
-                            ]
-                        ]
-                    ]
-                ]
-            );
+        // Loại bỏ từ thừa
+        $junk = ['đi', 'muốn', 'tôi', 'em', 'cho', 'gợi ý', 'tour', 'đi du lịch', 'giá', 'bao nhiêu', 'có', 'không', 'ở', 'từ', 'đến', 'với', 'mấy', 'là', 'à', 'ạ', 'nhé', 'nha', 'được', 'vào', 'tháng', 'năm', 'năm nay', 'sắp tới', 'muốn đi', 'đi chơi', 'đi đâu', 'đi phú quốc', 'đi đà lạt'];
+        foreach ($junk as $word) {
+            $clean = str_replace($word, ' ', $clean);
+        }
 
-            if (!$response->successful()) {
-                Log::error('Gemini API error', [
-                    'status' => $response->status(),
-                    'body' => $response->body(),
-                    'headers' => $response->headers()
-                ]);
-
-                // Fallback: tìm kiếm bằng model Tours nếu API lỗi
-                $tours = (new Tours())->searchTours(['keyword' => $message], 5);
-                $reply = $tours->count() > 0
-                    ? "Dưới đây là một số tour phù hợp:\n" . $tours->map(fn($tour) => "- {$tour->title} ({$tour->destination}, {$tour->time})")->implode("\n")
-                    : "Xin lỗi, không tìm thấy tour phù hợp.";
-                return response()->json(['reply' => $reply]);
+        // Xử lý "3 ngày 2 đêm", "4 ngày", "3n2đ"...
+        $duration = null;
+        if (preg_match('/(\d+)\s*(ngày|ngay|n|đêm|dem|d)/i', $message, $m)) {
+            $duration = $m[1] . " ngày";
+            if (strpos($msg, 'đêm') !== false || strpos($msg, 'd') !== false) {
+                $duration .= " ... đêm";
             }
-
-            // ✅ ĐỌC DỮ LIỆU TRẢ VỀ TỪ GEMINI
-            $responseData = $response->json();
-            $jsonText = trim($responseData['candidates'][0]['content']['parts'][0]['text'] ?? "{}");
-            $filters = json_decode($jsonText, true) ?? [];
-            Log::info('Parsed filters', $filters);
-
-            // ✅ TÌM TOUR TRONG DB
-            $tours = (new Tours())->searchTours($filters, 5);
-
-            if ($tours->count() > 0) {
-                $tourList = "";
-                foreach ($tours as $tour) {
-                    $tourList .= "- {$tour->title}, Điểm đến: {$tour->destination}, Giá: " . number_format($tour->priceAdult) . " VNĐ, Thời gian: {$tour->time}, Ngày khởi hành: {$tour->startDate}\n";
-                }
-
-                $answerPrompt = "Bạn là chatbot hỗ trợ khách hàng du lịch.
-                Chỉ được trả lời dựa trên danh sách tour dưới đây và không được nói bất kỳ thông tin nào ngoài phạm vi tour.
-                Nếu người dùng hỏi điều không liên quan, chỉ trả lời: 'Xin lỗi, tôi chỉ có thể tư vấn về các tour du lịch trong hệ thống.'
-
-                Câu hỏi: \"$message\"
-                Danh sách tour có sẵn trong cơ sở dữ liệu:
-                $tourList
-
-                Viết câu trả lời ngắn gọn, thân thiện, chỉ nói về các tour trên.";
-
-
-                // ✅ GỌI LẠI GEMINI ĐỂ VIẾT TRẢ LỜI (vẫn dùng model 1.5-flash)
-                $finalResponse = Http::withHeaders([
-                    'Content-Type' => 'application/json',
-                ])
-                ->timeout(10)
-                ->retry(2, 1000)
-                ->post(
-                    // ⚠️ đổi endpoint sang model mới
-                    'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=' . config('services.gemini.api_key'),
-
-                    [
-                        'contents' => [
-                            ['parts' => [['text' => $answerPrompt]]]
-                        ]
-                    ]
-                );
-
-                if (!$finalResponse->successful()) {
-                    Log::error('Gemini final response error', [
-                        'status' => $finalResponse->status(),
-                        'body' => $finalResponse->body(),
-                        'headers' => $finalResponse->headers()
-                    ]);
-                    $reply = "Danh sách tour:\n$tourList\nVui lòng xem chi tiết trên website!";
-                } else {
-                    $finalResponseData = $finalResponse->json();
-                    $reply = trim($finalResponseData['candidates'][0]['content']['parts'][0]['text'] ?? "Có lỗi xảy ra.");
-                }
-            } else {
-                 $reply = "Xin lỗi, tôi không tìm thấy tour phù hợp trong hệ thống.Tôi chỉ có thể trả lời về các tour du lịch có sẵn trong cơ sở dữ liệu.";
-            }
-        } catch (\Exception $e) {
-            Log::error('Chatbot error', ['message' => $e->getMessage()]);
-            $reply = "Có lỗi xảy ra khi kết nối server. Vui lòng thử lại sau!";
         }
 
-        return response()->json(['reply' => $reply]);
+        $clean = trim(preg_replace('/\s+/', ' ', $clean));
+        $clean = preg_replace('/\b(\d+n?\d*d?)\b/i', '', $clean);
+        $clean = trim(preg_replace('/\s+/', ' ', $clean));
+
+        $keywords = [];
+        foreach (explode(' ', $clean) as $w) {
+            if (mb_strlen($w) > 2 && !is_numeric($w)) {
+                $keywords[] = $w;
+            }
+        }
+
+        // Nếu không hiểu → hỏi lại dễ thương
+        if (empty($keywords) && !$duration) {
+            return response()->json(['reply' => "Mình chỉ biết tư vấn tour du lịch thôi á\nBạn muốn đi đâu, mấy ngày thì nói mình nha! Ví dụ: Phú Quốc, Đà Lạt 3 ngày, Tour Tết..."]);
+        }
+
+        // TÌM TOUR SIÊU CHUẨN
+        $query = DB::table('tbl_tourss');
+
+        if (!empty($keywords)) {
+            foreach ($keywords as $kw) {
+                $like = '%' . $kw . '%';
+                $query->where(function($q) use ($like) {
+                    $q->whereRaw('LOWER(title) LIKE ?', [$like])
+                      ->orWhereRaw('LOWER(destination) LIKE ?', [$like]);
+                });
+            }
+        }
+
+        if ($duration) {
+            $query->where('time', 'LIKE', "%{$duration}%");
+        }
+
+        $tours = $query->select('tourId', 'title', 'destination', 'time', 'priceAdult', 'startDate')
+                       ->orderBy('tourId', 'desc')
+                       ->limit(6)
+                       ->get();
+
+        // KHÔNG TÌM THẤY → DỄ THƯƠNG
+        if ($tours->isEmpty()) {
+            $no = [
+                "Hic hic, hiện tại mình chưa có tour nào hợp với \"$message\" á",
+                "Để mình lục lại lần nữa nha... hiện tại chưa có á",
+                "Hơi tiếc xíu là chưa có tour nào đúng ý bạn á\nBạn thử nói lại nha, ví dụ: Phú Quốc, Đà Lạt 3 ngày, Tour Tết..."
+            ];
+            return response()->json(['reply' => $no[array_rand($no)]]);
+        }
+
+        // CÓ TOUR → SIÊU VUI VẺ + LINK CLICK ĐƯỢC
+        $list = "";
+        foreach ($tours as $i => $t) {
+            $url = route('tours-detail', ['id' => $t->tourId]);
+            $list .= ($i + 1) . ". <a href=\"$url\" target=\"_blank\">{$t->title}</a>\n";
+            $list .= "   Địa điểm: {$t->destination}\n";
+            $list .= "   Thời gian: {$t->time}\n";
+            $list .= "   Giá chỉ từ: " . number_format($t->priceAdult) . "đ\n";
+            $list .= "   Khởi hành: " . date('d/m/Y', strtotime($t->startDate)) . "\n\n";
+        }
+
+        $yes = [
+            "Tìm được rồi nè bạn ơi!!! Đây là mấy tour hot nhất luôn á!\n\n$list\nNhấn vào tên tour để xem chi tiết nha",
+            "Yes yes yes!!! Tour xịn mịn đây rồi!!!\n\n$list\nClick vào tên tour là xem chi tiết liền á",
+            "Wow wow wow!!! Có tour đẹp lung linh nè!!!\n\n$list\nThích cái nào thì nhấn vào tên tour nha bạn iu",
+            "Đỉnh của chóp luôn nè!!!\n\n$list\nChọn tour nào đi, mình book liền cho!"
+        ];
+
+        return response()->json(['reply' => $yes[array_rand($yes)]]);
     }
 }

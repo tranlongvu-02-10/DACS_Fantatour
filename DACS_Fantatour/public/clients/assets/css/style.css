@@ -4601,7 +4601,7 @@ h6, .h6, blockquote {
       font-size: 14px;
       margin-bottom: 5px; }
       .destination-item .destination-footer .price span {
-        color: white;
+        color: #e74c3c;
         font-size: 24px;
         font-weight: 500; }
     .destination-item .destination-footer .read-more {

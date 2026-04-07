@@ -258,34 +258,65 @@
                                     88</a></li>
                         </ul>
                     </div>
-                    @if (!empty($tourRecommendations))
-                        <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="50">
-                            <h6 class="widget-title">Tours tương tự</h6>
-                            @foreach ($tourRecommendations as $tour)
-                                <div class="destination-item tour-grid style-three bgc-lighter">
-                                    <div class="image">
-                                        {{-- <span class="badge">10% Off</span> --}}
-                                        <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
-                                            alt="Tour" style="max-height: 137px">
-                                    </div>
-                                    <div class="content">
-                                        <div class="destination-header">
-                                            <span class="location"><i class="fal fa-map-marker-alt"></i>
-                                                {{ $tour->destination }}</span>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <span>({{ $tour->rating }})</span>
-                                            </div>
+                    {{-- PHẦN GỢI Ý TOUR TƯƠNG TỰ --}}
+                    @if($tourRecommendations && $tourRecommendations->count() > 0)
+                    <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <h6 class="widget-title d-flex align-items-center justify-content-between">
+                            <span>
+                                @if(auth()->check())
+                                    Gợi ý dành riêng cho bạn
+                                @else
+                                    Tours tương tự
+                                @endif
+                            </span>
+                            @if(auth()->check())
+                                <small class="text-muted">Dựa trên lịch sử đặt tour</small>
+                            @endif
+                        </h6>
+
+                        @foreach ($tourRecommendations as $tour)
+                            <div class="destination-item tour-grid style-three bgc-lighter position-relative mb-3">
+                                @if(auth()->check())
+                                    <span class="badge bg-danger text-white position-absolute top-0 start-0 m-2 px-2 py-1 rounded-pill"
+                                        style="font-size: 10px; z-index: 2;">
+                                        Cá nhân hóa
+                                    </span>
+                                @endif
+
+                                <div class="image">
+                                    <img src="{{ asset('clients/assets/images/gallery-tours/' . ($tour->images[0] ?? 'default.jpg')) }}"
+                                        alt="{{ $tour->title }}"
+                                        style="max-height: 137px; object-fit: cover; width: 100%;"
+                                        onerror="this.src='{{ asset('clients/assets/images/default-tour.jpg') }}'">
+                                </div>
+
+                                <div class="content">
+                                    <div class="destination-header">
+                                        <span class="location">
+                                            <i class="fal fa-map-marker-alt"></i> {{ $tour->destination }}
+                                        </span>
+                                        <div class="ratting">
+                                            <i class="fas fa-star text-warning"></i>
+                                            <span>({{ number_format($tour->rating ?? 4.5, 1) }})</span>
                                         </div>
-                                        <h6><a
-                                                href="{{ route('tours-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
-                                        </h6>
+                                    </div>
+                                    <h6 class="mb-2">
+                                        <a href="{{ route('tours-detail', ['id' => $tour->tourId]) }}"
+                                        class="text-decoration-none text-dark">
+                                            {{ Str::limit($tour->title, 50) }}
+                                        </a>
+                                    </h6>
+                                    <div class="text-end">
+                                        <strong class="text-primary fs-15">
+                                            {{ number_format($tour->priceAdult) }}đ
+                                        </strong>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
+                    </div>
                     @endif
+
 
                 </div>
             </div>
@@ -295,4 +326,4 @@
 <!-- Tour Details Area end -->
 
 @include('clients.blocks.new_letter')
-@include('clients.blocks.footer')
+@include('clients.blocks.footer_home')

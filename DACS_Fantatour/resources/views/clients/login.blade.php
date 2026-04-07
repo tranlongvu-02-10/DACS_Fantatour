@@ -100,4 +100,4 @@
 
     </div>
 </div>
-@include('clients.blocks.footer')
+@include('clients.blocks.footer_home')

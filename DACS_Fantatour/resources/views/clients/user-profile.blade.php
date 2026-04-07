@@ -7,7 +7,7 @@
                     <div class="card-header">Ảnh đại diện</div>
                     <div class="card-body text-center">
                         <img id="avatarPreview" class="img-account-profile rounded-circle mb-2"
-                            src="{{ asset('clients/assets/images/user-profile/' . $user->avatar) }}"
+                            src="{{ asset('admin/assets/images/user-profile/' . $user->avatar) }}"
                             style="width:160px; height: 160px;" alt="Ảnh đại diện {{ $user->avatar }}">
 
                         <div class="small font-italic text-muted mb-4">JPG hoặc PNG không lớn hơn 5 MB</div>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="card mb-4 mb-xl-0">
-                    <button class="btn btn-primary" id="update_password_profile">Đổi mật khẩu</button>
+                    <button class="btn btn-primary" id="update_password_profile">Đổi mật khẩu </button>
                 </div>
             </div>
             <div class="col-xl-8">
@@ -67,10 +67,12 @@
                             @csrf
                             <div class="row gx-3">
                                 <div class="col-md-4">
-                                    <input class="form-control" id="inputOldPass" type="password" placeholder="Nhập mật khẩu cũ" required>
+                                    <input class="form-control" id="inputOldPass" type="text"
+                                        placeholder="Nhập mật khẩu cũ" value="" required>
                                 </div>
                                 <div class="col-md-4">
-                                    <input class="form-control" id="inputNewPass" type="password" placeholder="Nhập mật khẩu mới" required>
+                                    <input class="form-control" id="inputNewPass" type="text"
+                                        placeholder="Nhập mật khẩu mới" value="" required>
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-primary" type="submit">Thay đổi</button>
@@ -83,4 +85,4 @@
         </div>
     </div>
 </div>
-@include('clients.blocks.footer')
+@include('clients.blocks.footer_home')
